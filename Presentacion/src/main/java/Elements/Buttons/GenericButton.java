@@ -1,7 +1,6 @@
 package Elements.Buttons;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 
 
@@ -52,9 +51,16 @@ public class GenericButton extends JButton {
         addActionListener(e -> {test();});
     }
 
+    //prueba que el boton funciona como es debido
     private void test(){
         IO.println("Click Exitoso");
     }
+
+    /**
+     * Metodo que dibuja el boton dentro de la pantalla
+     * @param g the <code>Graphics</code> object to protect
+     */
+    // este metodo se invoca solo
     @Override
     protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
@@ -67,11 +73,11 @@ public class GenericButton extends JButton {
 
     }
 
-    @Override
-    public void updateUI() {
-        setUI(new BasicButtonUI());
-    }
-
+    /**
+     * Metodo que le define un tamaño preferible al boton
+     * @return
+     */
+    // este metodo se invoca solo
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(width, height);
