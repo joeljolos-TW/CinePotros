@@ -21,6 +21,12 @@ public class MovieCover extends JPanel {
         this.posterPath = posterPath;
         this.movieName = movieName;
         this.posterImage = new ImageIcon(posterPath);
+
+        int width = posterImage.getIconWidth();
+        int height = posterImage.getIconHeight();
+        setSize(width, height);
+        setPreferredSize(new Dimension(width, height));
+
         initComponents();
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
@@ -34,7 +40,8 @@ public class MovieCover extends JPanel {
 
 
     public void initComponents() {
-
+        int width = posterImage.getIconWidth();
+        int height = posterImage.getIconHeight();
 
         posterLabel = new JLabel();
         posterLabel.setIcon(new ImageIcon(posterPath));
@@ -46,7 +53,7 @@ public class MovieCover extends JPanel {
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setOpaque(true);
         nameLabel.setBackground(new Color(51,51,51,100));
-        nameLabel.setBounds(0, 260, posterImage.getIconWidth(), 28);
+        nameLabel.setBounds(0, height - 40, width, 28);
 
 
         add(nameLabel);
