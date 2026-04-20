@@ -12,8 +12,8 @@ public class BillboardPanel extends JPanel {
     private SwitchPanel panelNavegacion;
 
     public BillboardPanel(SwitchPanel panelNavegacion) {
-        this.panelNavegacion = panelNavegacion;
-        setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        this.panelNavegacion = SwitchPanel.getInstance();
+        setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
         add(construirEncabezado(), BorderLayout.NORTH);
@@ -22,16 +22,16 @@ public class BillboardPanel extends JPanel {
 
     private JPanel construirEncabezado() {
         JPanel encabezado = new JPanel(new BorderLayout());
-        encabezado.setBackground(Utileria.UtilGeneral.FONDO_ENCABEZADO);
+        encabezado.setBackground(Elements.Utileria.UtilGeneral.FONDO_ENCABEZADO);
         encabezado.setBorder(BorderFactory.createEmptyBorder(12, 0, 12, 0));
 
         JLabel titulo = new JLabel("Cartelera");
-        titulo.setFont(Utileria.UtilGeneral.FUENTE_TITULO);
-        titulo.setForeground(Utileria.UtilGeneral.TEXTO_PRINCIPAL);
+        titulo.setFont(Elements.Utileria.UtilGeneral.FUENTE_TITULO);
+        titulo.setForeground(Elements.Utileria.UtilGeneral.TEXTO_PRINCIPAL);
 
         JLabel cine = new JLabel("Cinepolis Bella Vista");
-        cine.setFont(Utileria.UtilGeneral.FUENTE_CUERPO);
-        cine.setForeground(Utileria.UtilGeneral.TEXTO_SECUNDARIO);
+        cine.setFont(Elements.Utileria.UtilGeneral.FUENTE_CUERPO);
+        cine.setForeground(Elements.Utileria.UtilGeneral.TEXTO_SECUNDARIO);
 
         JPanel panelIzquierdo = new JPanel();
         panelIzquierdo.setOpaque(false);
@@ -45,7 +45,7 @@ public class BillboardPanel extends JPanel {
 
     private JScrollPane construirContenido() {
         JPanel contenido = new JPanel();
-        contenido.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        contenido.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         contenido.setLayout(new BoxLayout(contenido, BoxLayout.Y_AXIS));
         contenido.setBorder(null);
         contenido.add(construirSeccion("MÁS POPULARES", construirMasPopulares()));
@@ -58,21 +58,21 @@ public class BillboardPanel extends JPanel {
         scroll.setBorder(null);
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.getVerticalScrollBar().setUnitIncrement(16);
-        scroll.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        scroll.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         return scroll;
     }
 
     private JPanel construirSeccion(String titulo, JPanel carrusel) {
         JPanel seccion = new JPanel();
-        seccion.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        seccion.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         seccion.setLayout(new BoxLayout(seccion, BoxLayout.Y_AXIS));
 
         JPanel filaTitulo = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        filaTitulo.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        filaTitulo.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
 
         JLabel etiqueta = new JLabel(titulo);
-        etiqueta.setFont(Utileria.UtilGeneral.FUENTE_SUBTITULO);
-        etiqueta.setForeground(Utileria.UtilGeneral.TEXTO_PRINCIPAL);
+        etiqueta.setFont(Elements.Utileria.UtilGeneral.FUENTE_SUBTITULO);
+        etiqueta.setForeground(Elements.Utileria.UtilGeneral.TEXTO_PRINCIPAL);
         filaTitulo.add(etiqueta);
 
         seccion.add(filaTitulo);
