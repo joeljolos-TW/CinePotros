@@ -3,7 +3,8 @@ package Elements.Displays;
 import javax.swing.*;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.BillboardPanel;
-import Elements.Panels.MovieCover;
+import Elements.Panels.SeleccionFuncionPanel;
+import Elements.Panels.SeleccionAsientosPanel;
 import Elements.Panels.SwitchPanel;
 
 import java.awt.*;
@@ -14,19 +15,31 @@ public class TestDisplay extends JFrame {
     private SwitchPanel contenedor;
     private GenericButton newPanelBoton;
     private SwitchPanel panelNavegacion;
+
     public TestDisplay(String title) {
         super(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        panelNavegacion = new SwitchPanel();
-        BillboardPanel cartelera = new BillboardPanel(panelNavegacion);
-        panelNavegacion.addPanel(cartelera, "cartelera");
-        add(panelNavegacion);
-        setSize(1280,720);
-        setVisible(true);
         
+        // Inicializar el controlador de navegación
+        panelNavegacion = new SwitchPanel();
+        
+        // Instanciar todas las pantallas
+        BillboardPanel cartelera = new BillboardPanel(panelNavegacion);
+        SeleccionFuncionPanel funcion = new SeleccionFuncionPanel(panelNavegacion);
+        SeleccionAsientosPanel asientos = new SeleccionAsientosPanel(panelNavegacion);
+        
+        // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
+        panelNavegacion.addPanel(cartelera, "cartelera");
+        panelNavegacion.addPanel(funcion, "seleccionFuncion");
+        panelNavegacion.addPanel(asientos, "seleccionAsientos");
+        
+        // Agregar el panel de navegación al Frame principal
+        add(panelNavegacion);
+        
+        setSize(1280, 720);
+        setVisible(true);
 
-//        contenedor = new SwitchPanel();
     }
 }
