@@ -53,7 +53,7 @@ public class GenericButton extends JButton {
 
     //prueba que el boton funciona como es debido
     private void test(){
-        IO.println("Click Exitoso");
+//        IO.println("Click Exitoso");
     }
 
     /**
