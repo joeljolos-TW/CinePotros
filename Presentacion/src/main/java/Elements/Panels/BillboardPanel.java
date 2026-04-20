@@ -85,34 +85,25 @@ public class BillboardPanel extends JPanel {
 
     private JPanel construirMasPopulares() {
         List<MovieCover> peliculas = new ArrayList<>();
-        peliculas.add(new MovieCover("/images/avatarPoster.jpg", "Avatar 3",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
-        peliculas.add(new MovieCover("/images/jurassicPoster.jpg", "Jurassic World",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
-        peliculas.add(new MovieCover("/images/starWarsPoster.jpg", "Star Wars",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
+        peliculas.add(new MovieCover("src/main/resources/images/avatarPoster.jpg", "Avatar 3"));
+        peliculas.add(new MovieCover("src/main/resources/images/jurassicPoster.jpg", "Jurassic World"));
+        peliculas.add(new MovieCover("src/main/resources/images/starWarsPoster.jpg", "Star Wars"));
         return new MovieCarousel(peliculas);
     }
 
     private JPanel construirTodasFunciones() {
         List<MovieCover> peliculas = new ArrayList<>();
-        peliculas.add(new MovieCover("/images/dramaPoster.jpg", "Drama",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
-        peliculas.add(new MovieCover("/images/michaelPoster.jpg", "Michael",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
-        peliculas.add(new MovieCover("/images/mummyPoster.jpg", "The Mummy",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
+        peliculas.add(new MovieCover("src/main/resources/images/dramaPoster.jpg", "Drama"));
+        peliculas.add(new MovieCover("src/main/resources/images/michaelPoster.jpg", "Michael"));
+        peliculas.add(new MovieCover("src/main/resources/images/mummyPoster.jpg", "The Mummy"));
         return new MovieCarousel(peliculas);
     }
 
     private JPanel construirSalaKids() {
         List<MovieCover> peliculas = new ArrayList<>();
-        peliculas.add(new MovieCover("/images/hoppersPoster.jpg", "Hoppers",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
-        peliculas.add(new MovieCover("/images/minionsPoster.jpg", "Minions",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
-        peliculas.add(new MovieCover("/images/marioPoster.jpg", "Mario Bros",
-                () -> panelNavegacion.changePanel("seleccionFuncion")));
+        peliculas.add(new MovieCover("src/main/resources/images/hoppersPoster.jpg", "Hoppers"));
+        peliculas.add(new MovieCover("src/main/resources/images/minionsPoster.jpg", "Minions"));
+        peliculas.add(new MovieCover("src/main/resources/images/marioPoster.jpg", "Mario Bros"));
         return new MovieCarousel(peliculas);
     }
 

@@ -14,16 +14,23 @@ public class SwitchPanel extends JPanel {
      * Metodo Constructor que genera el panel con CardLayout
      * ayudara con la navegacion del sistema
      */
-
+    private static SwitchPanel Instance;
     private CardLayout cardLayout;
+
     //esta variable para tener una lista de identificadores de paneles
     private List<String> identifiers;
 
     public SwitchPanel() {
         cardLayout = new CardLayout();
         setLayout(cardLayout);
-
         identifiers = new ArrayList<>();
+    }
+
+    public static SwitchPanel getInstance() {
+        if(Instance == null){
+            Instance = new SwitchPanel();
+        }
+        return Instance;
     }
 
     /**
