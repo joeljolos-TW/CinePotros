@@ -25,6 +25,8 @@ public class MovieCarousel extends JPanel {
         nextArrow = new JLabel(">");
         coversPanel = new JPanel(new GridLayout(1, VISIBLE, 10, 0));
 
+        setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        coversPanel.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
         styleArrow(prevArrow);
         styleArrow(nextArrow);
 
@@ -59,6 +61,7 @@ public class MovieCarousel extends JPanel {
         arrow.setFont(arrow.getFont().deriveFont(Font.BOLD, 24f));
         arrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         arrow.setHorizontalAlignment(SwingConstants.CENTER);
+        arrow.setVerticalAlignment(SwingConstants.CENTER);
         arrow.setPreferredSize(new Dimension(40, 0));
     }
 
@@ -70,20 +73,21 @@ public class MovieCarousel extends JPanel {
         coversPanel.removeAll();
 
         int from = currentPage * VISIBLE;
-        int to   = Math.min(from + VISIBLE, movies.size());
-
+        int to = Math.min(from + VISIBLE, movies.size());
         List<MovieCover> visible = movies.subList(from, to);
+
         for (MovieCover cover : visible) {
             coversPanel.add(cover);
         }
 
-        // Si la página no llenó los 3 slots, rellena con paneles vacíos
         for (int i = visible.size(); i < VISIBLE; i++) {
-            coversPanel.add(new JPanel());
+            JPanel vacio = new JPanel();
+            vacio.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+            vacio.setOpaque(false);
+            coversPanel.add(vacio);
         }
 
         updateArrows();
-
         coversPanel.revalidate();
         coversPanel.repaint();
     }
