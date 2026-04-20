@@ -25,8 +25,8 @@ public class MovieCarousel extends JPanel {
         nextArrow = new JLabel(">");
         coversPanel = new JPanel(new GridLayout(1, VISIBLE, 10, 0));
 
-        setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
-        coversPanel.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        coversPanel.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         styleArrow(prevArrow);
         styleArrow(nextArrow);
 
@@ -82,7 +82,7 @@ public class MovieCarousel extends JPanel {
 
         for (int i = visible.size(); i < VISIBLE; i++) {
             JPanel vacio = new JPanel();
-            vacio.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+            vacio.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
             vacio.setOpaque(false);
             coversPanel.add(vacio);
         }

@@ -19,7 +19,7 @@ public class TestDisplay extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        panelNavegacion = new SwitchPanel();
+        panelNavegacion = SwitchPanel.getInstance();
         BillboardPanel cartelera = new BillboardPanel(panelNavegacion);
         panelNavegacion.addPanel(cartelera, "cartelera");
         add(panelNavegacion);
