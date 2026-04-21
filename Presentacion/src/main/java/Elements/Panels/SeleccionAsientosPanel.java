@@ -8,7 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.net.URL;
 import javax.swing.*;
-
+import Elements.Utileria.UtilGeneral;
 /**
  *
  * @author Ricardo
@@ -19,7 +19,7 @@ public class SeleccionAsientosPanel extends JPanel {
 
     public SeleccionAsientosPanel(SwitchPanel panelNavegacion) {
         this.panelNavegacion = panelNavegacion;
-        setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
         add(construirEncabezado(), BorderLayout.NORTH);
@@ -29,12 +29,12 @@ public class SeleccionAsientosPanel extends JPanel {
 
     private JPanel construirEncabezado() {
         JPanel encabezado = new JPanel(new BorderLayout());
-        encabezado.setBackground(Utileria.UtilGeneral.FONDO_ENCABEZADO);
+        encabezado.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         encabezado.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
 
         JLabel titulo = new JLabel("Selección de Asientos");
-        titulo.setFont(Utileria.UtilGeneral.FUENTE_TITULO);
-        titulo.setForeground(Utileria.UtilGeneral.TEXTO_PRINCIPAL);
+        titulo.setFont(UtilGeneral.FUENTE_TITULO);
+        titulo.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
         encabezado.add(titulo, BorderLayout.WEST);
 
         return encabezado;
@@ -42,7 +42,7 @@ public class SeleccionAsientosPanel extends JPanel {
 
     private JPanel construirMatrizAsientos() {
         JPanel contenedorCentral = new JPanel(new BorderLayout());
-        contenedorCentral.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
 
         JLabel pantalla = new JLabel("P A N T A L L A", SwingConstants.CENTER);
@@ -55,7 +55,7 @@ public class SeleccionAsientosPanel extends JPanel {
         contenedorCentral.add(pantalla, BorderLayout.NORTH);
 
         JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
-        matriz.setBackground(Utileria.UtilGeneral.FONDO_PRINCIPAL);
+        matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
         Color colorAzulFigma = new Color(41, 128, 185); 
@@ -95,7 +95,7 @@ public class SeleccionAsientosPanel extends JPanel {
 
     private JPanel construirPiePagina() {
         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        pie.setBackground(Utileria.UtilGeneral.FONDO_ENCABEZADO);
+        pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         
         JButton btnVolver = new JButton("Volver a Horarios");
         btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
