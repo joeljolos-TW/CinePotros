@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import Elements.Utileria.UtilGeneral;
 
 
 public class MovieCover extends JPanel {
@@ -55,9 +56,10 @@ public class MovieCover extends JPanel {
         nameLabel = new JLabel(movieName);
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setOpaque(true);
-        nameLabel.setBackground(new Color(51,51,51,100));
-        nameLabel.setBounds(0, CARD_HEIGHT - 40, CARD_WIDTH, 28);
-
+        nameLabel.setBackground(new Color(51,51,51,80));
+        nameLabel.setBounds(0, CARD_HEIGHT - 50, CARD_WIDTH, 40);
+        nameLabel.setHorizontalAlignment(JLabel.CENTER);
+        nameLabel.setFont(UtilGeneral.FUENTE_BOTON);
 
         add(nameLabel);
         add(posterLabel);
