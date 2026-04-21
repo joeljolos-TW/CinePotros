@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Elements.Utileria.UtilGeneral;
-
+import DTOs.SeleccionPeliculaDTO;
 
 public class MovieCover extends JPanel {
     private JLabel posterLabel;
@@ -15,6 +15,7 @@ public class MovieCover extends JPanel {
     private String movieName;
 
     private ImageIcon posterImage;
+
 
     private static final int CARD_WIDTH=379;
     private static final int CARD_HEIGHT=430;
@@ -30,14 +31,15 @@ public class MovieCover extends JPanel {
         int height = posterImage.getIconHeight();
         setPreferredSize(new Dimension(width, height));
 
+        SeleccionPeliculaDTO selectedMovie = new SeleccionPeliculaDTO(movieName, posterImage);
         initComponents();
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e){
-                test();
 
+                SwitchPanel.getInstance().changePanel("seleccionFuncion");
             }
         });
     }
@@ -68,7 +70,7 @@ public class MovieCover extends JPanel {
 
     //prueba que el boton funciona como es debido
     private void test(){
-        IO.println("Click Exitoso");
+        System.out.println("Click Exitoso");
     }
 
     public JLabel getPosterLabel() {

@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="" />
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/ShowTimePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicios/src/main/java/DTOs/SeleccionPeliculaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Buttons/GenericButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Buttons/GenericButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCarousel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCarousel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCarousel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCarousel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCarousel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCarousel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Servicios/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,12 +49,12 @@
     &quot;assignee&quot;: &quot;joeljolos-TW&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/joeljolos-TW/CinePotros.git",
-    "accountId": "16fd34e0-8495-4cff-afc4-25e8cdb8b5b5"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,
+    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -38,20 +63,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "joel-Branch",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;joel-Branch&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/Servicios&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Presentacion/.idea" />

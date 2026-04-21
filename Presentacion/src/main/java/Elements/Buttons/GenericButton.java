@@ -48,7 +48,7 @@ public class GenericButton extends JButton {
         setOpaque(false);
 
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        addActionListener(e -> {test();});
+
     }
 
     //prueba que el boton funciona como es debido

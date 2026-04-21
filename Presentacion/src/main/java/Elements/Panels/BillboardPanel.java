@@ -12,11 +12,9 @@ public class BillboardPanel extends JPanel {
 
     private SwitchPanel panelNavegacion;
 
-    public BillboardPanel(SwitchPanel panelNavegacion) {
-        this.panelNavegacion = SwitchPanel.getInstance();
+    public BillboardPanel() {
         setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
-
         add(construirEncabezado(), BorderLayout.NORTH);
         add(construirContenido(), BorderLayout.CENTER);
     }
