@@ -62,4 +62,5 @@ public class SwitchPanel extends JPanel {
     public List<String> showInfo(){
         return identifiers;
     }
+
 }
