@@ -45,6 +45,7 @@ public class SeleccionAsientosPanel extends JPanel {
         contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
 
+        // Representación visual de la pantalla del cine
         JLabel pantalla = new JLabel("P A N T A L L A", SwingConstants.CENTER);
         pantalla.setOpaque(true);
         pantalla.setBackground(Color.DARK_GRAY);
@@ -54,6 +55,7 @@ public class SeleccionAsientosPanel extends JPanel {
         pantalla.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         contenedorCentral.add(pantalla, BorderLayout.NORTH);
 
+        // Cuadrícula de asientos
         JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
         matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
@@ -79,6 +81,7 @@ public class SeleccionAsientosPanel extends JPanel {
             asiento.setFocusPainted(false);
             asiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
+            // Simulamos asientos ocupados para ver el contraste
             if (i == 12 || i == 13 || i == 25) {
                 asiento.setBackground(colorOcupado);
                 asiento.setEnabled(false);
