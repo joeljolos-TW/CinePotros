@@ -9,6 +9,10 @@ import java.awt.GridLayout;
 import java.net.URL;
 import javax.swing.*;
 
+/**
+ *
+ * @author Ricardo
+ */
 public class SeleccionAsientosPanel extends JPanel {
 
     private SwitchPanel panelNavegacion;
