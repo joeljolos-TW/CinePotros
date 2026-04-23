@@ -1,2 +1,14 @@
-Elements/Panels/SeleccionFuncionPanel.class
-Elements/Panels/ShowTimePanel.class
+Elements\Panels\MovieCarousel.class
+Elements\Utileria\UtilGeneral.class
+Elements\Buttons\GenericButton.class
+Elements\Panels\GeneracionBoletoPanel.class
+Elements\Panels\BillboardPanel.class
+Elements\Panels\MovieCarousel$2.class
+Elements\Panels\SeleccionFuncionPanel.class
+Elements\Panels\SeleccionAsientosPanel.class
+Elements\Panels\MovieCover.class
+Elements\Panels\MovieCover$1.class
+Elements\Panels\SwitchPanel.class
+Elements\Displays\TestDisplay.class
+Main\Main.class
+Elements\Panels\MovieCarousel$1.class

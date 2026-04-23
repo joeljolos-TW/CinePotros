@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.net.URL;
 import javax.swing.*;
 import Elements.Utileria.UtilGeneral;
+
 /**
  *
  * @author Ricardo
@@ -60,12 +61,12 @@ public class SeleccionAsientosPanel extends JPanel {
         matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
-        Color colorAzulFigma = new Color(41, 128, 185); 
+        Color colorAzulFigma = new Color(41, 128, 185);
         Color colorOcupado = new Color(149, 165, 166); // Gris para asientos no disponibles
 
         for (int i = 0; i < 40; i++) {
             JButton asiento = new JButton();
-            
+
             // Aquí ponemos la imagen del asiento :o 
             /*
             URL iconURL = getClass().getResource("/images/tu_icono_asiento.png");
@@ -73,8 +74,7 @@ public class SeleccionAsientosPanel extends JPanel {
                 asiento.setIcon(new ImageIcon(iconURL));
                 asiento.setText(""); // Quitar texto si solo quieres el icono
             }
-            */
-
+             */
             asiento.setText("💺 " + (i + 1));
             asiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
             asiento.setForeground(Color.WHITE);
@@ -88,7 +88,7 @@ public class SeleccionAsientosPanel extends JPanel {
             } else {
                 asiento.setBackground(colorAzulFigma);
             }
-            
+
             matriz.add(asiento);
         }
 
@@ -99,19 +99,24 @@ public class SeleccionAsientosPanel extends JPanel {
     private JPanel construirPiePagina() {
         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);
-        
+
         JButton btnVolver = new JButton("Volver a Horarios");
         btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
-        
+
         JButton btnConfirmar = new JButton("Confirmar Compra");
         btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal
         btnConfirmar.setForeground(Color.WHITE);
         btnConfirmar.setFocusPainted(false);
-        btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
+        btnConfirmar.addActionListener(e -> {
+            int respuesta = JOptionPane.showConfirmDialog(this, "¿Confirmar compra de asientos F5 y F6?", "Confirmar", JOptionPane.OK_CANCEL_OPTION);
+            if (respuesta == JOptionPane.OK_OPTION) {
+                panelNavegacion.changePanel("generacionBoleto");
+            }
+        });
 
         pie.add(btnVolver);
         pie.add(btnConfirmar);
-        
+
         return pie;
     }
 }

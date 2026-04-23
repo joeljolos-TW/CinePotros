@@ -3,6 +3,7 @@ package Elements.Displays;
 import javax.swing.*;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.BillboardPanel;
+import Elements.Panels.GeneracionBoletoPanel;
 import Elements.Panels.SeleccionFuncionPanel;
 import Elements.Panels.SeleccionAsientosPanel;
 import Elements.Panels.SwitchPanel;
@@ -35,11 +36,12 @@ public class TestDisplay extends JFrame {
 
         SeleccionFuncionPanel funcion = new SeleccionFuncionPanel(panelNavegacion);
         SeleccionAsientosPanel asientos = new SeleccionAsientosPanel(panelNavegacion);
-        
+        GeneracionBoletoPanel boleto = new GeneracionBoletoPanel(panelNavegacion);
         // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
         panelNavegacion.addPanel(cartelera, "cartelera");
         panelNavegacion.addPanel(funcion, "seleccionFuncion");
         panelNavegacion.addPanel(asientos, "seleccionAsientos");
+        panelNavegacion.addPanel(boleto, "generacionBoleto");
         
         // Agregar el panel de navegación al Frame principal
         add(panelNavegacion);
