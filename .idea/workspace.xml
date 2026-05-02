@@ -4,11 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="Cambio a JDK 21" />
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="Cambio a JDK 21">
+      <change afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Refreshable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicios/src/main/java/Mediator/PanelMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SwitchPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SwitchPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Utileria/UtilGeneral.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -24,22 +50,22 @@
     &quot;assignee&quot;: &quot;joeljolos-TW&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/joeljolos-TW/CinePotros.git",
-    "accountId": "16fd34e0-8495-4cff-afc4-25e8cdb8b5b5"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,
+    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "joeljolos-TW",
-    "repository": "CinePotros"
+    &quot;owner&quot;: &quot;joeljolos-TW&quot;,
+    &quot;repository&quot;: &quot;CinePotros&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -50,10 +76,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#10 on joel-Branch",
+    "git-widget-placeholder": "joel-Branch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
     "project.structure.last.edited": "Project",
