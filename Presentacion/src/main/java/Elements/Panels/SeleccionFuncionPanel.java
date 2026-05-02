@@ -1,29 +1,27 @@
 package Elements.Panels;
 
+import DTOs.SeleccionPeliculaDTO;
+
 import java.awt.*;
+import javax.security.auth.RefreshFailedException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-/**
- *
- * @author Ricardo
- */
-public class SeleccionFuncionPanel extends JPanel {
+public class SeleccionFuncionPanel extends JPanel implements Refreshable {
 
     private SwitchPanel panelNavegacion;
     private final Color AZUL_OSCURO = new Color(10, 25, 49);
     private final Color AZUL_CLARO = new Color(50, 130, 240);
     private final Color TEXTO_BLANCO = Color.WHITE;
+    private SeleccionPeliculaDTO selectedMovie;
 
-    public SeleccionFuncionPanel(SwitchPanel panelNavegacion) {
-        this.panelNavegacion = panelNavegacion;
+    public SeleccionFuncionPanel() {
+        this.panelNavegacion = SwitchPanel.getInstance();
         setBackground(AZUL_OSCURO);
         setLayout(new BorderLayout());
-
+        // ← solo el panel superior, no toca selectedMovie
         add(construirPanelSuperior(), BorderLayout.NORTH);
-        
-        add(new JScrollPane(construirContenidoCentrado()), BorderLayout.CENTER);
     }
 
     private JPanel construirPanelSuperior() {
@@ -55,7 +53,9 @@ public class SeleccionFuncionPanel extends JPanel {
         panelPeli.setOpaque(false);
         panelPeli.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel poster = new JLabel("PÓSTER");
+        ImageIcon icon = selectedMovie.getCover();
+        Image image = icon.getImage().getScaledInstance(200, 300, Image.SCALE_SMOOTH);
+        JLabel poster = new JLabel(new ImageIcon(image));
         poster.setPreferredSize(new Dimension(200, 300));
         poster.setMaximumSize(new Dimension(200, 300));
         poster.setOpaque(true);
@@ -65,7 +65,7 @@ public class SeleccionFuncionPanel extends JPanel {
         poster.setAlignmentX(Component.CENTER_ALIGNMENT);
         poster.setBorder(new LineBorder(AZUL_CLARO, 2));
 
-        JLabel titulo = new JLabel("Avatar: El camino del agua");
+        JLabel titulo = new JLabel(selectedMovie.getName());
         titulo.setFont(new Font("Arial", Font.BOLD, 26));
         titulo.setForeground(TEXTO_BLANCO);
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -79,7 +79,7 @@ public class SeleccionFuncionPanel extends JPanel {
         panelPeli.add(poster);
         panelPeli.add(titulo);
         panelPeli.add(info);
-        
+
         JPanel panelDias = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 20));
         panelDias.setOpaque(false);
         panelDias.setMaximumSize(new Dimension(800, 100));
@@ -142,5 +142,19 @@ public class SeleccionFuncionPanel extends JPanel {
 
         fila.add(panelHoras);
         return fila;
+    }
+
+    @Override
+    public void onShow(Object object) {
+        if (!(object instanceof SeleccionPeliculaDTO seleccionPeliculaDTO)) return;
+
+        selectedMovie = seleccionPeliculaDTO; // ← asigna el DTO
+
+        // Reconstruye el contenido con los datos nuevos
+        removeAll();
+        add(construirPanelSuperior(), BorderLayout.NORTH);
+        add(new JScrollPane(construirContenidoCentrado()), BorderLayout.CENTER);
+        revalidate();
+        repaint();
     }
 }
