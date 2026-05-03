@@ -1,0 +1,12 @@
+diff --git a/Dominio/src/main/java/entidades/Funcion.java b/Datos/src/main/java/entidades/Funcion.java
+rename from Dominio/src/main/java/entidades/Funcion.java
+rename to Datos/src/main/java/entidades/Funcion.java
+diff --git a/Dominio/src/main/java/entidades/Sala.java b/Datos/src/main/java/entidades/Sala.java
+rename from Dominio/src/main/java/entidades/Sala.java
+rename to Datos/src/main/java/entidades/Sala.java
+diff --git a/Dominio/src/main/java/entidades/Boleto.java b/Datos/src/main/java/entidades/Boleto.java
+rename from Dominio/src/main/java/entidades/Boleto.java
+rename to Datos/src/main/java/entidades/Boleto.java
+diff --git a/Dominio/src/main/java/entidades/Pelicula.java b/Datos/src/main/java/entidades/Pelicula.java
+rename from Dominio/src/main/java/entidades/Pelicula.java
+rename to Datos/src/main/java/entidades/Pelicula.java

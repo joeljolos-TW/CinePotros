@@ -1,6 +1,7 @@
 package Elements.Panels;
 
 import DTOs.SeleccionPeliculaDTO;
+import Mediator.PanelMediator;
 
 import java.awt.*;
 import javax.security.auth.RefreshFailedException;
@@ -9,15 +10,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 public class SeleccionFuncionPanel extends JPanel implements Refreshable {
-
-    private SwitchPanel panelNavegacion;
+    
+    private PanelMediator panelMediator;
     private final Color AZUL_OSCURO = new Color(10, 25, 49);
     private final Color AZUL_CLARO = new Color(50, 130, 240);
     private final Color TEXTO_BLANCO = Color.WHITE;
     private SeleccionPeliculaDTO selectedMovie;
 
     public SeleccionFuncionPanel() {
-        this.panelNavegacion = SwitchPanel.getInstance();
+        this.panelMediator = SwitchPanel.getInstance();
         setBackground(AZUL_OSCURO);
         setLayout(new BorderLayout());
         // ← solo el panel superior, no toca selectedMovie
@@ -36,7 +37,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         btnAtras.setFocusPainted(false);
         btnAtras.setPreferredSize(new Dimension(50, 40));
         btnAtras.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnAtras.addActionListener(e -> panelNavegacion.changePanel("cartelera"));
+        btnAtras.addActionListener(e -> panelMediator.changePanel("cartelera"));
 
         panelAtras.add(btnAtras);
         return panelAtras;
@@ -136,7 +137,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
             btnH.setFont(new Font("Arial", Font.BOLD, 14));
             btnH.setFocusPainted(false);
             btnH.setPreferredSize(new Dimension(90, 40));
-            btnH.addActionListener(e -> panelNavegacion.changePanel("seleccionAsientos"));
+            btnH.addActionListener(e -> panelMediator.changePanel("seleccionAsientos"));
             panelHoras.add(btnH);
         }
 
