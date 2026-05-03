@@ -39,7 +39,7 @@ public class TestDisplay extends JFrame {
         GeneracionBoletoPanel boleto = new GeneracionBoletoPanel(panelNavegacion);
         // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
         panelNavegacion.addPanel(cartelera, "cartelera");
-        panelNavegacion.addPanel(funcion, "seleccionFuncion");
+        panelNavegacion.addPanel(funciones, "seleccionFuncion");
         panelNavegacion.addPanel(asientos, "seleccionAsientos");
         panelNavegacion.addPanel(boleto, "generacionBoleto");
         

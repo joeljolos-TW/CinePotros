@@ -1,1 +1,8 @@
+
 itson\dominio\Dominio.class
+
+entidades\Pelicula.class
+entidades\Sala.class
+entidades\Boleto.class
+entidades\Funcion.class
+

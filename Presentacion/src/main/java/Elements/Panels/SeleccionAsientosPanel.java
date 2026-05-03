@@ -18,8 +18,8 @@ public class SeleccionAsientosPanel extends JPanel {
 
     private SwitchPanel panelNavegacion;
 
-    public SeleccionAsientosPanel(SwitchPanel panelNavegacion) {
-        this.panelNavegacion = panelNavegacion;
+    public SeleccionAsientosPanel() {
+        this.panelNavegacion = SwitchPanel.getInstance();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 

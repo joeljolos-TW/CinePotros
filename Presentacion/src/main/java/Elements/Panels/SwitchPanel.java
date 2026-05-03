@@ -2,14 +2,18 @@ package Elements.Panels;
 
 import javax.swing.JPanel;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.util.*;
 import java.util.List;
+
+import DTOs.SeleccionPeliculaDTO;
+import Mediator.PanelMediator;
 
 /**
  * Esta clase permite que no tengamos que hacer uso de muchos Frames para navegar en el
  * sistema
  */
-public class SwitchPanel extends JPanel {
+public class SwitchPanel extends JPanel implements PanelMediator {
     /**
      * Metodo Constructor que genera el panel con CardLayout
      * ayudara con la navegacion del sistema
@@ -19,6 +23,7 @@ public class SwitchPanel extends JPanel {
 
     //esta variable para tener una lista de identificadores de paneles
     private List<String> identifiers;
+    private Map<String,JPanel> panels = new HashMap<>();
 
     public SwitchPanel() {
         cardLayout = new CardLayout();
@@ -42,8 +47,10 @@ public class SwitchPanel extends JPanel {
     public void addPanel(JPanel panel, String identificador) {
         add(panel, identificador);
         identifiers.add(identificador);
+        panels.put(identificador, panel);
     }
 
+    @Override
     /**
      * Metodo que apartir del identificador del panel reedirigira
      * al panel deseado
@@ -55,6 +62,16 @@ public class SwitchPanel extends JPanel {
         cardLayout.show(this, identificador);
     }
 
+
+    @Override
+    public void changePanel(String identificador, Object object) {
+
+        JPanel panel = panels.get(identificador);
+        if(panel instanceof Elements.Panels.Refreshable){
+            ((Refreshable) panel).onShow(object);
+        }
+        cardLayout.show(this, identificador);
+    }
     /**
      * metodo que regresa los identificadores de los paneles
      * @return

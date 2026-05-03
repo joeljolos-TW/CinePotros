@@ -4,28 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
+import Mediator.PanelMediator;
 import Elements.Utileria.UtilGeneral;
 import DTOs.SeleccionPeliculaDTO;
 
 public class MovieCover extends JPanel {
     private JLabel posterLabel;
     private JLabel nameLabel;
-
     private String posterPath;
     private String movieName;
-
     private ImageIcon posterImage;
-
+    private PanelMediator panelMediator;
 
     private static final int CARD_WIDTH=379;
     private static final int CARD_HEIGHT=430;
     public MovieCover(String posterPath, String movieName) {
-        super(new BorderLayout());
+        super(null);
         setVisible(true);
         setSize(200, 300);
         this.posterPath = posterPath;
         this.movieName = movieName;
-        this.posterImage = new ImageIcon(posterPath);
+
+        URL url = getClass().getResource(posterPath);
+        this.posterImage = new ImageIcon(url);
 
         int width = posterImage.getIconWidth();
         int height = posterImage.getIconHeight();
@@ -35,11 +37,12 @@ public class MovieCover extends JPanel {
         initComponents();
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
+        panelMediator= SwitchPanel.getInstance();
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e){
+                panelMediator.changePanel("seleccionFuncion",selectedMovie);
 
-                SwitchPanel.getInstance().changePanel("seleccionFuncion");
             }
         });
     }
