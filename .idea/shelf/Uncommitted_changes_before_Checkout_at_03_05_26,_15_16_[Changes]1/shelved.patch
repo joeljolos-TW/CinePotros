@@ -1,0 +1,285 @@
+Index: Persistencia/pom.xml
+===================================================================
+diff --git a/Persistencia/pom.xml b/GeneradorQR/pom.xml
+rename from Persistencia/pom.xml
+rename to GeneradorQR/pom.xml
+--- a/Persistencia/pom.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/GeneradorQR/pom.xml	(date 1777846430564)
+@@ -7,8 +7,14 @@
+         <groupId>com.CinePotro</groupId>
+         <artifactId>pom-padre</artifactId>
+         <version>1.0.0-SNAPSHOT</version>
+-        <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <artifactId>Persistencia</artifactId>
++    <artifactId>GeneradorQR</artifactId>
++
++    <properties>
++        <maven.compiler.source>21</maven.compiler.source>
++        <maven.compiler.target>21</maven.compiler.target>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    </properties>
++
+ </project>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0\n                             https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>com.CinePotro</groupId>\n    <artifactId>pom-padre</artifactId>\n    <version>1.0.0-SNAPSHOT</version>\n    <packaging>pom</packaging>\n\n    <modules>\n        <module>Presentacion</module>\n        <module>Servicios</module>\n        <module>Dominio</module>\n        <module>Persistencia</module>\n    </modules>\n\n    <properties>\n        <java.version>21</java.version>\n        <maven.compiler.source>${java.version}</maven.compiler.source>\n        <maven.compiler.target>${java.version}</maven.compiler.target>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/pom.xml	(date 1777846430660)
+@@ -14,8 +14,8 @@
+     <modules>
+         <module>Presentacion</module>
+         <module>Servicios</module>
+-        <module>Dominio</module>
+-        <module>Persistencia</module>
++        <module>Datos</module>
++        <module>GeneradorQR</module>
+     </modules>
+ 
+     <properties>
+Index: Dominio/pom.xml
+===================================================================
+diff --git a/Dominio/pom.xml b/Datos/pom.xml
+rename from Dominio/pom.xml
+rename to Datos/pom.xml
+--- a/Dominio/pom.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/Datos/pom.xml	(date 1777837570602)
+@@ -22,5 +22,5 @@
+             <scope>compile</scope>
+         </dependency>
+     </dependencies>
+-    <artifactId>Dominio</artifactId>
++    <artifactId>Datos</artifactId>
+ </project>
+\ No newline at end of file
+Index: Servicios/src/main/java/itson/servicios/Servicios.java
+===================================================================
+diff --git a/Servicios/src/main/java/itson/servicios/Servicios.java b/Servicios/src/main/java/itson/servicios/Servicios.java
+deleted file mode 100644
+--- a/Servicios/src/main/java/itson/servicios/Servicios.java	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ /dev/null	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
+@@ -1,16 +0,0 @@
+-/*
+- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+- */
+-
+-package itson.servicios;
+-
+-/**
+- *
+- * @author Ricardo
+- */
+-public class Servicios {
+-
+-    public static void main(String[] args) {
+-        System.out.println("Hello World!");
+-    }
+-}
+Index: Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+deleted file mode 100644
+--- a/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ /dev/null	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
+@@ -1,1 +0,0 @@
+-/home/joeljolos/IdeaProjects/CinePotros/Persistencia/src/main/java/itson/persistencia/Persistencia.java
+Index: Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+deleted file mode 100644
+--- a/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ /dev/null	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
+@@ -1,1 +0,0 @@
+-itson/persistencia/Persistencia.class
+Index: Persistencia/target/maven-archiver/pom.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/Persistencia/target/maven-archiver/pom.properties b/Persistencia/target/maven-archiver/pom.properties
+deleted file mode 100644
+--- a/Persistencia/target/maven-archiver/pom.properties	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ /dev/null	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
+@@ -1,5 +0,0 @@
+-#Generated by Maven
+-#Tue Apr 21 12:22:13 MST 2026
+-artifactId=Persistencia
+-groupId=com.CinePotro
+-version=1.0.0-SNAPSHOT
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" project-jdk-name=\"21\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/.idea/misc.xml	(date 1777837385410)
+@@ -7,6 +7,11 @@
+         <option value="$PROJECT_DIR$/pom.xml" />
+       </list>
+     </option>
++    <option name="ignoredFiles">
++      <set>
++        <option value="$PROJECT_DIR$/Persistencia/pom.xml" />
++      </set>
++    </option>
+   </component>
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"700d6616-42d6-4ef9-9dd9-a6d2bc527869\" name=\"Changes\" comment=\"Cambio a JDK 21\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;joeljolos-TW&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,\n    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;\n  },\n  &quot;recentNewPullRequestHead&quot;: {\n    &quot;server&quot;: {\n      &quot;useHttp&quot;: false,\n      &quot;host&quot;: &quot;github.com&quot;,\n      &quot;port&quot;: null,\n      &quot;suffix&quot;: null\n    },\n    &quot;owner&quot;: &quot;joeljolos-TW&quot;,\n    &quot;repository&quot;: &quot;CinePotros&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"3BfqwjakLturjP7crbto1CiNhnW\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"joel-Branch\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"/home/joeljolos/IdeaProjects/CinePotros/Servicios\",\n    \"project.structure.last.edited\": \"Project\",\n    \"project.structure.proportion\": \"0.15\",\n    \"project.structure.side.proportion\": \"0.0\",\n    \"settings.editor.selected.configurable\": \"preferences.lookFeel\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/Presentacion/.idea\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"700d6616-42d6-4ef9-9dd9-a6d2bc527869\" name=\"Changes\" comment=\"\" />\n      <created>1774890714356</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1774890714356</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Cambio a JDK 21\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1776803241737</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1776803241737</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Cambio a JDK 21\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Cambio a JDK 21\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/.idea/workspace.xml	(date 1777840977887)
+@@ -4,8 +4,35 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="Cambio a JDK 21">
++    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="Se Agrego la dependencia de Mongo a Entidades">
++      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/entidades/Boleto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/src/main/java/entidades/Boleto.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/entidades/Funcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/src/main/java/entidades/Funcion.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/entidades/Pelicula.java" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/src/main/java/entidades/Pelicula.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/entidades/Sala.java" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/src/main/java/entidades/Sala.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/Dominio-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/Dominio-1.0.0-SNAPSHOT.jar" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Boleto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/classes/entidades/Boleto.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Funcion.class" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/classes/entidades/Funcion.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Pelicula.class" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/classes/entidades/Pelicula.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Sala.class" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/classes/entidades/Sala.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/maven-archiver/pom.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dominio/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Persistencia/pom.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Persistencia/target/Persistencia-1.0.0-SNAPSHOT.jar" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/itson/persistencia/Persistencia.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Persistencia/target/maven-archiver/pom.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Persistencia/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Servicios/src/main/java/itson/servicios/Servicios.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,6 +79,7 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "Application.Main.executor": "Run",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+     "RunOnceActivity.git.unshallow": "true",
+@@ -92,7 +120,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1776803241737</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Se Agrego la dependencia de Mongo a Entidades">
++      <option name="closed" value="true" />
++      <created>1777834530433</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1777834530433</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -108,6 +144,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Cambio a JDK 21" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Cambio a JDK 21" />
++    <MESSAGE value="Se Agrego la dependencia de Mongo a Entidades" />
++    <option name="LAST_COMMIT_MESSAGE" value="Se Agrego la dependencia de Mongo a Entidades" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CompilerConfiguration\">\n    <annotationProcessing>\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\n        <outputRelativeToContentRoot value=\"true\" />\n        <module name=\"Servicios\" />\n        <module name=\"Persistencia\" />\n        <module name=\"Presentacion\" />\n        <module name=\"Dominio\" />\n      </profile>\n    </annotationProcessing>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/.idea/compiler.xml	(date 1777846447767)
+@@ -7,10 +7,14 @@
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
+         <module name="Servicios" />
+-        <module name="Persistencia" />
++        <module name="GeneradorQR" />
+         <module name="Presentacion" />
+-        <module name="Dominio" />
++        <module name="Datos" />
+       </profile>
+     </annotationProcessing>
++    <bytecodeTargetLevel>
++      <module name="Dominio" target="1.8" />
++      <module name="Persistencia" target="21" />
++    </bytecodeTargetLevel>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Encoding\">\n    <file url=\"file://$PROJECT_DIR$/Dominio/src/main/java\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Dominio/src/main/resources\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Persistencia/src/main/java\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Persistencia/src/main/resources\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Presentacion/src/main/java\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Presentacion/src/main/resources\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Servicios/src/main/java\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/Servicios/src/main/resources\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/src/main/java\" charset=\"UTF-8\" />\n    <file url=\"file://$PROJECT_DIR$/src/main/resources\" charset=\"UTF-8\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision aa553de1c5d17a990653e7d91b3fa8eaf5fee7c3)
++++ b/.idea/encodings.xml	(date 1777846447795)
+@@ -1,8 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="Encoding">
+-    <file url="file://$PROJECT_DIR$/Dominio/src/main/java" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/Dominio/src/main/resources" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/Datos/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/Datos/src/main/resources" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/GeneradorQR/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/GeneradorQR/src/main/resources" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/Persistencia/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/Persistencia/src/main/resources" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/Presentacion/src/main/java" charset="UTF-8" />
+diff --git a/Dominio/target/maven-archiver/pom.properties b/Datos/target/maven-archiver/pom.properties
+rename from Dominio/target/maven-archiver/pom.properties
+rename to Datos/target/maven-archiver/pom.properties
+diff --git a/Dominio/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/Datos/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+rename from Dominio/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+rename to Datos/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+diff --git a/Dominio/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/Datos/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+rename from Dominio/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+rename to Datos/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst

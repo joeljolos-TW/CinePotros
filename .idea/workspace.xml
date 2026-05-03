@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="Cambio a JDK 21">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Boleto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Funcion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Pelicula.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/entidades/Sala.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Negocio/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/itson/persistencia/Persistencia.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="joel-Branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +51,9 @@
     &quot;repository&quot;: &quot;CinePotros&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -52,6 +64,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",

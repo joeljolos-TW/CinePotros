@@ -1,5 +1,7 @@
 package Elements.Panels;
 
+import Mediator.PanelMediator;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,8 +11,6 @@ import javax.swing.*;
 import javax.swing.*;
 
 public class BillboardPanel extends JPanel {
-
-    private SwitchPanel panelNavegacion;
 
     public BillboardPanel() {
         setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
