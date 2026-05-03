@@ -8,17 +8,19 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.net.URL;
 import javax.swing.*;
+import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
+import Mediator.PanelMediator;
 /**
  *
  * @author Ricardo
  */
 public class SeleccionAsientosPanel extends JPanel {
 
-    private SwitchPanel panelNavegacion;
+    private PanelMediator panelMediator;
 
     public SeleccionAsientosPanel() {
-        this.panelNavegacion = SwitchPanel.getInstance();
+        this.panelMediator = SwitchPanel.getInstance();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
@@ -100,17 +102,42 @@ public class SeleccionAsientosPanel extends JPanel {
         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         
-        JButton btnVolver = new JButton("Volver a Horarios");
-        btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
-        
-        JButton btnConfirmar = new JButton("Confirmar Compra");
-        btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal
-        btnConfirmar.setForeground(Color.WHITE);
-        btnConfirmar.setFocusPainted(false);
-        btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
+        //JButton btnVolver = new JButton("Volver a Horarios");
+        //btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
+        GenericButton backBtn = new GenericButton(
+                "Volver a Horarios",
+                true,
+                10,
+                160,
+                110,
+                UtilGeneral.TEXTO_PRINCIPAL,
+                UtilGeneral.BOTON_AZUL,
+                UtilGeneral.FONDO_SECUNDARIO
+        );
+        backBtn.addActionListener(e -> panelMediator.changePanel("seleccionFuncion"));
 
-        pie.add(btnVolver);
-        pie.add(btnConfirmar);
+        //JButton btnConfirmar = new JButton("Confirmar Compra");
+        //btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal
+        //btnConfirmar.setForeground(Color.WHITE);
+        //btnConfirmar.setFocusPainted(false);
+        //btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
+        GenericButton confirmBtn = new GenericButton(
+                "Confirmar Compra",
+                true,
+                10,
+                160,
+                110,
+                UtilGeneral.TEXTO_PRINCIPAL,
+                UtilGeneral.BOTON_AZUL,
+                UtilGeneral.FONDO_SECUNDARIO
+        );
+        confirmBtn.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "¡Asientos confirmados!");
+
+        });
+
+        pie.add(backBtn);
+        pie.add(confirmBtn);
         
         return pie;
     }
