@@ -62,12 +62,12 @@ public class SeleccionAsientosPanel extends JPanel {
         matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
-        Color colorAzulFigma = new Color(41, 128, 185); 
+        Color colorAzulFigma = new Color(41, 128, 185);
         Color colorOcupado = new Color(149, 165, 166); // Gris para asientos no disponibles
 
         for (int i = 0; i < 40; i++) {
             JButton asiento = new JButton();
-            
+
             // Aquí ponemos la imagen del asiento :o 
             /*
             URL iconURL = getClass().getResource("/images/tu_icono_asiento.png");
@@ -75,8 +75,7 @@ public class SeleccionAsientosPanel extends JPanel {
                 asiento.setIcon(new ImageIcon(iconURL));
                 asiento.setText(""); // Quitar texto si solo quieres el icono
             }
-            */
-
+             */
             asiento.setText("💺 " + (i + 1));
             asiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
             asiento.setForeground(Color.WHITE);
@@ -90,7 +89,7 @@ public class SeleccionAsientosPanel extends JPanel {
             } else {
                 asiento.setBackground(colorAzulFigma);
             }
-            
+
             matriz.add(asiento);
         }
 
