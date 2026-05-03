@@ -4,12 +4,14 @@
  */
 package itson.dominio;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Jazmin
  */
 public class Pago {
-    private String id;
+    private ObjectId id;
     private Boleto boleto;
     private Double monto;
     private Empleado empleado; // para marcar el estado del pago como exitoso o fallido
@@ -18,18 +20,18 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(String id, Boleto boleto, Double monto, EstadoPago estado) {
+    public Pago(ObjectId id, Boleto boleto, Double monto, EstadoPago estado) {
         this.id = id;
         this.boleto = boleto;
         this.monto = monto;
         this.estado = estado;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

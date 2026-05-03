@@ -4,12 +4,14 @@
  */
 package itson.dominio;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Jazmin
  */
 public class Pelicula {
-    private String id;
+    private ObjectId id;
     private String titulo;
     private String clasificacion;
     private String genero;
@@ -19,7 +21,7 @@ public class Pelicula {
     public Pelicula() {
     }
 
-    public Pelicula(String id, String titulo, String clasificacion, String genero, int duracion, String imagen) {
+    public Pelicula(ObjectId id, String titulo, String clasificacion, String genero, int duracion, String imagen) {
         this.id = id;
         this.titulo = titulo;
         this.clasificacion = clasificacion;
@@ -28,11 +30,11 @@ public class Pelicula {
         this.imagen = imagen;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

@@ -4,12 +4,14 @@
  */
 package itson.dominio;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Jazmin
  */
 public class Sala {
-    private String id;
+    private ObjectId id;
     private String nombre;
     private TipoSala tipo;
     private int capacidad;
@@ -17,18 +19,18 @@ public class Sala {
     public Sala() {
     }
 
-    public Sala(String id, String nombre, TipoSala tipo, int capacidad) {
+    public Sala(ObjectId id, String nombre, TipoSala tipo, int capacidad) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
         this.capacidad = capacidad;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

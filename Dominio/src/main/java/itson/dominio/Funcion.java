@@ -6,6 +6,7 @@ package itson.dominio;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import org.bson.types.ObjectId;
 
 
 /**
@@ -13,7 +14,7 @@ import java.time.LocalTime;
  * @author Jazmin
  */
 public class Funcion {
-    private String id;
+    private ObjectId id;
     private Pelicula pelicula;
     private LocalDate fecha;
     private LocalTime hora;
@@ -24,7 +25,7 @@ public class Funcion {
     public Funcion() {
     }
 
-    public Funcion(String id, Pelicula pelicula, LocalDate fecha, LocalTime hora, Sala sala, String idioma, Double precio) {
+    public Funcion(ObjectId id, Pelicula pelicula, LocalDate fecha, LocalTime hora, Sala sala, String idioma, Double precio) {
         this.id = id;
         this.pelicula = pelicula;
         this.fecha = fecha;
@@ -34,11 +35,11 @@ public class Funcion {
         this.precio = precio;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

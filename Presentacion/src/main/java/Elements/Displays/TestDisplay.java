@@ -34,8 +34,9 @@ public class TestDisplay extends JFrame {
         
         // Instanciar todas las pantallas
 
-        SeleccionFuncionPanel funcion = new SeleccionFuncionPanel(panelNavegacion);
-        SeleccionAsientosPanel asientos = new SeleccionAsientosPanel(panelNavegacion);
+        
+        SeleccionAsientosPanel asientos = new SeleccionAsientosPanel();
+        SeleccionFuncionPanel funciones = new SeleccionFuncionPanel();
         GeneracionBoletoPanel boleto = new GeneracionBoletoPanel(panelNavegacion);
         // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
         panelNavegacion.addPanel(cartelera, "cartelera");

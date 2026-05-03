@@ -1,2 +1,12 @@
-itson\servicios\Servicios.class
+itson\servicios\ISubsistemaCartelera.class
+DTOs\FuncionDTO.class
+itson\servicios\ISubsistemaBoleto.class
+itson\servicios\SubsistemaAsientos.class
+Mediator\PanelMediator.class
+DTOs\BoletoDTO.class
 DTOs\SeleccionPeliculaDTO.class
+itson\servicios\ISubsistemaAsientos.class
+itson\servicios\ISubsistemaPago.class
+itson\servicios\SubsistemaPago.class
+itson\servicios\SubsistemaBoleto.class
+itson\servicios\SubsistemaCartelera.class
