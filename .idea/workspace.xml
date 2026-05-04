@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="cambios cambio la interaccion del switch panel a un patron mediator">
-      <change afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/QR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GeneradorQR/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/ConvertidorBoletoQR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/GsonUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/QRBoundary.java" afterDir="false" />
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="creacion del Subsistema de generacion de QR">
+      <change afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Boleto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Boleto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Funcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Funcion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Boleto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Boleto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Funcion.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Funcion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/QRBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/QRBoundary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
     "onboarding.tips.debug.path": "/home/joeljolos/IdeaProjects/CinePotros/GeneradorQR/src/main/java/com/CinePotro/Main.java",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.lookFeel"
@@ -118,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777847707266</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="creacion del Subsistema de generacion de QR">
+      <option name="closed" value="true" />
+      <created>1777853291112</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777853291112</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,7 +143,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cambio a JDK 21" />
     <MESSAGE value="cambios cambio la interaccion del switch panel a un patron mediator" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambios cambio la interaccion del switch panel a un patron mediator" />
+    <MESSAGE value="creacion del Subsistema de generacion de QR" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion del Subsistema de generacion de QR" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

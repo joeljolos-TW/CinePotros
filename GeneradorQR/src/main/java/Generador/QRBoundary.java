@@ -6,16 +6,17 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import itson.dominio.QR;
 
 public class QRBoundary {
 
     private static final String API_URL = "https://api.qrserver.com/v1/create-qr-code/";
 
-    public byte[] obtenerQR(itson.dominio.QR qr) throws Exception {
+    public byte[] obtenerQR(QR qr) throws Exception {
 
         String url = API_URL
-                + "?size" + qr.getAncho() + "x" +  qr.getAlto()
-                + "&data" + URLEncoder.encode(qr.getContenido(), "UTF-8");
+                + "?size=" + qr.getAncho() + "x" +  qr.getAlto()
+                + "&data=" + URLEncoder.encode(qr.getContenido(), "UTF-8");
 
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.setRequestMethod("GET");

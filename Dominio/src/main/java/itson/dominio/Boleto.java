@@ -13,7 +13,7 @@ import org.bson.types.ObjectId;
  */
 public class Boleto {
     private ObjectId id;
-    private Funcion funcion;
+    private ObjectId funcion;
     private List<String> numAsiento;
     private Double total;
 
@@ -21,7 +21,7 @@ public class Boleto {
     }
     
     
-    public Boleto(ObjectId id, Funcion funcion, List<String> numAsiento, Double total) {
+    public Boleto(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
@@ -36,11 +36,11 @@ public class Boleto {
         this.id = id;
     }
 
-    public Funcion getFuncion() {
+    public ObjectId getFuncion() {
         return funcion;
     }
 
-    public void setFuncion(Funcion funcion) {
+    public void setFuncion(ObjectId funcion) {
         this.funcion = funcion;
     }
 
