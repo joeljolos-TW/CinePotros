@@ -13,20 +13,18 @@ import org.bson.types.ObjectId;
  */
 public class Boleto {
     private ObjectId id;
-    private Funcion funcion;
+    private ObjectId funcion;
     private List<String> numAsiento;
-    private String codigoQR;
     private Double total;
 
     public Boleto() {
     }
     
     
-    public Boleto(ObjectId id, Funcion funcion, List<String> numAsiento, String codigoQR, Double total) {
+    public Boleto(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
-        this.codigoQR = codigoQR;
         this.total = total;
     }
 
@@ -38,11 +36,11 @@ public class Boleto {
         this.id = id;
     }
 
-    public Funcion getFuncion() {
+    public ObjectId getFuncion() {
         return funcion;
     }
 
-    public void setFuncion(Funcion funcion) {
+    public void setFuncion(ObjectId funcion) {
         this.funcion = funcion;
     }
 
@@ -52,14 +50,6 @@ public class Boleto {
 
     public void setNumAsiento(List<String> numAsiento) {
         this.numAsiento = numAsiento;
-    }
-
-    public String getCodigoQR() {
-        return codigoQR;
-    }
-
-    public void setCodigoQR(String codigoQR) {
-        this.codigoQR = codigoQR;
     }
 
     public Double getTotal() {

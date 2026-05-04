@@ -15,17 +15,17 @@ import org.bson.types.ObjectId;
  */
 public class Funcion {
     private ObjectId id;
-    private Pelicula pelicula;
+    private ObjectId pelicula;
     private LocalDate fecha;
     private LocalTime hora;
-    private Sala sala;
+    private ObjectId sala;
     private String idioma;
     private Double precio;
 
     public Funcion() {
     }
 
-    public Funcion(ObjectId id, Pelicula pelicula, LocalDate fecha, LocalTime hora, Sala sala, String idioma, Double precio) {
+    public Funcion(ObjectId id, ObjectId pelicula, LocalDate fecha, LocalTime hora, ObjectId sala, String idioma, Double precio) {
         this.id = id;
         this.pelicula = pelicula;
         this.fecha = fecha;
@@ -43,11 +43,11 @@ public class Funcion {
         this.id = id;
     }
 
-    public Pelicula getPelicula() {
+    public ObjectId getPelicula() {
         return pelicula;
     }
 
-    public void setPelicula(Pelicula pelicula) {
+    public void setPelicula(ObjectId pelicula) {
         this.pelicula = pelicula;
     }
 
@@ -67,11 +67,11 @@ public class Funcion {
         this.hora = hora;
     }
 
-    public Sala getSala() {
+    public ObjectId getSala() {
         return sala;
     }
 
-    public void setSala(Sala sala) {
+    public void setSala(ObjectId sala) {
         this.sala = sala;
     }
 
