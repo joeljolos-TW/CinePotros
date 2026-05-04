@@ -35,13 +35,13 @@ public class Main {
                 "Español",
                 75.0
         );
-        String[] asientos = {"A-15","A-16"};
+        String[] asientos = {"A-19","A-20"};
         Boleto boleto = new Boleto(
-                new ObjectId("69f7e448236d399400a0931f"),
+                new ObjectId("69f7e448236d399400a0930f"),
                 funcion.getId(),
                 Arrays.asList(asientos),
                 funcion.getPrecio()*2
         );
-        convertidorBoletoQR.generarQRDeBoleto(boleto, "boleto_qr.png");
+        convertidorBoletoQR.generarQRDeBoleto(boleto, "GeneradorQR/src/main/resources/boleto_qr-1.png");
     }
 }

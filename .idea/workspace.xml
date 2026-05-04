@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="creacion del Subsistema de generacion de QR">
-      <change afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/Conexion/ConexionMongoDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/Test/MainTestDAOs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Boleto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Boleto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Funcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Funcion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Boleto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Boleto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Funcion.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Funcion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/QRBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Generador/QRBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GeneradorQR/target/classes/Test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/target/classes/Test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/AsientoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/AsientoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/BoletoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/BoletoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/FuncionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/FuncionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PeliculaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PeliculaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boleto_qr.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,22 +46,22 @@
     &quot;assignee&quot;: &quot;joeljolos-TW&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,
-    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/joeljolos-TW/CinePotros.git",
+    "accountId": "46a040b8-6f62-4877-9dad-8f98b9f1a59f"
   },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
     },
-    &quot;owner&quot;: &quot;joeljolos-TW&quot;,
-    &quot;repository&quot;: &quot;CinePotros&quot;
+    "owner": "joeljolos-TW",
+    "repository": "CinePotros"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -66,22 +73,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "joel-Branch",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
-    "onboarding.tips.debug.path": "/home/joeljolos/IdeaProjects/CinePotros/GeneradorQR/src/main/java/com/CinePotro/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;joel-Branch&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/Servicios&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/GeneradorQR/src/main/java/com/CinePotro/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Presentacion/.idea" />
@@ -90,7 +97,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
       </set>
     </attachedChunks>
   </component>
