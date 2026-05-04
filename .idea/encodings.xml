@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Dominio/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Dominio/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/GeneradorQR/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/GeneradorQR/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Persistencia/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Persistencia/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Presentacion/src/main/java" charset="UTF-8" />

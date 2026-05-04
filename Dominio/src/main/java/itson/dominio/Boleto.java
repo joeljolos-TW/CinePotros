@@ -15,18 +15,16 @@ public class Boleto {
     private ObjectId id;
     private Funcion funcion;
     private List<String> numAsiento;
-    private String codigoQR;
     private Double total;
 
     public Boleto() {
     }
     
     
-    public Boleto(ObjectId id, Funcion funcion, List<String> numAsiento, String codigoQR, Double total) {
+    public Boleto(ObjectId id, Funcion funcion, List<String> numAsiento, Double total) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
-        this.codigoQR = codigoQR;
         this.total = total;
     }
 
@@ -52,14 +50,6 @@ public class Boleto {
 
     public void setNumAsiento(List<String> numAsiento) {
         this.numAsiento = numAsiento;
-    }
-
-    public String getCodigoQR() {
-        return codigoQR;
-    }
-
-    public void setCodigoQR(String codigoQR) {
-        this.codigoQR = codigoQR;
     }
 
     public Double getTotal() {
