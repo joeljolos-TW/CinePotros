@@ -1,0 +1,204 @@
+Index: Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Elements.Panels;\n\nimport java.awt.BorderLayout;\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.FlowLayout;\nimport java.awt.Font;\nimport java.awt.GridLayout;\nimport java.net.URL;\nimport javax.swing.*;\nimport Elements.Utileria.UtilGeneral;\n/**\n *\n * @author Ricardo\n */\npublic class SeleccionAsientosPanel extends JPanel {\n\n    private SwitchPanel panelNavegacion;\n\n    public SeleccionAsientosPanel() {\n        this.panelNavegacion = SwitchPanel.getInstance();\n        setBackground(UtilGeneral.FONDO_PRINCIPAL);\n        setLayout(new BorderLayout());\n\n        add(construirEncabezado(), BorderLayout.NORTH);\n        add(construirMatrizAsientos(), BorderLayout.CENTER);\n        add(construirPiePagina(), BorderLayout.SOUTH);\n    }\n\n    private JPanel construirEncabezado() {\n        JPanel encabezado = new JPanel(new BorderLayout());\n        encabezado.setBackground(UtilGeneral.FONDO_ENCABEZADO);\n        encabezado.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));\n\n        JLabel titulo = new JLabel(\"Selección de Asientos\");\n        titulo.setFont(UtilGeneral.FUENTE_TITULO);\n        titulo.setForeground(UtilGeneral.TEXTO_PRINCIPAL);\n        encabezado.add(titulo, BorderLayout.WEST);\n\n        return encabezado;\n    }\n\n    private JPanel construirMatrizAsientos() {\n        JPanel contenedorCentral = new JPanel(new BorderLayout());\n        contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);\n        contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));\n\n        // Representación visual de la pantalla del cine\n        JLabel pantalla = new JLabel(\"P A N T A L L A\", SwingConstants.CENTER);\n        pantalla.setOpaque(true);\n        pantalla.setBackground(Color.DARK_GRAY);\n        pantalla.setForeground(Color.WHITE);\n        pantalla.setFont(new Font(\"Arial\", Font.BOLD, 14));\n        pantalla.setPreferredSize(new Dimension(800, 40));\n        pantalla.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));\n        contenedorCentral.add(pantalla, BorderLayout.NORTH);\n\n        // Cuadrícula de asientos\n        JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));\n        matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);\n        matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));\n\n        Color colorAzulFigma = new Color(41, 128, 185); \n        Color colorOcupado = new Color(149, 165, 166); // Gris para asientos no disponibles\n\n        for (int i = 0; i < 40; i++) {\n            JButton asiento = new JButton();\n            \n            // Aquí ponemos la imagen del asiento :o \n            /*\n            URL iconURL = getClass().getResource(\"/images/tu_icono_asiento.png\");\n            if (iconURL != null) {\n                asiento.setIcon(new ImageIcon(iconURL));\n                asiento.setText(\"\"); // Quitar texto si solo quieres el icono\n            }\n            */\n\n            asiento.setText(\"\uD83D\uDCBA \" + (i + 1));\n            asiento.setFont(new Font(\"Segoe UI Emoji\", Font.PLAIN, 14));\n            asiento.setForeground(Color.WHITE);\n            asiento.setFocusPainted(false);\n            asiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));\n\n            // Simulamos asientos ocupados para ver el contraste\n            if (i == 12 || i == 13 || i == 25) {\n                asiento.setBackground(colorOcupado);\n                asiento.setEnabled(false);\n            } else {\n                asiento.setBackground(colorAzulFigma);\n            }\n            \n            matriz.add(asiento);\n        }\n\n        contenedorCentral.add(matriz, BorderLayout.CENTER);\n        return contenedorCentral;\n    }\n\n    private JPanel construirPiePagina() {\n        JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));\n        pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);\n        \n        JButton btnVolver = new JButton(\"Volver a Horarios\");\n        btnVolver.addActionListener(e -> panelNavegacion.changePanel(\"seleccionFuncion\"));\n        \n        JButton btnConfirmar = new JButton(\"Confirmar Compra\");\n        btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal\n        btnConfirmar.setForeground(Color.WHITE);\n        btnConfirmar.setFocusPainted(false);\n        btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, \"¡Asientos confirmados!\"));\n\n        pie.add(btnVolver);\n        pie.add(btnConfirmar);\n        \n        return pie;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java b/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java
+--- a/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java	(revision ba39d188eb5de34c73039db4a52e9da90e52d79e)
++++ b/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java	(date 1777695023050)
+@@ -8,17 +8,21 @@
+ import java.awt.GridLayout;
+ import java.net.URL;
+ import javax.swing.*;
++
++import Elements.Buttons.GenericButton;
+ import Elements.Utileria.UtilGeneral;
++import Mediator.PanelMediator;
++
+ /**
+  *
+  * @author Ricardo
+  */
+ public class SeleccionAsientosPanel extends JPanel {
+ 
+-    private SwitchPanel panelNavegacion;
++    private PanelMediator panelMediator;
+ 
+     public SeleccionAsientosPanel() {
+-        this.panelNavegacion = SwitchPanel.getInstance();
++        this.panelMediator = SwitchPanel.getInstance();
+         setBackground(UtilGeneral.FONDO_PRINCIPAL);
+         setLayout(new BorderLayout());
+ 
+@@ -99,18 +103,36 @@
+     private JPanel construirPiePagina() {
+         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+         pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);
+-        
+-        JButton btnVolver = new JButton("Volver a Horarios");
+-        btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
+-        
+-        JButton btnConfirmar = new JButton("Confirmar Compra");
+-        btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal
+-        btnConfirmar.setForeground(Color.WHITE);
+-        btnConfirmar.setFocusPainted(false);
+-        btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
++
++        GenericButton backBtn = new GenericButton("Volver a Horarios",
++                false,
++                10,
++                160,
++                110,
++                UtilGeneral.TEXTO_PRINCIPAL,
++                UtilGeneral.BOTON_AZUL,
++                UtilGeneral.FONDO_PRINCIPAL);
++        //JButton btnVolver = new JButton("Volver a Horarios");
++        //btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
++        backBtn.addActionListener(e-> panelMediator.changePanel("seleccionFuncion"));
++
++        //JButton btnConfirmar = new JButton("Confirmar Compra");
++        GenericButton confirmBtn = new GenericButton("Confirmar Compra",
++                false,
++                10,
++                160,
++                110,
++                UtilGeneral.TEXTO_PRINCIPAL,
++                UtilGeneral.BOTON_AZUL,
++                UtilGeneral.FONDO_PRINCIPAL);
++        //btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal
++        //btnConfirmar.setForeground(Color.WHITE);
++        //btnConfirmar.setFocusPainted(false);
++        //btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
++        confirmBtn.addActionListener(e-> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
+ 
+-        pie.add(btnVolver);
+-        pie.add(btnConfirmar);
++        pie.add(backBtn);
++        pie.add(confirmBtn);
+         
+         return pie;
+     }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"700d6616-42d6-4ef9-9dd9-a6d2bc527869\" name=\"Changes\" comment=\"Cambio a JDK 21\">\n      <change afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Refreshable.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/Servicios/src/main/java/Mediator/PanelMediator.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SwitchPanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SwitchPanel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/src/main/java/Main/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/src/main/java/Main/Main.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$2.class\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Presentacion/target/classes/Utileria/UtilGeneral.class\" beforeDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;joeljolos-TW&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,\n    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;\n  },\n  &quot;recentNewPullRequestHead&quot;: {\n    &quot;server&quot;: {\n      &quot;useHttp&quot;: false,\n      &quot;host&quot;: &quot;github.com&quot;,\n      &quot;port&quot;: null,\n      &quot;suffix&quot;: null\n    },\n    &quot;owner&quot;: &quot;joeljolos-TW&quot;,\n    &quot;repository&quot;: &quot;CinePotros&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"3BfqwjakLturjP7crbto1CiNhnW\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Application.Main.executor\": \"Run\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"joel-Branch\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"/home/joeljolos/IdeaProjects/CinePotros/Servicios\",\n    \"project.structure.last.edited\": \"Project\",\n    \"project.structure.proportion\": \"0.15\",\n    \"project.structure.side.proportion\": \"0.0\",\n    \"settings.editor.selected.configurable\": \"preferences.lookFeel\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/Presentacion/.idea\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"700d6616-42d6-4ef9-9dd9-a6d2bc527869\" name=\"Changes\" comment=\"\" />\n      <created>1774890714356</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1774890714356</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Cambio a JDK 21\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1776803241737</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1776803241737</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Cambio a JDK 21\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Cambio a JDK 21\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ba39d188eb5de34c73039db4a52e9da90e52d79e)
++++ b/.idea/workspace.xml	(date 1777694866769)
+@@ -4,25 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="Cambio a JDK 21">
+-      <change afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Refreshable.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Servicios/src/main/java/Mediator/PanelMediator.java" afterDir="false" />
++    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="IMplementacion de la interfaz mediadora en los paneles existentes y optimizacion del uso de recursos (imagenes) en los paneles">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/BillboardPanel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/MovieCover.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionFuncionPanel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SwitchPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SwitchPanel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Main/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Displays/TestDisplay.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/BillboardPanel.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$1.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover$2.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/MovieCover.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Panels/SwitchPanel.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Main/Main.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Utileria/UtilGeneral.class" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -74,21 +58,21 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Main.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "joel-Branch",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.0",
+-    "settings.editor.selected.configurable": "preferences.lookFeel"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;joel-Branch&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/Servicios&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/Presentacion/.idea" />
+@@ -117,7 +101,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1776803241737</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Agregacion de Patron Mediador para la navegacion de los paneles">
++      <option name="closed" value="true" />
++      <created>1777694111370</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1777694111370</updated>
++    </task>
++    <task id="LOCAL-00003" summary="IMplementacion de la interfaz mediadora en los paneles existentes y optimizacion del uso de recursos (imagenes) en los paneles">
++      <option name="closed" value="true" />
++      <created>1777694234258</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1777694234258</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -133,6 +133,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Cambio a JDK 21" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Cambio a JDK 21" />
++    <MESSAGE value="Agregacion de Patron Mediador para la navegacion de los paneles" />
++    <MESSAGE value="IMplementacion de la interfaz mediadora en los paneles existentes y optimizacion del uso de recursos (imagenes) en los paneles" />
++    <option name="LAST_COMMIT_MESSAGE" value="IMplementacion de la interfaz mediadora en los paneles existentes y optimizacion del uso de recursos (imagenes) en los paneles" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: Presentacion/src/main/java/Elements/Panels/CasoValidarPago/SelectorPagoPanel.java
+===================================================================
+diff --git a/Presentacion/src/main/java/Elements/Panels/CasoValidarPago/SelectorPagoPanel.java b/Presentacion/src/main/java/Elements/Panels/CasoValidarPago/SelectorPagoPanel.java
+new file mode 100644
+--- /dev/null	(date 1777834087518)
++++ b/Presentacion/src/main/java/Elements/Panels/CasoValidarPago/SelectorPagoPanel.java	(date 1777834087518)
+@@ -0,0 +1,6 @@
++package Elements.Panels.CasoValidarPago;
++
++import javax.swing.*;
++
++public class SelectorPagoPanel extends JPanel {
++}

@@ -1,0 +1,12 @@
+itson\dominio\Pelicula.class
+itson\dominio\EstadoAsiento.class
+itson\dominio\Sala.class
+itson\dominio\Boleto.class
+itson\dominio\EstadoPago.class
+itson\dominio\Usuario.class
+itson\dominio\Empleado.class
+itson\dominio\QR.class
+itson\dominio\TipoSala.class
+itson\dominio\Asiento.class
+itson\dominio\Funcion.class
+itson\dominio\Pago.class

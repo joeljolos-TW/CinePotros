@@ -1,0 +1,45 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]" date="1777846632326" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 03/05/26, 15:17 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/classes/entidades/Pelicula.class" />
+    <option name="AFTER_PATH" value="Datos/target/classes/entidades/Pelicula.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/Pelicula.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
+    <option name="AFTER_PATH" value="Datos/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/inputFiles.lst" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/classes/entidades/Boleto.class" />
+    <option name="AFTER_PATH" value="Datos/target/classes/entidades/Boleto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/Boleto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Persistencia/target/Persistencia-1.0.0-SNAPSHOT.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/classes/entidades/Sala.class" />
+    <option name="AFTER_PATH" value="Datos/target/classes/entidades/Sala.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/Sala.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/Dominio-1.0.0-SNAPSHOT.jar" />
+    <option name="AFTER_PATH" value="Datos/target/Dominio-1.0.0-SNAPSHOT.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/Dominio-1.0.0-SNAPSHOT.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Persistencia/target/classes/itson/persistencia/Persistencia.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
+    <option name="AFTER_PATH" value="Datos/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/createdFiles.lst" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Dominio/target/classes/entidades/Funcion.class" />
+    <option name="AFTER_PATH" value="Datos/target/classes/entidades/Funcion.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_05_26,_15_17_[Changes]/Funcion.class" />
+  </binary>
+</changelist>
