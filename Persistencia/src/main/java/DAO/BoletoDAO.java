@@ -77,7 +77,8 @@ public class BoletoDAO {
         Document doc = new Document()
                 .append("funcion", b.getFuncion())
                 .append("numAsiento", b.getNumAsiento())
-                .append("total", b.getTotal());
+                .append("total", b.getTotal())
+                .append("usado", b.isUsado());
         if (b.getId() != null) {
             doc.append("_id", b.getId());
         }
