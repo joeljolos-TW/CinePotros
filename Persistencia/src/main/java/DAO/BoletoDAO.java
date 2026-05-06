@@ -90,7 +90,8 @@ public class BoletoDAO {
                 doc.getObjectId("_id"),
                 doc.getObjectId("funcion"),
                 (List<String>) doc.get("numAsiento"),
-                doc.getDouble("total")
+                doc.getDouble("total"),
+                false
         );
     }
 }
