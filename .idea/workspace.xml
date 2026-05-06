@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="creacion del Subsistema de generacion de QR">
-      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/Conexion/ConexionMongoDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/Test/MainTestDAOs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneradorQR/target/classes/Test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/target/classes/Test/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/AsientoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/AsientoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/BoletoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/BoletoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/FuncionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/FuncionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PeliculaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PeliculaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boleto_qr.png" beforeDir="false" />
-    </list>
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="DAOS creados y con main para probar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777853291112</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="DAOS creados y con main para probar">
+      <option name="closed" value="true" />
+      <created>1777929934739</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777929934739</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,7 +144,8 @@
     <MESSAGE value="Cambio a JDK 21" />
     <MESSAGE value="cambios cambio la interaccion del switch panel a un patron mediator" />
     <MESSAGE value="creacion del Subsistema de generacion de QR" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion del Subsistema de generacion de QR" />
+    <MESSAGE value="DAOS creados y con main para probar" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAOS creados y con main para probar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
