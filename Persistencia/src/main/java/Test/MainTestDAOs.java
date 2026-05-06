@@ -108,7 +108,7 @@ public class MainTestDAOs {
         ObjectId idFuncion = new ObjectId();
 
         // INSERT
-        Boleto nuevo = new Boleto(null, idFuncion, List.of("A-1", "A-2"), 190.0);
+        Boleto nuevo = new Boleto(null, idFuncion, List.of("A-1", "A-2"), 190.0, false);
         dao.insertar(nuevo);
         System.out.println("INSERT  → id asignado: " + nuevo.getId());
 

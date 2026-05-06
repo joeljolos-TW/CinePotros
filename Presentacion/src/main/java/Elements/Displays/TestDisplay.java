@@ -4,6 +4,7 @@ import javax.swing.*;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.BillboardPanel;
 import Elements.Panels.GeneracionBoletoPanel;
+import Elements.Panels.InfoBoletoPanel;
 import Elements.Panels.SeleccionFuncionPanel;
 import Elements.Panels.SeleccionAsientosPanel;
 import Elements.Panels.SwitchPanel;
@@ -26,6 +27,10 @@ public class TestDisplay extends JFrame {
         // Inicializar el controlador de navegación
         panelNavegacion = SwitchPanel.getInstance();
         BillboardPanel cartelera = new BillboardPanel();
+        
+        InfoBoletoPanel infoBoleto = new InfoBoletoPanel();
+        panelNavegacion.addPanel(infoBoleto, "infoBoleto");
+        
         panelNavegacion.addPanel(cartelera, "cartelera");
         add(panelNavegacion);
         setSize(1280,720);

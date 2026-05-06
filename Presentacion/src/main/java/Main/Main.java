@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new TestDisplay("Cartelera"));
+        SwingUtilities.invokeLater(() -> new TestDisplay("infoBoleto"));
 
     }
 }
