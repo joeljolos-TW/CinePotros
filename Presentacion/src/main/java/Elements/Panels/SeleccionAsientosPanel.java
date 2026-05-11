@@ -6,27 +6,56 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
+
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
+import itson.dominio.Asiento;
+import itson.dominio.EstadoAsiento;
+import itson.servicios.ISubsistemaAsientos;
+import itson.servicios.SubsistemaAsientos;
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Ricardo
  */
-public class SeleccionAsientosPanel extends JPanel {
+public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
     private PanelMediator panelMediator;
+    private ISubsistemaAsientos subsistemaAsientos;
+    private ObjectId idFuncionActual;
+    private List<Asiento> asientosSeleccionados;
+    private JPanel contenedorCentral;
 
     public SeleccionAsientosPanel() {
         this.panelMediator = SwitchPanel.getInstance();
+        this.subsistemaAsientos = new SubsistemaAsientos();
+        this.asientosSeleccionados = new ArrayList<>();
+        
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
         add(construirEncabezado(), BorderLayout.NORTH);
-        add(construirMatrizAsientos(), BorderLayout.CENTER);
+        
+        contenedorCentral = new JPanel(new BorderLayout());
+        contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
+        contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
+        add(contenedorCentral, BorderLayout.CENTER);
+        
         add(construirPiePagina(), BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void onShow(Object object) {
+        if (object instanceof ObjectId) {
+            this.idFuncionActual = (ObjectId) object;
+            this.asientosSeleccionados.clear();
+            actualizarMatrizAsientos();
+        }
     }
 
     private JPanel construirEncabezado() {
@@ -42,12 +71,9 @@ public class SeleccionAsientosPanel extends JPanel {
         return encabezado;
     }
 
-    private JPanel construirMatrizAsientos() {
-        JPanel contenedorCentral = new JPanel(new BorderLayout());
-        contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
-        contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
+    private void actualizarMatrizAsientos() {
+        contenedorCentral.removeAll();
 
-        // Representación visual de la pantalla del cine
         JLabel pantalla = new JLabel("P A N T A L L A", SwingConstants.CENTER);
         pantalla.setOpaque(true);
         pantalla.setBackground(Color.DARK_GRAY);
@@ -57,52 +83,60 @@ public class SeleccionAsientosPanel extends JPanel {
         pantalla.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         contenedorCentral.add(pantalla, BorderLayout.NORTH);
 
-        // Cuadrícula de asientos
-        JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
+        List<Asiento> asientos = subsistemaAsientos.obtenerAsientosPorFuncion(idFuncionActual);
+
+        // Si no hay asientos generados, simulamos una matriz de 5x8 = 40 para la demo
+        int rows = 5;
+        int cols = 8;
+
+        JPanel matriz = new JPanel(new GridLayout(rows, cols, 15, 15));
         matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
-        Color colorAzulFigma = new Color(41, 128, 185);
-        Color colorOcupado = new Color(149, 165, 166); // Gris para asientos no disponibles
+        Color colorDisponible = new Color(41, 128, 185);
+        Color colorOcupado = new Color(149, 165, 166);
+        Color colorSeleccionado = new Color(46, 204, 113); // Verde para seleccionado
 
-        for (int i = 0; i < 40; i++) {
-            JButton asiento = new JButton();
+        for (Asiento asiento : asientos) {
+            JButton btnAsiento = new JButton("💺 " + asiento.getFila() + asiento.getNumero());
+            btnAsiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
+            btnAsiento.setForeground(Color.WHITE);
+            btnAsiento.setFocusPainted(false);
+            btnAsiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-            // Aquí ponemos la imagen del asiento :o 
-            /*
-            URL iconURL = getClass().getResource("/images/tu_icono_asiento.png");
-            if (iconURL != null) {
-                asiento.setIcon(new ImageIcon(iconURL));
-                asiento.setText(""); // Quitar texto si solo quieres el icono
-            }
-             */
-            asiento.setText("💺 " + (i + 1));
-            asiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
-            asiento.setForeground(Color.WHITE);
-            asiento.setFocusPainted(false);
-            asiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-
-            // Simulamos asientos ocupados para ver el contraste
-            if (i == 12 || i == 13 || i == 25) {
-                asiento.setBackground(colorOcupado);
-                asiento.setEnabled(false);
+            if (asiento.getEstado() == EstadoAsiento.OCUPADO) {
+                btnAsiento.setBackground(colorOcupado);
+                btnAsiento.setEnabled(false);
             } else {
-                asiento.setBackground(colorAzulFigma);
+                btnAsiento.setBackground(colorDisponible);
+                btnAsiento.addActionListener(e -> {
+                    if (asientosSeleccionados.contains(asiento)) {
+                        asientosSeleccionados.remove(asiento);
+                        btnAsiento.setBackground(colorDisponible);
+                    } else {
+                        asientosSeleccionados.add(asiento);
+                        btnAsiento.setBackground(colorSeleccionado);
+                    }
+                });
             }
+            matriz.add(btnAsiento);
+        }
 
-            matriz.add(asiento);
+        if (asientos.isEmpty()) {
+            JLabel noAsientos = new JLabel("No hay asientos configurados para esta función.");
+            noAsientos.setForeground(Color.WHITE);
+            matriz.add(noAsientos);
         }
 
         contenedorCentral.add(matriz, BorderLayout.CENTER);
-        return contenedorCentral;
+        contenedorCentral.revalidate();
+        contenedorCentral.repaint();
     }
 
     private JPanel construirPiePagina() {
         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         
-        //JButton btnVolver = new JButton("Volver a Horarios");
-        //btnVolver.addActionListener(e -> panelNavegacion.changePanel("seleccionFuncion"));
         GenericButton backBtn = new GenericButton(
                 "Volver a Horarios",
                 true,
@@ -115,11 +149,6 @@ public class SeleccionAsientosPanel extends JPanel {
         );
         backBtn.addActionListener(e -> panelMediator.changePanel("seleccionFuncion"));
 
-        //JButton btnConfirmar = new JButton("Confirmar Compra");
-        //btnConfirmar.setBackground(new Color(46, 204, 113)); // Verde para el botón principal
-        //btnConfirmar.setForeground(Color.WHITE);
-        //btnConfirmar.setFocusPainted(false);
-        //btnConfirmar.addActionListener(e -> JOptionPane.showMessageDialog(this, "¡Asientos confirmados!"));
         GenericButton confirmBtn = new GenericButton(
                 "Confirmar Compra",
                 true,
@@ -130,14 +159,34 @@ public class SeleccionAsientosPanel extends JPanel {
                 UtilGeneral.BOTON_AZUL,
                 UtilGeneral.FONDO_SECUNDARIO
         );
-        confirmBtn.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "¡Asientos confirmados!");
-
-        });
+        confirmBtn.addActionListener(e -> confirmarCompra());
 
         pie.add(backBtn);
         pie.add(confirmBtn);
         
         return pie;
     }
+
+    private void confirmarCompra() {
+        if (idFuncionActual == null) {
+            JOptionPane.showMessageDialog(this, "No hay función seleccionada.");
+            return;
+        }
+        if (asientosSeleccionados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar al menos un asiento.");
+            return;
+        }
+
+        boolean exito = subsistemaAsientos.confirmarAsientosSeleccionados(idFuncionActual, asientosSeleccionados);
+
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "¡Asientos confirmados exitosamente!");
+            // Regresar a la cartelera o ir al siguiente paso
+            panelMediator.changePanel("cartelera"); // Opcional: panelMediator.changePanel("generacionBoleto");
+        } else {
+            JOptionPane.showMessageDialog(this, "Hubo un error al confirmar algunos asientos. Es posible que alguien más los haya tomado.");
+            actualizarMatrizAsientos(); // Recargar el estado real
+        }
+    }
 }
+
