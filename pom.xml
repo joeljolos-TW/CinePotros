@@ -17,6 +17,7 @@
         <module>Dominio</module>
         <module>Persistencia</module>
         <module>GeneradorQR</module>
+        <module>VerificacionPago</module>
     </modules>
 
     <properties>

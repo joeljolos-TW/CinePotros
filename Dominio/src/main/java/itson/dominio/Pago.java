@@ -12,18 +12,19 @@ import org.bson.types.ObjectId;
  */
 public class Pago {
     private ObjectId id;
-    private Boleto boleto;
-    private Double monto;
-    private Empleado empleado; // para marcar el estado del pago como exitoso o fallido
+    private ObjectId boleto;
+    private double monto;
+    private ObjectId empleado; // para marcar el estado del pago como exitoso o fallido
     private EstadoPago estado;
 
     public Pago() {
     }
 
-    public Pago(ObjectId id, Boleto boleto, Double monto, EstadoPago estado) {
+    public Pago(ObjectId id, ObjectId boleto, double monto,ObjectId empleado, EstadoPago estado) {
         this.id = id;
         this.boleto = boleto;
         this.monto = monto;
+        this.empleado = empleado;
         this.estado = estado;
     }
 
@@ -35,16 +36,28 @@ public class Pago {
         this.id = id;
     }
 
-    public Boleto getBoleto() {
+    public ObjectId getBoleto() {
         return boleto;
     }
 
-    public void setBoleto(Boleto boleto) {
+    public void setBoleto(ObjectId boleto) {
         this.boleto = boleto;
     }
 
-    public Double getMonto() {
+    public double getMonto() {
         return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public ObjectId getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(ObjectId empleado) {
+        this.empleado = empleado;
     }
 
     public void setMonto(Double monto) {

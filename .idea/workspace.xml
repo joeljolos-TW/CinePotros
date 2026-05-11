@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="DAOS creados y con main para probar" />
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="actualizacion de archivos no versionados">
+      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/EmpleadoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PagoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentSummary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Pago/PaymentBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Test/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Test/testFrame1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_26,_16_32_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_26__16_32__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Pago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Asiento.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Asiento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Boleto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Boleto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Empleado.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Empleado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/EstadoAsiento.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/EstadoAsiento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/EstadoPago.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/EstadoPago.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Funcion.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Funcion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Pago.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Pago.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Pelicula.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Pelicula.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/QR.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/QR.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Sala.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Sala.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/TipoSala.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/TipoSala.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/target/classes/itson/dominio/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/Conexion/ConexionMongoDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/Conexion/ConexionMongoDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/DAO/AsientoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/DAO/AsientoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/DAO/BoletoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/DAO/BoletoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/DAO/FuncionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/DAO/FuncionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/DAO/PeliculaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/DAO/PeliculaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/DAO/UsuarioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/DAO/UsuarioDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistencia/target/classes/Test/MainTestDAOs.class" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/target/classes/Test/MainTestDAOs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Buttons/GenericButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/target/classes/Elements/Buttons/GenericButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicios/target/classes/itson/servicios/SubsistemaPago.class" beforeDir="false" afterPath="$PROJECT_DIR$/Servicios/target/classes/itson/servicios/SubsistemaPago.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,22 +67,22 @@
     &quot;assignee&quot;: &quot;joeljolos-TW&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/joeljolos-TW/CinePotros.git",
-    "accountId": "46a040b8-6f62-4877-9dad-8f98b9f1a59f"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,
+    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "joeljolos-TW",
-    "repository": "CinePotros"
+    &quot;owner&quot;: &quot;joeljolos-TW&quot;,
+    &quot;repository&quot;: &quot;CinePotros&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -58,31 +94,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;joel-Branch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/Servicios&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/GeneradorQR/src/main/java/com/CinePotro/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.Main.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "joel-Branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
+    "onboarding.tips.debug.path": "/home/joeljolos/IdeaProjects/CinePotros/VerificacionPagp/src/main/java/com/CinePotro/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Presentacion/.idea" />
     </key>
   </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test.Main" />
+      <module name="VerificacionPago" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="Presentacion" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
@@ -118,15 +189,7 @@
       <option name="project" value="LOCAL" />
       <updated>1777853291112</updated>
     </task>
-    <task id="LOCAL-00004" summary="DAOS creados y con main para probar">
-      <option name="closed" value="true" />
-      <created>1777929934739</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1777929934739</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,8 +207,7 @@
     <MESSAGE value="Cambio a JDK 21" />
     <MESSAGE value="cambios cambio la interaccion del switch panel a un patron mediator" />
     <MESSAGE value="creacion del Subsistema de generacion de QR" />
-    <MESSAGE value="DAOS creados y con main para probar" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAOS creados y con main para probar" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion del Subsistema de generacion de QR" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -154,6 +216,11 @@
           <url>file://$PROJECT_DIR$/GeneradorQR/src/main/java/com/CinePotro/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/VerificacionPagp/src/main/java/com/CinePotro/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
