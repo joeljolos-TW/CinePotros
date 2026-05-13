@@ -2,34 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.dominio;
+package entidadesMongo;
 
+import itson.dominio.TipoSala;
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
-public class Sala {
-    private String id;
+public class SalaMongoEntidad {
+    private ObjectId id;
     private String nombre;
     private TipoSala tipo;
     private int capacidad;
 
-    public Sala() {
+    public SalaMongoEntidad() {
     }
 
-    public Sala(String id, String nombre, TipoSala tipo, int capacidad) {
+    public SalaMongoEntidad(ObjectId id, String nombre, TipoSala tipo, int capacidad) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
         this.capacidad = capacidad;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -56,7 +58,6 @@ public class Sala {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
-    
     
     
 }

@@ -2,32 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.dominio;
+package entidadesMongo;
 
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
-public class Empleado {
-    private String id;
+public class EmpleadoMongoEntidad {
+    private ObjectId id;
     private String nombreUsuario;
-    private String contrasena;
+    private String contrasenia;
 
-    public Empleado() {
+    public EmpleadoMongoEntidad() {
     }
 
-    public Empleado(String id, String nombreUsuario, String contrasena) {
+    public EmpleadoMongoEntidad(ObjectId id, String nombreUsuario, String contrasenia) {
         this.id = id;
         this.nombreUsuario = nombreUsuario;
-        this.contrasena = contrasena;
+        this.contrasenia = contrasenia;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -39,13 +40,13 @@ public class Empleado {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
-   
+    
     
 }

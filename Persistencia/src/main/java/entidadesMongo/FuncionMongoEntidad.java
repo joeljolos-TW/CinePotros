@@ -2,29 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.dominio;
+package entidadesMongo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
-public class Funcion {
-    private String id;
-    private Pelicula pelicula;
+public class FuncionMongoEntidad {
+    private ObjectId id;
+    private ObjectId pelicula;
     private LocalDate fecha;
     private LocalTime hora;
-    private Sala sala;
+    private ObjectId sala;
     private String idioma;
     private Double precio;
 
-    public Funcion() {
+    public FuncionMongoEntidad() {
     }
 
-    public Funcion(String id, Pelicula pelicula, LocalDate fecha, LocalTime hora, Sala sala, String idioma, Double precio) {
+    public FuncionMongoEntidad(ObjectId id, ObjectId pelicula, LocalDate fecha, LocalTime hora, ObjectId sala, String idioma, Double precio) {
         this.id = id;
         this.pelicula = pelicula;
         this.fecha = fecha;
@@ -34,19 +34,19 @@ public class Funcion {
         this.precio = precio;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
-    public Pelicula getPelicula() {
+    public ObjectId getPelicula() {
         return pelicula;
     }
 
-    public void setPelicula(Pelicula pelicula) {
+    public void setPelicula(ObjectId pelicula) {
         this.pelicula = pelicula;
     }
 
@@ -66,11 +66,11 @@ public class Funcion {
         this.hora = hora;
     }
 
-    public Sala getSala() {
+    public ObjectId getSala() {
         return sala;
     }
 
-    public void setSala(Sala sala) {
+    public void setSala(ObjectId sala) {
         this.sala = sala;
     }
 
@@ -89,9 +89,6 @@ public class Funcion {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
-
-    
-    
     
     
 }

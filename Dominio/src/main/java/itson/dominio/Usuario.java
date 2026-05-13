@@ -4,31 +4,29 @@
  */
 package itson.dominio;
 
-import org.bson.types.ObjectId;
-
 /**
  *
  * @author Jazmin
  */
 public class Usuario {
-    private ObjectId id;
+    private String id;
     private String nombreUsuario;
     private String contrasena;
 
     public Usuario() {
     }
 
-    public Usuario(ObjectId id, String nombreUsuario, String contrasena) {
+    public Usuario(String id, String nombreUsuario, String contrasena) {
         this.id = id;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.dominio;
+package entidadesMongo;
 
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
-public class Pelicula {
-    private String id;
+public class PeliculaMongoEntidad {
+     private ObjectId id;
     private String titulo;
     private String clasificacion;
     private String genero;
     private int duracion;
     private String imagen;
 
-    public Pelicula() {
+    public PeliculaMongoEntidad() {
     }
 
-    public Pelicula(String id, String titulo, String clasificacion, String genero, int duracion, String imagen) {
+    public PeliculaMongoEntidad(ObjectId id, String titulo, String clasificacion, String genero, int duracion, String imagen) {
         this.id = id;
         this.titulo = titulo;
         this.clasificacion = clasificacion;
@@ -29,11 +30,11 @@ public class Pelicula {
         this.imagen = imagen;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

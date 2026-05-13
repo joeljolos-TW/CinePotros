@@ -2,46 +2,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package itson.dominio;
+package entidadesMongo;
 
+import itson.dominio.EstadoBoleto;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
-public class Boleto {
-    private String id;
-    private Funcion funcion;
+public class BoletoMongoEntidad {
+     private ObjectId id;
+    private ObjectId funcion;
     private List<String> numAsiento;
     private Double total;
     private EstadoBoleto estado;
 
-    public Boleto() {
+    public BoletoMongoEntidad() {
     }
-    
-    
-    public Boleto(String id, Funcion funcion, List<String> numAsiento, Double total) {
+
+    public BoletoMongoEntidad(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total, EstadoBoleto estado) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
         this.total = total;
-        this.estado = EstadoBoleto.PENDIENTE;
+        this.estado = estado;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
-    public Funcion getFuncion() {
+    public ObjectId getFuncion() {
         return funcion;
     }
 
-    public void setFuncion(Funcion funcion) {
+    public void setFuncion(ObjectId funcion) {
         this.funcion = funcion;
     }
 
@@ -68,9 +69,6 @@ public class Boleto {
     public void setEstado(EstadoBoleto estado) {
         this.estado = estado;
     }
-    
-    
-    
     
     
 }
