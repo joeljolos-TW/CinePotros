@@ -10,8 +10,10 @@ public class testFrame1 extends JFrame {
         setLayout(null);
         getContentPane().setBackground(Color.blue);
 
+
         add(crearDatos());
         add(crearDetalles());
+        add(crearButton());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -124,5 +126,18 @@ public class testFrame1 extends JFrame {
         detalles.setBorder(BorderFactory.createEmptyBorder());
         detalles.setBounds(0,400,659,330);
         return detalles;
+    }
+
+    public JButton crearButton(){
+        JButton button = new JButton("equisde");
+        button.setFont(new Font("Arial", Font.BOLD, 30));
+        button.setSize(300,120);
+        button.setForeground(Color.white);
+        button.setBackground(Color.cyan);
+
+        button.setLocation(890, 570);
+        setVisible(true);
+
+        return button;
     }
 }

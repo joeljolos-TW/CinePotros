@@ -12,8 +12,6 @@ import org.bson.types.ObjectId;
 public class PaymentBO {
     // Modificar según tu DAO
     private PagoDAO pagoDAO;
-
-
     private PaymentSummaryDTO dto;
 
     private double precioEntradas;

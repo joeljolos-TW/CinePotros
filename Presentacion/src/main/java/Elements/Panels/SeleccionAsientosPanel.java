@@ -132,7 +132,7 @@ public class SeleccionAsientosPanel extends JPanel {
         );
         confirmBtn.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "¡Asientos confirmados!");
-
+            panelMediator.changePanel("confirmacionPago");
         });
 
         pie.add(backBtn);

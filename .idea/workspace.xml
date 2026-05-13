@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="subsistema de Pago a medias (recien estructurado, solo falta afinar la logica)">
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="subsistema de Pago a medias (se esta creando la pantalla de los pagos)">
+      <change afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentWaiting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/GeneracionBoletoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/GeneracionBoletoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentSummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/src/main/java/Pago/PaymentBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Pago/PaymentBO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VerificacionPago/src/main/java/Test/testFrame1.java" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Test/testFrame1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,32 +71,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;joel-Branch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/Servicios&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/VerificacionPagp/src/main/java/com/CinePotro/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.Main.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainTestDAOs.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "joel-Branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
+    "onboarding.tips.debug.path": "/home/joeljolos/IdeaProjects/CinePotros/VerificacionPagp/src/main/java/com/CinePotro/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Presentacion/.idea" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MainTestDAOs">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test.Main" />
       <module name="VerificacionPago" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTestDAOs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test.MainTestDAOs" />
+      <module name="Persistencia" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Test.*" />
@@ -112,8 +136,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainTestDAOs" />
         <item itemvalue="Application.Main.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -164,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778522377130</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="subsistema de Pago a medias (se esta creando la pantalla de los pagos)">
+      <option name="closed" value="true" />
+      <created>1778603155710</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778603155710</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,7 +216,8 @@
     <MESSAGE value="cambios cambio la interaccion del switch panel a un patron mediator" />
     <MESSAGE value="creacion del Subsistema de generacion de QR" />
     <MESSAGE value="subsistema de Pago a medias (recien estructurado, solo falta afinar la logica)" />
-    <option name="LAST_COMMIT_MESSAGE" value="subsistema de Pago a medias (recien estructurado, solo falta afinar la logica)" />
+    <MESSAGE value="subsistema de Pago a medias (se esta creando la pantalla de los pagos)" />
+    <option name="LAST_COMMIT_MESSAGE" value="subsistema de Pago a medias (se esta creando la pantalla de los pagos)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
