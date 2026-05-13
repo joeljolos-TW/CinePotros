@@ -33,5 +33,16 @@
             <artifactId>webcam-capture</artifactId>
             <version>0.3.12</version>
         </dependency>
+        <dependency>
+            <groupId>com.CinePotro</groupId>
+            <artifactId>VerificacionPago</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.CinePotro</groupId>
+            <artifactId>Dominio</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 </project>

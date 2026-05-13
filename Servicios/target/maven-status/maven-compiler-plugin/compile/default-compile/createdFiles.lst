@@ -1,3 +1,7 @@
+Mediator\PanelMediator.class
+DTOs\SeleccionPeliculaDTO.class
+itson\servicios\ISubsistemaPago.class
+itson\servicios\SubsistemaPago.class
 itson\servicios\ISubsistemaCartelera.class
 DTOs\FuncionDTO.class
 itson\servicios\ISubsistemaBoleto.class
@@ -8,5 +12,8 @@ DTOs\SeleccionPeliculaDTO.class
 itson\servicios\ISubsistemaAsientos.class
 itson\servicios\ISubsistemaPago.class
 itson\servicios\SubsistemaPago.class
+DTOs\BoletoDTO.class
+itson\servicios\ISubsistemaAsientos.class
+DTOs\SalaDTO.class
 itson\servicios\SubsistemaBoleto.class
 itson\servicios\SubsistemaCartelera.class

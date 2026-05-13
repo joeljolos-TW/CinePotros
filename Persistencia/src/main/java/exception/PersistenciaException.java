@@ -4,15 +4,37 @@
  */
 package exception;
 
-/**
- *
- * 
- */
-public class PersistenciaException extends Exception {
+import DAO.AsientoDAO;
+import itson.dominio.Asiento;
+import itson.dominio.EstadoAsiento;
+import org.bson.types.ObjectId;
+import java.util.List;
 
-    public PersistenciaException(String message) {
-        super(message);
+/**
+ * Implementation of the Seats Subsystem.
+ */
+public class SubsistemaAsientos implements ISubsistemaAsientos {
+    
+    private final AsientoDAO asientoDAO;
+
+    public SubsistemaAsientos() {
+        this.asientoDAO = new AsientoDAO();
     }
-    
-    
+
+    @Override
+    public List<Asiento> obtenerAsientosPorFuncion(ObjectId idFuncion) {
+        return asientoDAO.obtenerPorFuncion(idFuncion);
+    }
+
+    @Override
+    public boolean confirmarAsientosSeleccionados(ObjectId idFuncion, List<Asiento> asientosSeleccionados) {
+        boolean allSuccess = true;
+        for (Asiento asiento : asientosSeleccionados) {
+            boolean success = asientoDAO.actualizarEstado(idFuncion, asiento.getFila(), asiento.getNumero(), EstadoAsiento.OCUPADO);
+            if (!success) {
+                allSuccess = false;
+            }
+        }
+        return allSuccess;
+    }
 }

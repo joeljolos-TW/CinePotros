@@ -15,18 +15,30 @@ public class Boleto {
     private Funcion funcion;
     private List<String> numAsiento;
     private Double total;
+
     private EstadoBoleto estado;
+
+    private boolean usado;
+
 
     public Boleto() {
     }
     
     
-    public Boleto(String id, Funcion funcion, List<String> numAsiento, Double total) {
+    public Boleto(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total, boolean usado) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
         this.total = total;
-        this.estado = EstadoBoleto.PENDIENTE;
+        this.usado = usado;
+    }
+    
+    public boolean isUsado() {
+        return usado;
+    }
+
+    public void setUsado(boolean usado) {
+        this.usado = usado;
     }
 
     public String getId() {

@@ -1,1 +1,8 @@
 itson\persistencia\Persistencia.class
+DAO\FuncionDAO.class
+DAO\BoletoDAO.class
+DAO\PeliculaDAO.class
+Conexion\ConexionMongoDB.class
+DAO\UsuarioDAO.class
+DAO\AsientoDAO.class
+Test\MainTestDAOs.class

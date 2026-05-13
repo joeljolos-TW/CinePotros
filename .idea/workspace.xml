@@ -4,21 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="creacion del Subsistema de generacion de QR">
-      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/Conexion/ConexionMongoDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistencia/src/main/java/Test/MainTestDAOs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="700d6616-42d6-4ef9-9dd9-a6d2bc527869" name="Changes" comment="subsistema de Pago a medias (se esta creando la pantalla de los pagos)">
+      <change afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentWaiting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/src/main/java/Test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneradorQR/target/classes/Test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/GeneradorQR/target/classes/Test/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/AsientoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/AsientoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/BoletoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/BoletoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/FuncionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/FuncionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PeliculaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/PeliculaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Persistencia/src/main/java/DAO/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boleto_qr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/src/main/java/itson/dominio/Empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Displays/TestDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/GeneracionBoletoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/GeneracionBoletoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/Payment/PaymentSummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/SeleccionAsientosPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/src/main/java/Pago/PaymentBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Pago/PaymentBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/src/main/java/Test/testFrame1.java" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/src/main/java/Test/testFrame1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VerificacionPago/target/classes/Test/testFrame1.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,22 +44,22 @@
     &quot;assignee&quot;: &quot;joeljolos-TW&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/joeljolos-TW/CinePotros.git",
-    "accountId": "46a040b8-6f62-4877-9dad-8f98b9f1a59f"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/joeljolos-TW/CinePotros.git&quot;,
+    &quot;accountId&quot;: &quot;16fd34e0-8495-4cff-afc4-25e8cdb8b5b5&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "joeljolos-TW",
-    "repository": "CinePotros"
+    &quot;owner&quot;: &quot;joeljolos-TW&quot;,
+    &quot;repository&quot;: &quot;CinePotros&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -75,17 +73,19 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.Main.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainTestDAOs.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;joel-Branch&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/Servicios&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/GeneradorQR/src/main/java/com/CinePotro/Main.java&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/joeljolos/IdeaProjects/CinePotros/VerificacionPagp/src/main/java/com/CinePotro/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
@@ -94,10 +94,58 @@
       <recent name="$PROJECT_DIR$/Presentacion/.idea" />
     </key>
   </component>
+  <component name="RunManager" selected="Application.Main.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test.Main" />
+      <module name="VerificacionPago" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTestDAOs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test.MainTestDAOs" />
+      <module name="Persistencia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="Presentacion" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main.Main" />
+        <item itemvalue="Application.MainTestDAOs" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
@@ -108,6 +156,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774890714356</updated>
+      <workItem from="1778127474255" duration="337000" />
+      <workItem from="1778640727929" duration="6184000" />
     </task>
     <task id="LOCAL-00001" summary="Cambio a JDK 21">
       <option name="closed" value="true" />
@@ -133,8 +183,27 @@
       <option name="project" value="LOCAL" />
       <updated>1777853291112</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="subsistema de Pago a medias (recien estructurado, solo falta afinar la logica)">
+      <option name="closed" value="true" />
+      <created>1778522377130</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1778522377130</updated>
+    </task>
+    <task id="LOCAL-00005" summary="subsistema de Pago a medias (se esta creando la pantalla de los pagos)">
+      <option name="closed" value="true" />
+      <created>1778603155710</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778603155710</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -151,7 +220,9 @@
     <MESSAGE value="Cambio a JDK 21" />
     <MESSAGE value="cambios cambio la interaccion del switch panel a un patron mediator" />
     <MESSAGE value="creacion del Subsistema de generacion de QR" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion del Subsistema de generacion de QR" />
+    <MESSAGE value="subsistema de Pago a medias (recien estructurado, solo falta afinar la logica)" />
+    <MESSAGE value="subsistema de Pago a medias (se esta creando la pantalla de los pagos)" />
+    <option name="LAST_COMMIT_MESSAGE" value="subsistema de Pago a medias (se esta creando la pantalla de los pagos)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -160,6 +231,11 @@
           <url>file://$PROJECT_DIR$/GeneradorQR/src/main/java/com/CinePotro/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/VerificacionPagp/src/main/java/com/CinePotro/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
