@@ -1,6 +1,8 @@
 package Elements.Displays;
 
 import javax.swing.*;
+
+import DTOs.BoletoDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.BillboardPanel;
 import Elements.Panels.GeneracionBoletoPanel;
@@ -55,6 +57,6 @@ public class TestDisplay extends JFrame {
         
         setSize(1280, 720);
         setVisible(true);
-
+        panelNavegacion.changePanel("infoBoleto", new DTOs.BoletoDTO());
     }
 }

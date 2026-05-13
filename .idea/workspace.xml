@@ -88,6 +88,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
@@ -112,6 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774890714356</updated>
       <workItem from="1778127474255" duration="337000" />
+      <workItem from="1778640727929" duration="6184000" />
     </task>
     <task id="LOCAL-00001" summary="Cambio a JDK 21">
       <option name="closed" value="true" />

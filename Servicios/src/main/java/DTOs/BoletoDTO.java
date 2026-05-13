@@ -17,6 +17,8 @@ public class BoletoDTO {
     private FuncionDTO funcionDelBoleto;
     private List<String> numAsientos;
 
+    public BoletoDTO(){}
+
     public BoletoDTO(boolean usado, ImageIcon qr, FuncionDTO funcionDelBoleto, List<String> numAsientos) {
         this.usado = usado;
         this.qr = qr;

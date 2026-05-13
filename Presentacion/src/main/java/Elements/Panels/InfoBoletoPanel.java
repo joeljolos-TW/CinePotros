@@ -1,25 +1,10 @@
 package Elements.Panels;
 
 import DTOs.BoletoDTO;
-import DTOs.FuncionDTO;
-import DTOs.SalaDTO;
 import Mediator.PanelMediator;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Image;
-import java.util.List;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.net.URL;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -42,9 +27,9 @@ public class InfoBoletoPanel extends JPanel implements Refreshable{
         setLayout(new BorderLayout());
         add(construirPanelSuperior(), BorderLayout.NORTH);
     }
-    
+
     private JPanel construirPanelSuperior() {
-        JPanel panelAtras = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel panelAtras = new JPanel(new BorderLayout());
         panelAtras.setOpaque(false);
         panelAtras.setBorder(new EmptyBorder(10, 10, 0, 0));
 
@@ -57,25 +42,33 @@ public class InfoBoletoPanel extends JPanel implements Refreshable{
         btnAtras.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnAtras.addActionListener(e -> panelMediator.changePanel("cartelera"));
 
-        panelAtras.add(btnAtras);
+        JLabel lblTitulo = new JLabel("INFORMACIÓN DEL BOLETO", SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 28));
+        lblTitulo.setForeground(TEXTO_BLANCO);
+
+        panelAtras.add(btnAtras, BorderLayout.WEST);
+        panelAtras.add(lblTitulo, BorderLayout.CENTER);
         return panelAtras;
     }
-    
+
     private JPanel construirContenidoCentrado(){
         JPanel contenedor = new JPanel();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.X_AXIS));
         contenedor.setBackground(AZUL_OSCURO);
         contenedor.setBorder(new EmptyBorder(0, 20, 40, 20));
-        
+
         JPanel panelQR = new JPanel();
         panelQR.setLayout(new BoxLayout(panelQR, BoxLayout.Y_AXIS));
         panelQR.setOpaque(false);
         panelQR.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        ImageIcon qr = boletoSeleccionado.getQr();
+
+        URL url = getClass().getResource("/images/marioPoster.jpg");
+        ImageIcon qr = new ImageIcon(url);
+        //ImageIcon qr = boletoSeleccionado.getQr();   CUANDO FUNCIONE ESTO VA AQUI
         Image image = qr.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
         JLabel QR = new JLabel(new ImageIcon(image));
         QR.setPreferredSize(new Dimension(300, 300));
+        QR.setMinimumSize(new Dimension(300, 300));
         QR.setMaximumSize(new Dimension(300, 300));
         QR.setOpaque(true);
         QR.setBackground(new Color(30, 45, 70));
@@ -83,58 +76,71 @@ public class InfoBoletoPanel extends JPanel implements Refreshable{
         QR.setHorizontalAlignment(SwingConstants.LEFT);
         QR.setAlignmentX(Component.CENTER_ALIGNMENT);
         QR.setBorder(new LineBorder(AZUL_CLARO, 2));
-        
+
+//        FuncionDTO funcion = boletoSeleccionado.getFuncionDelBoleto();
+//        SalaDTO sala = funcion.getSalaFuncion();
+
         JPanel panelInfo = new JPanel();
         panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.Y_AXIS));
         panelInfo.setOpaque(false);
-        panelInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel info = new JLabel();
-        info.setFont(new Font("Arial", Font.BOLD, 26));
-        info.setForeground(TEXTO_BLANCO);
-        info.setAlignmentX(Component.CENTER_ALIGNMENT);
-        info.setBorder(new EmptyBorder(15, 0, 5, 0));
-        FuncionDTO funcion = boletoSeleccionado.getFuncionDelBoleto();
-        SalaDTO sala = funcion.getSalaFuncion();
-        StringBuilder sb = new StringBuilder();
-        sb.append("Funcion:\n");
-        sb.append(sala.getNombre() + "\n");
-        sb.append(sala.getTipoSala() + "\n");
-        List<String> numAsientos = boletoSeleccionado.getNumAsientos();
-        numAsientos.forEach(na -> sb.append("Asiento " + na + " "));
-        sb.append(funcion.getFecha().toString() + "\n");
-        sb.append(funcion.getHora().toString() + "\n");
-        info.setText(sb.toString() + "hola");
-        JLabel usado = new JLabel();
-        usado.setFont(new Font("Arial", Font.BOLD, 26));
-        usado.setAlignmentX(Component.CENTER_ALIGNMENT);
-        if(boletoSeleccionado.isUsado()){
-            usado.setForeground(TEXTO_USADO);
-            usado.setText("Boleto usado");
-        }else{
-            usado.setForeground(TEXTO_DISPONIBLE);
-            usado.setText("Boleto disponible");
-        }
-        
-        panelInfo.add(info);
-        panelInfo.add(usado);
-        
+        panelInfo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panelInfo.add(crearLabelInfo("Función:"));
+        panelInfo.add(crearLabelInfo("Sala: A1"));
+        panelInfo.add(crearLabelInfo("Asiento: J10, J11"));
+        //panelInfo.add(crearLabelInfo("Sala: " + sala.getNombre()));
+        //panelInfo.add(crearLabelInfo("Asiento: " + String.join(", ", boletoSeleccionado.getNumAsientos())));
+        panelInfo.add(Box.createVerticalStrut(80));
+        //JLabel lblEstado = crearLabelInfo(boletoSeleccionado.isUsado() ? "Boleto usado" : "Boleto disponible");
+        JLabel lblEstado = crearLabelInfo("Boleto disponible");
+        lblEstado.setForeground(boletoSeleccionado.isUsado() ? Color.RED : Color.GREEN);
+        lblEstado.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panelInfo.add(lblEstado);
+
         panelQR.add(QR);
-        
+
+        panelQR.setAlignmentY(Component.TOP_ALIGNMENT);
+        panelInfo.setAlignmentY(Component.TOP_ALIGNMENT);
+
         contenedor.add(panelQR);
+        contenedor.add(Box.createRigidArea(new Dimension(40, 0)));
         contenedor.add(panelInfo);
-        
+
         return contenedor;
     }
-    
+
+    private JLabel crearLabelInfo(String texto) {
+        JLabel label = new JLabel(texto);
+        label.setFont(new Font("Arial", Font.BOLD, 18));
+        label.setForeground(Color.WHITE);
+        label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        return label;
+    }
+
     @Override
     public void onShow(Object object) {
         if (!(object instanceof BoletoDTO boletoDTO)) return;
-
         boletoSeleccionado = boletoDTO;
 
         removeAll();
+        setLayout(new BorderLayout());
         add(construirPanelSuperior(), BorderLayout.NORTH);
-        add(new JScrollPane(construirContenidoCentrado()), BorderLayout.CENTER);
+
+        JPanel wrapper = new JPanel(new GridBagLayout());
+        wrapper.setBackground(AZUL_OSCURO);
+
+        JPanel contenido = construirContenidoCentrado();
+        wrapper.add(contenido);
+
+        JScrollPane scroll = new JScrollPane(wrapper);
+        scroll.setBorder(null);
+        scroll.setOpaque(false);
+        scroll.getViewport().setOpaque(false);
+
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        add(scroll, BorderLayout.CENTER);
+
         revalidate();
         repaint();
     }
