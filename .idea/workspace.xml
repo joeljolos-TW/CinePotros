@@ -156,6 +156,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774890714356</updated>
+      <workItem from="1778127474255" duration="337000" />
+      <workItem from="1778640727929" duration="6184000" />
     </task>
     <task id="LOCAL-00001" summary="Cambio a JDK 21">
       <option name="closed" value="true" />
@@ -199,6 +201,9 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

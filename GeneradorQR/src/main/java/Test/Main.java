@@ -40,7 +40,8 @@ public class Main {
                 new ObjectId("69f7e448236d399400a0930f"),
                 funcion.getId(),
                 Arrays.asList(asientos),
-                funcion.getPrecio()*2
+                funcion.getPrecio()*2,
+                false
         );
         convertidorBoletoQR.generarQRDeBoleto(boleto, "GeneradorQR/src/main/resources/boleto_qr-1.png");
     }
