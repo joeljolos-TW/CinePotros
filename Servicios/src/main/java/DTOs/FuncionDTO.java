@@ -12,16 +12,29 @@ import java.time.LocalTime;
  * 
  */
 public class FuncionDTO {
+    private String id;
     private LocalDate fecha;
     private LocalTime hora;
     private SalaDTO salaFuncion;
 
-    public FuncionDTO(LocalDate fecha, LocalTime hora, SalaDTO salaFuncion) {
+    public FuncionDTO() {
+    }
+    
+    public FuncionDTO(String id,LocalDate fecha, LocalTime hora, SalaDTO salaFuncion) {
+        this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.salaFuncion = salaFuncion;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }

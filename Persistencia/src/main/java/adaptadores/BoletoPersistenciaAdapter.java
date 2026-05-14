@@ -18,6 +18,10 @@ import org.bson.types.ObjectId;
  * @author Jazmin
  */
 public class BoletoPersistenciaAdapter {
+
+    public BoletoPersistenciaAdapter() {
+    }
+    
     /**
      * Convierte un Boleto del dominio a una entidad de MongoDB.
      * @param boleto boleto de dominio

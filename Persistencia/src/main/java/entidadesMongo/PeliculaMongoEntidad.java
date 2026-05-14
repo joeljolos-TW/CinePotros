@@ -16,19 +16,23 @@ public class PeliculaMongoEntidad {
     private String clasificacion;
     private String genero;
     private int duracion;
+    private String categoria;
     private String imagen;
 
     public PeliculaMongoEntidad() {
     }
 
-    public PeliculaMongoEntidad(ObjectId id, String titulo, String clasificacion, String genero, int duracion, String imagen) {
+    public PeliculaMongoEntidad(ObjectId id, String titulo, String clasificacion, String genero, int duracion, String categoria, String imagen) {
         this.id = id;
         this.titulo = titulo;
         this.clasificacion = clasificacion;
         this.genero = genero;
         this.duracion = duracion;
+        this.categoria = categoria;
         this.imagen = imagen;
     }
+
+   
 
     public ObjectId getId() {
         return id;
@@ -76,6 +80,14 @@ public class PeliculaMongoEntidad {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
     
     

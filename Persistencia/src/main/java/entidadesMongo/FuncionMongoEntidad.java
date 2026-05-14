@@ -13,10 +13,11 @@ import org.bson.types.ObjectId;
  * @author Jazmin
  */
 public class FuncionMongoEntidad {
+
     private ObjectId id;
     private ObjectId pelicula;
-    private LocalDate fecha;
-    private LocalTime hora;
+    private String fecha;
+    private String hora;
     private ObjectId sala;
     private String idioma;
     private Double precio;
@@ -24,7 +25,7 @@ public class FuncionMongoEntidad {
     public FuncionMongoEntidad() {
     }
 
-    public FuncionMongoEntidad(ObjectId id, ObjectId pelicula, LocalDate fecha, LocalTime hora, ObjectId sala, String idioma, Double precio) {
+    public FuncionMongoEntidad(ObjectId id, ObjectId pelicula, String fecha, String hora, ObjectId sala, String idioma, Double precio) {
         this.id = id;
         this.pelicula = pelicula;
         this.fecha = fecha;
@@ -50,19 +51,19 @@ public class FuncionMongoEntidad {
         this.pelicula = pelicula;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -89,6 +90,5 @@ public class FuncionMongoEntidad {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
-    
-    
+
 }

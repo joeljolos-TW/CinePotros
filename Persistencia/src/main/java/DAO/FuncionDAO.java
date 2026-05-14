@@ -38,14 +38,10 @@ public class FuncionDAO {
         return coleccion.find(eq("_id", id)).first();
     }
 
-//    public List<Funcion> obtenerPorPelicula(ObjectId idPelicula) {
-//        List<Funcion> funciones = new ArrayList<>();
-//        for (Document doc : coleccion.find(eq("pelicula", idPelicula))) {
-//            funciones.add(documentoAFuncion(doc));
-//        }
-//        return funciones;
-//    }
-//
+    public List<FuncionMongoEntidad> obtenerPorPelicula(ObjectId idPelicula) {
+        return coleccion.find(eq("pelicula",idPelicula)).into(new ArrayList<>());
+    }
+
 //    public List<Funcion> obtenerPorPeliculaYFecha(ObjectId idPelicula, LocalDate fecha) {
 //        List<Funcion> funciones = new ArrayList<>();
 //        for (Document doc : coleccion.find(

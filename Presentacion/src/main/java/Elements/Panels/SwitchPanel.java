@@ -2,11 +2,10 @@ package Elements.Panels;
 
 import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 
-import DTOs.SeleccionPeliculaDTO;
+
 import Mediator.PanelMediator;
 
 /**

@@ -19,7 +19,7 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(ObjectId id, ObjectId boleto, double monto,ObjectId empleado, EstadoPago estado) {
+    public Pago(String id, Boleto boleto, double monto,Empleado empleado, EstadoPago estado) {
         this.id = id;
         this.boleto = boleto;
         this.monto = monto;
@@ -35,11 +35,11 @@ public class Pago {
         this.id = id;
     }
 
-    public ObjectId getBoleto() {
+    public Boleto getBoleto() {
         return boleto;
     }
 
-    public void setBoleto(ObjectId boleto) {
+    public void setBoleto(Boleto boleto) {
         this.boleto = boleto;
     }
 
@@ -51,11 +51,11 @@ public class Pago {
         this.monto = monto;
     }
 
-    public ObjectId getEmpleado() {
+    public Empleado getEmpleado() {
         return empleado;
     }
 
-    public void setEmpleado(ObjectId empleado) {
+    public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
 

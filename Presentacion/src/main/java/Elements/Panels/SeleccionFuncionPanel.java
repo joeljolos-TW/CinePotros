@@ -1,13 +1,29 @@
 package Elements.Panels;
 
+import BO.FuncionBO;
+import DTOs.FuncionDTO;
 import DTOs.SeleccionPeliculaDTO;
 import Mediator.PanelMediator;
-
+import excepcion.NegocioException;
 import java.awt.*;
-import javax.security.auth.RefreshFailedException;
-import javax.swing.*;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
 
 public class SeleccionFuncionPanel extends JPanel implements Refreshable {
     
@@ -16,20 +32,24 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
     private final Color AZUL_CLARO = new Color(50, 130, 240);
     private final Color TEXTO_BLANCO = Color.WHITE;
     private SeleccionPeliculaDTO selectedMovie;
-
+    private List<FuncionDTO> funciones;
+    private LocalDate fechaSeleccionada;
+    private final FuncionBO funcionBO;
+ 
     public SeleccionFuncionPanel() {
         this.panelMediator = SwitchPanel.getInstance();
+        this.funcionBO = new FuncionBO();
+        this.funciones = new ArrayList<>();
         setBackground(AZUL_OSCURO);
         setLayout(new BorderLayout());
-        // ← solo el panel superior, no toca selectedMovie
         add(construirPanelSuperior(), BorderLayout.NORTH);
     }
-
+ 
     private JPanel construirPanelSuperior() {
         JPanel panelAtras = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelAtras.setOpaque(false);
         panelAtras.setBorder(new EmptyBorder(10, 10, 0, 0));
-
+ 
         JButton btnAtras = new JButton("←");
         btnAtras.setFont(new Font("Arial", Font.BOLD, 20));
         btnAtras.setBackground(AZUL_CLARO);
@@ -38,23 +58,25 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         btnAtras.setPreferredSize(new Dimension(50, 40));
         btnAtras.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnAtras.addActionListener(e -> panelMediator.changePanel("cartelera"));
-
+ 
         panelAtras.add(btnAtras);
         return panelAtras;
     }
-
+ 
     private JPanel construirContenidoCentrado() {
         JPanel contenedor = new JPanel();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.Y_AXIS));
         contenedor.setBackground(AZUL_OSCURO);
         contenedor.setBorder(new EmptyBorder(0, 20, 40, 20));
-
+ 
+      
         JPanel panelPeli = new JPanel();
         panelPeli.setLayout(new BoxLayout(panelPeli, BoxLayout.Y_AXIS));
         panelPeli.setOpaque(false);
         panelPeli.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        ImageIcon icon = selectedMovie.getCover();
+ 
+        URL url = getClass().getResource(selectedMovie.getImagen());
+        ImageIcon icon = new ImageIcon(url);
         Image image = icon.getImage().getScaledInstance(200, 300, Image.SCALE_SMOOTH);
         JLabel poster = new JLabel(new ImageIcon(image));
         poster.setPreferredSize(new Dimension(200, 300));
@@ -65,97 +87,144 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         poster.setHorizontalAlignment(SwingConstants.CENTER);
         poster.setAlignmentX(Component.CENTER_ALIGNMENT);
         poster.setBorder(new LineBorder(AZUL_CLARO, 2));
-
+ 
         JLabel titulo = new JLabel(selectedMovie.getName());
         titulo.setFont(new Font("Arial", Font.BOLD, 26));
         titulo.setForeground(TEXTO_BLANCO);
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         titulo.setBorder(new EmptyBorder(15, 0, 5, 0));
-
-        JLabel info = new JLabel("192 min | Ciencia Ficción | B-15");
-        info.setFont(new Font("Arial", Font.PLAIN, 14));
-        info.setForeground(new Color(180, 200, 230));
-        info.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+ 
         panelPeli.add(poster);
         panelPeli.add(titulo);
-        panelPeli.add(info);
-
+ 
+        // ── FECHAS ÚNICAS ─────────────────────────────────────────────────────
         JPanel panelDias = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 20));
         panelDias.setOpaque(false);
         panelDias.setMaximumSize(new Dimension(800, 100));
-
-        String[] dias = {"Hoy", "Mañana", "Jueves 17", "Viernes 18"};
-        for (String dia : dias) {
-            JButton btnDia = new JButton(dia);
+ 
+        Set<LocalDate> fechasUnicas = new LinkedHashSet<>();
+        for (FuncionDTO f : funciones) {
+            fechasUnicas.add(f.getFecha());
+        }
+ 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
+        for (LocalDate fecha : fechasUnicas) {
+            JButton btnDia = new JButton(fecha.format(formatter));
             btnDia.setFont(new Font("Arial", Font.BOLD, 13));
-            btnDia.setBackground(AZUL_OSCURO);
-            btnDia.setForeground(TEXTO_BLANCO);
-            btnDia.setBorder(new LineBorder(AZUL_CLARO, 1));
             btnDia.setFocusPainted(false);
             btnDia.setPreferredSize(new Dimension(110, 35));
+            btnDia.setCursor(new Cursor(Cursor.HAND_CURSOR));
+ 
+            if (fecha.equals(fechaSeleccionada)) {
+                btnDia.setBackground(AZUL_CLARO);
+                btnDia.setForeground(TEXTO_BLANCO);
+                btnDia.setBorder(null);
+            } else {
+                btnDia.setBackground(AZUL_OSCURO);
+                btnDia.setForeground(TEXTO_BLANCO);
+                btnDia.setBorder(new LineBorder(AZUL_CLARO, 1));
+            }
+ 
+            btnDia.addActionListener(e -> {
+                fechaSeleccionada = fecha;
+                recargarContenido();
+            });
+ 
             panelDias.add(btnDia);
         }
-
+ 
+      
         JPanel panelFunciones = new JPanel();
         panelFunciones.setLayout(new BoxLayout(panelFunciones, BoxLayout.Y_AXIS));
         panelFunciones.setOpaque(false);
         panelFunciones.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        panelFunciones.add(crearFilaCentrada("SALA 1 - TRADICIONAL", "14:00", "17:30", "20:00"));
-        panelFunciones.add(Box.createVerticalStrut(20));
-        panelFunciones.add(crearFilaCentrada("SALA VIP", "16:30", "19:00", "22:15"));
-
+ 
+        // Agrupar funciones por sala para la fecha seleccionada
+        Set<String> salasVistas = new LinkedHashSet<>();
+        for (FuncionDTO f : funciones) {
+            if (f.getFecha().equals(fechaSeleccionada)) {
+                salasVistas.add(f.getSalaFuncion().getNombre());
+            }
+        }
+ 
+        for (String nombreSala : salasVistas) {
+            List<FuncionDTO> funcionesDeSala = new ArrayList<>();
+            for (FuncionDTO f : funciones) {
+                if (f.getFecha().equals(fechaSeleccionada)
+                        && f.getSalaFuncion().getNombre().equals(nombreSala)) {
+                    funcionesDeSala.add(f);
+                }
+            }
+            panelFunciones.add(crearFilaSala(nombreSala, funcionesDeSala));
+            panelFunciones.add(Box.createVerticalStrut(20));
+        }
+ 
         contenedor.add(panelPeli);
         contenedor.add(Box.createVerticalStrut(20));
         contenedor.add(panelDias);
         contenedor.add(Box.createVerticalStrut(10));
         contenedor.add(panelFunciones);
-
+ 
         return contenedor;
     }
-
-    private JPanel crearFilaCentrada(String sala, String... horarios) {
+ 
+    private JPanel crearFilaSala(String nombreSala, List<FuncionDTO> funcionesSala) {
         JPanel fila = new JPanel();
         fila.setLayout(new BoxLayout(fila, BoxLayout.Y_AXIS));
         fila.setOpaque(false);
         fila.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JLabel lblSala = new JLabel(sala);
+ 
+        JLabel lblSala = new JLabel(nombreSala);
         lblSala.setFont(new Font("Arial", Font.BOLD, 15));
         lblSala.setForeground(AZUL_CLARO);
         lblSala.setAlignmentX(Component.CENTER_ALIGNMENT);
         fila.add(lblSala);
-
+ 
         JPanel panelHoras = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         panelHoras.setOpaque(false);
-
-        for (String h : horarios) {
-            JButton btnH = new JButton(h);
+ 
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        for (FuncionDTO funcion : funcionesSala) {
+            JButton btnH = new JButton(funcion.getHora().format(timeFormatter));
             btnH.setBackground(AZUL_CLARO);
             btnH.setForeground(TEXTO_BLANCO);
             btnH.setFont(new Font("Arial", Font.BOLD, 14));
             btnH.setFocusPainted(false);
             btnH.setPreferredSize(new Dimension(90, 40));
-            btnH.addActionListener(e -> panelMediator.changePanel("seleccionAsientos"));
+            btnH.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            btnH.addActionListener(e -> panelMediator.changePanel("seleccionAsientos", funcion));
             panelHoras.add(btnH);
         }
-
+ 
         fila.add(panelHoras);
         return fila;
     }
-
-    @Override
-    public void onShow(Object object) {
-        if (!(object instanceof SeleccionPeliculaDTO seleccionPeliculaDTO)) return;
-
-        selectedMovie = seleccionPeliculaDTO; // ← asigna el DTO
-
-        // Reconstruye el contenido con los datos nuevos
+ 
+    private void recargarContenido() {
         removeAll();
         add(construirPanelSuperior(), BorderLayout.NORTH);
         add(new JScrollPane(construirContenidoCentrado()), BorderLayout.CENTER);
         revalidate();
         repaint();
+    }
+ 
+    @Override
+    public void onShow(Object object) {
+        if (!(object instanceof SeleccionPeliculaDTO seleccionPeliculaDTO)) return;
+ 
+        selectedMovie = seleccionPeliculaDTO;
+ 
+        try {
+            funciones = funcionBO.obtenerPorPelicula(selectedMovie.getId());
+        } catch (NegocioException e) {
+            funciones = new ArrayList<>();
+        }
+ 
+        // Seleccionar la primera fecha disponible por defecto
+        if (!funciones.isEmpty()) {
+            fechaSeleccionada = funciones.get(0).getFecha();
+        }
+ 
+        recargarContenido();
     }
 }

@@ -7,9 +7,11 @@ import Elements.Panels.GeneracionBoletoPanel;
 import Elements.Panels.Payment.PaymentSummary;
 import Elements.Panels.SeleccionFuncionPanel;
 import Elements.Panels.SeleccionAsientosPanel;
+import Elements.Panels.MisBoletosPanel;
 import Elements.Panels.SwitchPanel;
 
-import java.awt.*;
+
+
 
 public class TestDisplay extends JFrame {
 
@@ -41,6 +43,8 @@ public class TestDisplay extends JFrame {
         SeleccionFuncionPanel funciones = new SeleccionFuncionPanel();
         GeneracionBoletoPanel boleto = new GeneracionBoletoPanel();
         PaymentSummary pago = new PaymentSummary();
+        MisBoletosPanel misBoletos = new MisBoletosPanel();
+       
 
         // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
         panelNavegacion.addPanel(cartelera, "cartelera");
@@ -48,6 +52,9 @@ public class TestDisplay extends JFrame {
         panelNavegacion.addPanel(asientos, "seleccionAsientos");
         panelNavegacion.addPanel(boleto, "generacionBoleto");
         panelNavegacion.addPanel(pago,"confirmacionPago");
+        panelNavegacion.addPanel(misBoletos, "misBoletos");
+      
+        
 
         // Agregar el panel de navegación al Frame principal
         add(panelNavegacion);

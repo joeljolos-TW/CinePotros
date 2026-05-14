@@ -25,7 +25,7 @@ public class Boleto {
     }
     
     
-    public Boleto(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total, boolean usado) {
+    public Boleto(String id, Funcion funcion, List<String> numAsiento, Double total, boolean usado) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;

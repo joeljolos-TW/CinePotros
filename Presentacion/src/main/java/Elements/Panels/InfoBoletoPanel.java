@@ -2,6 +2,7 @@ package Elements.Panels;
 
 import DTOs.BoletoDTO;
 import Mediator.PanelMediator;
+import itson.dominio.EstadoBoleto;
 import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
@@ -92,7 +93,7 @@ public class InfoBoletoPanel extends JPanel implements Refreshable{
         panelInfo.add(Box.createVerticalStrut(80));
         //JLabel lblEstado = crearLabelInfo(boletoSeleccionado.isUsado() ? "Boleto usado" : "Boleto disponible");
         JLabel lblEstado = crearLabelInfo("Boleto disponible");
-        lblEstado.setForeground(boletoSeleccionado.isUsado() ? Color.RED : Color.GREEN);
+        lblEstado.setForeground(boletoSeleccionado.getEstado() == EstadoBoleto.CANCELADO ? Color.RED : Color.GREEN);
         lblEstado.setAlignmentX(Component.LEFT_ALIGNMENT);
         panelInfo.add(lblEstado);
 

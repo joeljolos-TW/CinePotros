@@ -61,27 +61,27 @@ public class BoletoDAO {
     }
 
     // ── MAPEO ─────────────────────────────────────────────────────────────────
-
-    private Document boletoADocumento(Boleto b) {
-        Document doc = new Document()
-                .append("funcion", b.getFuncion())
-                .append("numAsiento", b.getNumAsiento())
-                .append("total", b.getTotal())
-                .append("usado", b.isUsado());
-        if (b.getId() != null) {
-            doc.append("_id", b.getId());
-        }
-        return doc;
-    }
-
-    @SuppressWarnings("unchecked")
-    private Boleto documentoABoleto(Document doc) {
-        return new Boleto(
-                doc.getObjectId("_id"),
-                doc.getObjectId("funcion"),
-                (List<String>) doc.get("numAsiento"),
-                doc.getDouble("total"),
-                false
-        );
-    }
+//
+//    private Document boletoADocumento(Boleto b) {
+//        Document doc = new Document()
+//                .append("funcion", b.getFuncion())
+//                .append("numAsiento", b.getNumAsiento())
+//                .append("total", b.getTotal())
+//                .append("usado", b.isUsado());
+//        if (b.getId() != null) {
+//            doc.append("_id", b.getId());
+//        }
+//        return doc;
+//    }
+//
+//    @SuppressWarnings("unchecked")
+//    private Boleto documentoABoleto(Document doc) {
+//        return new Boleto(
+//                doc.getObjectId("_id"),
+//                doc.getObjectId("funcion"),
+//                (List<String>) doc.get("numAsiento"),
+//                doc.getDouble("total"),
+//                false
+//        );
+//    }
 }
