@@ -62,7 +62,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -149,8 +149,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main.Main" />
-        <item itemvalue="Application.MainTestDAOs" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainTestDAOs" />
       </list>
     </recent_temporary>
   </component>
