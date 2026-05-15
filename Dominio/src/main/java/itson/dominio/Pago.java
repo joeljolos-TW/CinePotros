@@ -4,23 +4,22 @@
  */
 package itson.dominio;
 
-import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
 public class Pago {
-    private ObjectId id;
-    private ObjectId boleto;
-    private double monto;
-    private ObjectId empleado; // para marcar el estado del pago como exitoso o fallido
+    private String id;
+    private Boleto boleto;
+    private Double monto;
+    private Empleado empleado; // para marcar el estado del pago como exitoso o fallido
     private EstadoPago estado;
 
     public Pago() {
     }
 
-    public Pago(ObjectId id, ObjectId boleto, double monto,ObjectId empleado, EstadoPago estado) {
+    public Pago(String id, Boleto boleto, double monto,Empleado empleado, EstadoPago estado) {
         this.id = id;
         this.boleto = boleto;
         this.monto = monto;
@@ -28,19 +27,19 @@ public class Pago {
         this.estado = estado;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public ObjectId getBoleto() {
+    public Boleto getBoleto() {
         return boleto;
     }
 
-    public void setBoleto(ObjectId boleto) {
+    public void setBoleto(Boleto boleto) {
         this.boleto = boleto;
     }
 
@@ -52,11 +51,11 @@ public class Pago {
         this.monto = monto;
     }
 
-    public ObjectId getEmpleado() {
+    public Empleado getEmpleado() {
         return empleado;
     }
 
-    public void setEmpleado(ObjectId empleado) {
+    public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
 

@@ -1,14 +1,32 @@
 package DTOs;
 
-import javax.swing.*;
 
 public class SeleccionPeliculaDTO {
+    private String id;
     private String name;
-    private ImageIcon cover;
+    private String categoria;
+    private String imagen;
 
-    public SeleccionPeliculaDTO(String name, ImageIcon cover) {
+    
+    public SeleccionPeliculaDTO() {
+    }
+
+    public SeleccionPeliculaDTO(String id,String imagen ,String name,String categoria) {
+        this.id = id;
+        this.imagen = imagen;
         this.name = name;
-        this.cover = cover;
+        this.categoria = categoria;
+       
+    }
+
+    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -18,12 +36,22 @@ public class SeleccionPeliculaDTO {
     public void setName(String name) {
         this.name = name;
     }
-
-    public ImageIcon getCover() {
-        return cover;
+    
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCover(ImageIcon cover) {
-        this.cover = cover;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+   
 }

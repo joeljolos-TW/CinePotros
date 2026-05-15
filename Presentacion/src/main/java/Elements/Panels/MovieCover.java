@@ -19,7 +19,7 @@ public class MovieCover extends JPanel {
 
     private static final int CARD_WIDTH=379;
     private static final int CARD_HEIGHT=430;
-    public MovieCover(String posterPath, String movieName) {
+    public MovieCover(String idPelicula, String posterPath, String movieName, String categoria){
         super(null);
         setVisible(true);
         setSize(200, 300);
@@ -33,7 +33,7 @@ public class MovieCover extends JPanel {
         int height = posterImage.getIconHeight();
         setPreferredSize(new Dimension(width, height));
 
-        SeleccionPeliculaDTO selectedMovie = new SeleccionPeliculaDTO(movieName, posterImage);
+        SeleccionPeliculaDTO selectedMovie = new SeleccionPeliculaDTO(idPelicula,posterPath, movieName,categoria);
         initComponents();
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 

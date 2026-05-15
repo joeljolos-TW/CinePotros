@@ -5,24 +5,27 @@
 package itson.dominio;
 
 import java.util.List;
-import org.bson.types.ObjectId;
 
 /**
  *
  * @author Jazmin
  */
 public class Boleto {
-    private ObjectId id;
-    private ObjectId funcion;
+    private String id;
+    private Funcion funcion;
     private List<String> numAsiento;
     private Double total;
+
+    private EstadoBoleto estado;
+
     private boolean usado;
+
 
     public Boleto() {
     }
     
     
-    public Boleto(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total, boolean usado) {
+    public Boleto(String id, Funcion funcion, List<String> numAsiento, Double total, boolean usado) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
@@ -38,19 +41,19 @@ public class Boleto {
         this.usado = usado;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public ObjectId getFuncion() {
+    public Funcion getFuncion() {
         return funcion;
     }
 
-    public void setFuncion(ObjectId funcion) {
+    public void setFuncion(Funcion funcion) {
         this.funcion = funcion;
     }
 
@@ -68,6 +71,14 @@ public class Boleto {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public EstadoBoleto getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoBoleto estado) {
+        this.estado = estado;
     }
     
     

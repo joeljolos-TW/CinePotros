@@ -54,17 +54,17 @@ public class PaymentBO {
      * Genera el boleto y persiste el pago en la BD.
      * Solo llamar si confirmarPago() devolvió true.
      */
-    public boolean generarPago() {
-        // Modificar según tu DAO - crear y persistir el Pago
-        Pago pago = new Pago();
-        pago.setMonto(this.total);
-        pago.setEmpleado(EMPLEADO_ID); // Modificar según tu sesión global
-        pago.setEstado(EstadoPago.EXITOSO);
-
-        Pago resultado = pagoDAO.insertar(pago);
-
-        return resultado != null && resultado.getId() != null;
-    }
+//    public boolean generarPago() {
+//        // Modificar según tu DAO - crear y persistir el Pago
+//        Pago pago = new Pago();
+//        pago.setMonto(this.total);
+//        pago.setEmpleado(EMPLEADO_ID); // Modificar según tu sesión global
+//        pago.setEstado(EstadoPago.EXITOSO);
+//
+//        Pago resultado = pagoDAO.insertar(pago);
+//
+//        return resultado != null && resultado.getId() != null;
+//    }
 
     /**
      * Cancela el proceso de pago.

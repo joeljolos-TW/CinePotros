@@ -1,28 +1,47 @@
 package Elements.Panels;
 
-import Mediator.PanelMediator;
+import BO.PeliculaBO;
+import DTOs.SeleccionPeliculaDTO;
+import Elements.Buttons.GenericButton;
+import excepcion.NegocioException;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*; 
 import javax.swing.*;
 
 public class BillboardPanel extends JPanel {
 
+    private final PeliculaBO peliculaBO;
+    private List<SeleccionPeliculaDTO> peliculas;
+
     public BillboardPanel() {
+        this.peliculaBO = new PeliculaBO();
+        this.peliculas = new ArrayList<>();
+        cargarPeliculas();
         setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
         add(construirEncabezado(), BorderLayout.NORTH);
         add(construirContenido(), BorderLayout.CENTER);
     }
 
+    private void cargarPeliculas() {
+        try {
+            peliculas = peliculaBO.obtenerTodos();
+        } catch (NegocioException e) {
+            peliculas = new ArrayList<>();
+        }
+    }
+
     private JPanel construirEncabezado() {
         JPanel encabezado = new JPanel(new BorderLayout());
         encabezado.setBackground(Elements.Utileria.UtilGeneral.FONDO_ENCABEZADO);
-        encabezado.setBorder(BorderFactory.createEmptyBorder(12, 0, 12, 0));
+
+        encabezado.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
 
         JLabel titulo = new JLabel("Cartelera");
         titulo.setFont(Elements.Utileria.UtilGeneral.FUENTE_TITULO);
@@ -38,7 +57,19 @@ public class BillboardPanel extends JPanel {
         panelIzquierdo.add(titulo);
         panelIzquierdo.add(cine);
 
+        GenericButton btnMisBoletos = new GenericButton("Ver mis boletos", true, 20, 160, 40, Color.white, new Color(79, 140, 255), new Color(58, 122, 238));
+        btnMisBoletos.addActionListener(e -> {
+
+            Elements.Panels.SwitchPanel.getInstance().changePanel("misBoletos");
+        });
+
+        JPanel panelDerecho = new JPanel(new GridBagLayout());
+        panelDerecho.setOpaque(false);
+        panelDerecho.add(btnMisBoletos);
+
         encabezado.add(panelIzquierdo, BorderLayout.WEST);
+        encabezado.add(panelDerecho, BorderLayout.EAST);
+
         return encabezado;
     }
 
@@ -47,11 +78,11 @@ public class BillboardPanel extends JPanel {
         contenido.setBackground(Elements.Utileria.UtilGeneral.FONDO_PRINCIPAL);
         contenido.setLayout(new BoxLayout(contenido, BoxLayout.Y_AXIS));
         contenido.setBorder(null);
-        contenido.add(construirSeccion("MÁS POPULARES", construirMasPopulares()));
+        contenido.add(construirSeccion("MÁS POPULARES", construirCarrusel("POPULARES")));
         contenido.add(Box.createVerticalStrut(20));
-        contenido.add(construirSeccion("TODAS LAS FUNCIONES", construirTodasFunciones()));
+        contenido.add(construirSeccion("TODAS LAS FUNCIONES", construirCarrusel("TODAS LAS FUNCIONES")));
         contenido.add(Box.createVerticalStrut(20));
-        contenido.add(construirSeccion("SALA KIDS", construirSalaKids()));
+        contenido.add(construirSeccion("SALA KIDS", construirCarrusel("KIDS")));
 
         JScrollPane scroll = new JScrollPane(contenido);
         scroll.setBorder(null);
@@ -82,29 +113,41 @@ public class BillboardPanel extends JPanel {
         return seccion;
     }
 
-    private JPanel construirMasPopulares() {
-        List<MovieCover> peliculas = new ArrayList<>();
-        peliculas.add(new MovieCover("/images/avatarPoster.jpg", "Avatar 3"));
-        peliculas.add(new MovieCover("/images/jurassicPoster.jpg", "Jurassic World"));
-        peliculas.add(new MovieCover("/images/starWarsPoster.jpg", "Star Wars"));
-        peliculas.add(new MovieCover("/images/ScottPilgrim.jpeg", "Scott Pilgrim"));
-        return new MovieCarousel(peliculas);
+    private JPanel construirCarrusel(String categoria) {
+        List<MovieCover> cover = new ArrayList<>();
+        for (SeleccionPeliculaDTO pelicula : peliculas) {
+            if (categoria.equals(pelicula.getCategoria())) {
+                cover.add(new MovieCover(
+                        pelicula.getId(),
+                        pelicula.getImagen(), pelicula.getName(),
+                        pelicula.getCategoria()));
+            }
+        }
+        return new MovieCarousel(cover);
     }
 
-    private JPanel construirTodasFunciones() {
-        List<MovieCover> peliculas = new ArrayList<>();
-        peliculas.add(new MovieCover("/images/dramaPoster.jpg", "Drama"));
-        peliculas.add(new MovieCover("/images/michaelPoster.jpg", "Michael"));
-        peliculas.add(new MovieCover("/images/mummyPoster.jpg", "The Mummy"));
-        return new MovieCarousel(peliculas);
-    }
-
-    private JPanel construirSalaKids() {
-        List<MovieCover> peliculas = new ArrayList<>();
-        peliculas.add(new MovieCover("/images/hoppersPoster.jpg", "Hoppers"));
-        peliculas.add(new MovieCover("/images/minionsPoster.jpg", "Minions"));
-        peliculas.add(new MovieCover("/images/marioPoster.jpg", "Mario Bros"));
-        return new MovieCarousel(peliculas);
-    }
-
+//    private JPanel construirMasPopulares() {
+//        List<MovieCover> peliculas = new ArrayList<>();
+//        peliculas.add(new MovieCover("/images/avatarPoster.jpg", "Avatar 3"));
+//        peliculas.add(new MovieCover("/images/jurassicPoster.jpg", "Jurassic World"));
+//        peliculas.add(new MovieCover("/images/starWarsPoster.jpg", "Star Wars"));
+//        peliculas.add(new MovieCover("/images/ScottPilgrim.jpeg", "Scott Pilgrim"));
+//        return new MovieCarousel(peliculas);
+//    }
+//
+//    private JPanel construirTodasFunciones() {
+//        List<MovieCover> peliculas = new ArrayList<>();
+//        peliculas.add(new MovieCover("/images/dramaPoster.jpg", "Drama"));
+//        peliculas.add(new MovieCover("/images/michaelPoster.jpg", "Michael"));
+//        peliculas.add(new MovieCover("/images/mummyPoster.jpg", "The Mummy"));
+//        return new MovieCarousel(peliculas);
+//    }
+//
+//    private JPanel construirSalaKids() {
+//        List<MovieCover> peliculas = new ArrayList<>();
+//        peliculas.add(new MovieCover("/images/hoppersPoster.jpg", "Hoppers"));
+//        peliculas.add(new MovieCover("/images/minionsPoster.jpg", "Minions"));
+//        peliculas.add(new MovieCover("/images/marioPoster.jpg", "Mario Bros"));
+//        return new MovieCarousel(peliculas);
+//    }
 }

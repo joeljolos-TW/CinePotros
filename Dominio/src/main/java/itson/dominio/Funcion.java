@@ -6,7 +6,6 @@ package itson.dominio;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import org.bson.types.ObjectId;
 
 
 /**
@@ -14,18 +13,18 @@ import org.bson.types.ObjectId;
  * @author Jazmin
  */
 public class Funcion {
-    private ObjectId id;
-    private ObjectId pelicula;
+    private String id;
+    private Pelicula pelicula;
     private LocalDate fecha;
     private LocalTime hora;
-    private ObjectId sala;
+    private Sala sala;
     private String idioma;
     private Double precio;
 
     public Funcion() {
     }
 
-    public Funcion(ObjectId id, ObjectId pelicula, LocalDate fecha, LocalTime hora, ObjectId sala, String idioma, Double precio) {
+    public Funcion(String id, Pelicula pelicula, LocalDate fecha, LocalTime hora, Sala sala, String idioma, Double precio) {
         this.id = id;
         this.pelicula = pelicula;
         this.fecha = fecha;
@@ -35,19 +34,19 @@ public class Funcion {
         this.precio = precio;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public ObjectId getPelicula() {
+    public Pelicula getPelicula() {
         return pelicula;
     }
 
-    public void setPelicula(ObjectId pelicula) {
+    public void setPelicula(Pelicula pelicula) {
         this.pelicula = pelicula;
     }
 
@@ -67,11 +66,11 @@ public class Funcion {
         this.hora = hora;
     }
 
-    public ObjectId getSala() {
+    public Sala getSala() {
         return sala;
     }
 
-    public void setSala(ObjectId sala) {
+    public void setSala(Sala sala) {
         this.sala = sala;
     }
 
@@ -90,6 +89,8 @@ public class Funcion {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+    
     
     
     

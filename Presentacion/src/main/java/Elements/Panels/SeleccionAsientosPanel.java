@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.net.URL;
 import javax.swing.*;
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
