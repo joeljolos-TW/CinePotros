@@ -18,6 +18,7 @@
         <module>Persistencia</module>
         <module>GeneradorQR</module>
         <module>VerificacionPago</module>
+        <module>ValidarBoleto</module>
     </modules>
 
     <properties>
