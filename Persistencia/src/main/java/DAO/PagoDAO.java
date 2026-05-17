@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import entidadesMongo.PagoMongoEntidad;
 import itson.dominio.EstadoPago;
 import itson.dominio.Pago;
 import org.bson.Document;
@@ -15,53 +16,51 @@ import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class PagoDAO {
-    private final MongoCollection<Document> coleccion;
+public class PagoDAO implements IDAOGenerico<PagoMongoEntidad, ObjectId> {
+    private final MongoCollection<PagoMongoEntidad> coleccion;
 
     public PagoDAO() {
         MongoDatabase base = ConexionMongoDB.getInstance().getDatabase();
-        this.coleccion = base.getCollection("pagos");
+        this.coleccion = base.getCollection("pagos", PagoMongoEntidad.class);
     }
 
     // ── CREATE ────────────────────────────────────────────────────────────────
-//
-//    public Pago insertar(Pago pago) {
-//        Document doc = pagoADocumento(pago);
-//        coleccion.insertOne(doc);
-//        pago.setId(doc.getObjectId("_id"));
-//        return pago;
-//    }
-//
-//    // ── READ ──────────────────────────────────────────────────────────────────
-//
-//    public List<Pago> obtenerTodos() {
-//        List<Pago> pagos = new ArrayList<>();
-//        for (Document doc : coleccion.find()) {
-//            pagos.add(documentoApago(doc));
-//        }
-//        return pagos;
-//    }
-//
-//    public Pago obtenerPorId(ObjectId id) {
-//        Document doc = coleccion.find(eq("_id", id)).first();
-//        if (doc == null) return null;
-//        return documentoApago(doc);
-//    }
-//
-//    // ── UPDATE ────────────────────────────────────────────────────────────────
-//
-//    public boolean actualizar(Pago pago) {
-//        Document actualizacion = new Document("$set", pagoADocumento(pago));
-//        UpdateResult resultado = coleccion.updateOne(eq("_id", pago.getId()), actualizacion);
-//        return resultado.getModifiedCount() > 0;
-//    }
-//
-//    // ── DELETE ────────────────────────────────────────────────────────────────
-//
-//    public boolean eliminar(ObjectId id) {
-//        DeleteResult resultado = coleccion.deleteOne(eq("_id", id));
-//        return resultado.getDeletedCount() > 0;
-//    }
+    @Override
+    public PagoMongoEntidad insertar(PagoMongoEntidad pago) {
+        coleccion.insertOne(pago);
+        return pago;
+    }
+
+    // ── READ ──────────────────────────────────────────────────────────────────
+
+    public List<PagoMongoEntidad> obtenerTodos() {
+        List<PagoMongoEntidad> pagos = new ArrayList<>();
+        for (PagoMongoEntidad pago : coleccion.find()) {
+            pagos.add(pago);
+        }
+        return pagos;
+    }
+
+    public PagoMongoEntidad obtenerPorId(ObjectId id) {
+        PagoMongoEntidad pago = coleccion.find(eq("_id", id)).first();
+        if (pago == null) return null;
+        return pago;
+    }
+
+    // ── UPDATE ────────────────────────────────────────────────────────────────
+
+    public boolean actualizar(PagoMongoEntidad pago) {
+        Document actualizacion = new Document("$set", pago);
+        UpdateResult resultado = coleccion.updateOne(eq("_id", pago.getId()), actualizacion);
+        return resultado.getModifiedCount() > 0;
+    }
+
+    // ── DELETE ────────────────────────────────────────────────────────────────
+    @Override
+    public boolean eliminar(ObjectId id) {
+        DeleteResult resultado = coleccion.deleteOne(eq("_id", id));
+        return resultado.getDeletedCount() > 0;
+    }
 //
 //    // ── MAPEO ─────────────────────────────────────────────────────────────────
 //
