@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\dominio\Asiento.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\dominio\Boleto.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\dominio\Empleado.java
@@ -11,3 +12,17 @@ C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\do
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\dominio\Sala.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\dominio\TipoSala.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\src\main\java\itson\dominio\Usuario.java
+=======
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Asiento.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Boleto.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Empleado.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\EstadoAsiento.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\EstadoPago.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Funcion.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Pago.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Pelicula.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\QR.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Sala.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\TipoSala.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\src\main\java\itson\dominio\Usuario.java
+>>>>>>> Stashed changes
