@@ -4,18 +4,14 @@
  */
 package BO;
 
-import DAO.PeliculaDAO;
-import DAO.IPeliculaDAO;
+import daos.PeliculaDAO;
+import daos.IPeliculaDAO;
 import DTOs.SeleccionPeliculaDTO;
-import entidadesMongo.PeliculaMongoEntidad;
+import entidades.Pelicula;
 import excepcion.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author
- */
 public class PeliculaBO implements IPeliculaBO {
 
     private final IPeliculaDAO peliculaDAO;
@@ -27,15 +23,15 @@ public class PeliculaBO implements IPeliculaBO {
     @Override
     public List<SeleccionPeliculaDTO> obtenerTodos() throws NegocioException {
         try {
-            List<PeliculaMongoEntidad> entidades = peliculaDAO.obtenerTodas();
+            List<Pelicula> entidades = peliculaDAO.obtenerTodasLasPeliculas();
             List<SeleccionPeliculaDTO> dtos = new ArrayList<>();
 
-            for (PeliculaMongoEntidad entidad : entidades) {
+            for (Pelicula entidad : entidades) {
                 SeleccionPeliculaDTO dto = new SeleccionPeliculaDTO(
                         entidad.getId().toHexString(),
-                        entidad.getImagen(),
+                        "", // imagen (entidades.Pelicula no lo tiene)
                         entidad.getTitulo(), 
-                        entidad.getCategoria());
+                        entidad.getGenero()); // mapped to categoria
                 dtos.add(dto);
             }
             return dtos;
@@ -43,5 +39,4 @@ public class PeliculaBO implements IPeliculaBO {
             throw new NegocioException(e.getMessage());
         }
     }
-
 }

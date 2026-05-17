@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Ricardo
  */
-public class FuncionDAO {
+public class FuncionDAO implements IFuncionDAO {
 
     private MongoCollection<Funcion> obtenerColeccion() {
         return ConexionMongo.getInstancia()
@@ -20,6 +20,7 @@ public class FuncionDAO {
                 .getCollection("funciones", Funcion.class);
     }
 
+    @Override
     public boolean agregarFuncion(Funcion funcion) {
         try {
             obtenerColeccion().insertOne(funcion);
@@ -30,6 +31,7 @@ public class FuncionDAO {
         }
     }
 
+    @Override
     public List<Funcion> obtenerTodasLasFunciones() {
         try {
             return obtenerColeccion().find().into(new ArrayList<>());
@@ -39,12 +41,45 @@ public class FuncionDAO {
         }
     }
 
+    @Override
     public Funcion buscarFuncionPorId(ObjectId id) {
         try {
             return obtenerColeccion().find(Filters.eq("_id", id)).first();
         } catch (Exception e) {
             System.err.println("Error al buscar función: " + e.getMessage());
             return null;
+        }
+    }
+
+    @Override
+    public List<Funcion> buscarPorPelicula(ObjectId idPelicula) {
+        try {
+            return obtenerColeccion().find(Filters.eq("pelicula", idPelicula)).into(new ArrayList<>());
+        } catch (Exception e) {
+            System.err.println("Error al buscar funciones por película: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public boolean actualizarFuncion(Funcion funcion) {
+        try {
+            obtenerColeccion().replaceOne(Filters.eq("_id", funcion.getId()), funcion);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al actualizar función: " + e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean eliminarFuncion(ObjectId id) {
+        try {
+            obtenerColeccion().deleteOne(Filters.eq("_id", id));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al eliminar función: " + e.getMessage());
+            return false;
         }
     }
 }

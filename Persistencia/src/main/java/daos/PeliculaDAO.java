@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Ricardo
  */
-public class PeliculaDAO {
+public class PeliculaDAO implements IPeliculaDAO {
 
     private MongoCollection<Pelicula> obtenerColeccion() {
         return ConexionMongo.getInstancia()
@@ -21,6 +21,7 @@ public class PeliculaDAO {
                 .getCollection("peliculas", Pelicula.class);
     }
 
+    @Override
     public boolean agregarPelicula(Pelicula pelicula) {
         try {
             obtenerColeccion().insertOne(pelicula);
@@ -31,6 +32,7 @@ public class PeliculaDAO {
         }
     }
 
+    @Override
     public List<Pelicula> obtenerTodasLasPeliculas() {
         try {
             return obtenerColeccion().find().into(new ArrayList<>());
@@ -40,12 +42,35 @@ public class PeliculaDAO {
         }
     }
 
+    @Override
     public Pelicula buscarPeliculaPorId(ObjectId id) {
         try {
             return obtenerColeccion().find(Filters.eq("_id", id)).first();
         } catch (Exception e) {
             System.err.println("Error al buscar película: " + e.getMessage());
             return null;
+        }
+    }
+
+    @Override
+    public boolean actualizarPelicula(Pelicula pelicula) {
+        try {
+            obtenerColeccion().replaceOne(Filters.eq("_id", pelicula.getId()), pelicula);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al actualizar película: " + e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean eliminarPelicula(ObjectId id) {
+        try {
+            obtenerColeccion().deleteOne(Filters.eq("_id", id));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al eliminar película: " + e.getMessage());
+            return false;
         }
     }
 }

@@ -46,9 +46,20 @@ public class Funcion {
                 doc.getObjectId("peliculaId"),
                 doc.getDate("horaInicio"),
                 doc.getInteger("numeroSala"),
-                asientosDoc.stream()
+                asientosDoc != null ? asientosDoc.stream()
                         .map(Asiento::fromDocument)
-                        .collect(Collectors.toList())
+                        .collect(Collectors.toList()) : null
         );
     }
+
+    public ObjectId getId() { return id; }
+    public void setId(ObjectId id) { this.id = id; }
+    public ObjectId getPeliculaId() { return peliculaId; }
+    public void setPeliculaId(ObjectId peliculaId) { this.peliculaId = peliculaId; }
+    public Date getHoraInicio() { return horaInicio; }
+    public void setHoraInicio(Date horaInicio) { this.horaInicio = horaInicio; }
+    public int getNumeroSala() { return numeroSala; }
+    public void setNumeroSala(int numeroSala) { this.numeroSala = numeroSala; }
+    public List<Asiento> getAsientos() { return asientos; }
+    public void setAsientos(List<Asiento> asientos) { this.asientos = asientos; }
 }

@@ -1,2 +1,13 @@
-itson\servicios\Servicios.class
+BO\BoletoBO.class
+BO\IPeliculaBO.class
 DTOs\SeleccionPeliculaDTO.class
+BO\PeliculaBO.class
+itson\servicios\Servicios.class
+DTOs\FuncionDTO.class
+BO\IBoletoBO.class
+BO\FuncionBO.class
+DTOs\BoletoDTO.class
+BO\IFuncionBO.class
+DTOs\PeliculaDTO.class
+DTOs\SalaDTO.class
+excepcion\NegocioException.class

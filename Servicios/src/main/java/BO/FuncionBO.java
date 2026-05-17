@@ -4,62 +4,53 @@
  */
 package BO;
 
-import DAO.FuncionDAO;
-import DAO.SalaDAO;
-import DAO.IFuncionDAO;
-import DAO.ISalaDAO;
+import daos.FuncionDAO;
+import daos.SalaDAO;
+import daos.IFuncionDAO;
+import daos.ISalaDAO;
 import DTOs.FuncionDTO;
 import DTOs.SalaDTO;
-import adaptadores.BoletoPersistenciaAdapter;
-import entidadesMongo.FuncionMongoEntidad;
-import entidadesMongo.SalaMongoEntidad;
+import entidades.Funcion;
+import entidades.Sala;
 import excepcion.NegocioException;
 import exception.PersistenciaException;
+import org.bson.types.ObjectId;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- *
- */
 public class FuncionBO implements IFuncionBO {
 
     private final IFuncionDAO funcionDAO;
     private final ISalaDAO salaDAO;
-    private final BoletoPersistenciaAdapter adapter;
 
     public FuncionBO() {
         this.funcionDAO = new FuncionDAO();
         this.salaDAO = new SalaDAO();
-        this.adapter = new BoletoPersistenciaAdapter();
     }
 
     @Override
     public List<FuncionDTO> obtenerPorPelicula(String idPelicula) throws NegocioException {
         try {
-            List<FuncionMongoEntidad> funciones = funcionDAO.obtenerPorPelicula(
-                    adapter.convertirStringAObjectId(idPelicula));
-
+            List<Funcion> funciones = funcionDAO.buscarPorPelicula(new ObjectId(idPelicula));
             List<FuncionDTO> dtos = new ArrayList<>();
 
-            for (FuncionMongoEntidad funcion : funciones) {
-                SalaMongoEntidad sala = salaDAO.obtenerPorId(funcion.getSala());
-
-                if (sala == null) {
-                    continue;
-                }
-
+            for (Funcion funcion : funciones) {
                 SalaDTO salaDTO = new SalaDTO(
-                        sala.getTipo().name(),
-                        sala.getNombre()
+                        "Regular",
+                        "Sala " + funcion.getNumeroSala()
                 );
+
+                java.util.Date horaInicio = funcion.getHoraInicio();
+                LocalDate fecha = horaInicio != null ? new java.sql.Date(horaInicio.getTime()).toLocalDate() : LocalDate.now();
+                LocalTime hora = horaInicio != null ? new java.sql.Time(horaInicio.getTime()).toLocalTime() : LocalTime.now();
 
                 FuncionDTO dto = new FuncionDTO(
                         funcion.getId().toHexString(),
-                        LocalDate.parse(funcion.getFecha()), 
-                        LocalTime.parse(funcion.getHora()), 
+                        fecha, 
+                        hora, 
                         salaDTO
                 );
 
@@ -68,9 +59,8 @@ public class FuncionBO implements IFuncionBO {
 
             return dtos;
 
-        } catch (PersistenciaException e) {
+        } catch (Exception e) {
             throw new NegocioException("No fue posible obtener las funciones: " + e.getMessage());
         }
     }
-
 }

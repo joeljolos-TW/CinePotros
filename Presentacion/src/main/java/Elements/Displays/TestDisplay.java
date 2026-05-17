@@ -21,15 +21,8 @@ public class TestDisplay extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
+        // Inicializar el controlador de navegación (Singleton o no, se usa una vez)
         panelNavegacion = SwitchPanel.getInstance();
-        BillboardPanel cartelera = new BillboardPanel(panelNavegacion);
-        panelNavegacion.addPanel(cartelera, "cartelera");
-        add(panelNavegacion);
-        setSize(1280,720);
-        setVisible(true);
-        
-        // Inicializar el controlador de navegación
-        panelNavegacion = new SwitchPanel();
         
         // Instanciar todas las pantallas
         BillboardPanel cartelera = new BillboardPanel(panelNavegacion);
