@@ -4,6 +4,8 @@
  */
 package Elements.Panels;
 
+import DTO.ValidacionDTO;
+import DTOs.BoletoDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
 import java.awt.BorderLayout;
@@ -33,6 +35,7 @@ import javax.swing.border.LineBorder;
 public class GeneracionBoletoPanel extends JPanel {
 
     private SwitchPanel panelNavegacion;
+    private BoletoDTO boletoDTO;
 
     public GeneracionBoletoPanel() {
         this.panelNavegacion = SwitchPanel.getInstance();
@@ -43,6 +46,17 @@ public class GeneracionBoletoPanel extends JPanel {
         add(construirContenido(), BorderLayout.CENTER);
         add(construirPiePagina(), BorderLayout.SOUTH);
 
+    }
+
+    public GeneracionBoletoPanel(BoletoDTO boletoDTO){
+        this.boletoDTO = boletoDTO;
+        this.panelNavegacion = SwitchPanel.getInstance();
+        setBackground(UtilGeneral.FONDO_PRINCIPAL);
+        setLayout(new BorderLayout());
+
+        add(construirEncabezado(), BorderLayout.NORTH);
+        add(construirContenido(), BorderLayout.CENTER);
+        add(construirPiePagina(), BorderLayout.SOUTH);
     }
 
     private JPanel construirEncabezado() {
@@ -166,6 +180,10 @@ public class GeneracionBoletoPanel extends JPanel {
         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         pie.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         GenericButton btnSubir = new GenericButton("Subir boleto", false, 20, 160, 40, Color.white, new Color(79, 140, 255), new Color(58, 122, 238));
+        btnSubir.addActionListener(e -> {
+            ValidacionDTO validacionDTO = new ValidacionDTO(true, boletoDTO.getId());
+            panelNavegacion.changePanel("validacionBoleto", validacionDTO);
+        });
         GenericButton btnCancelar = new GenericButton("Cancelar boleto", false, 20, 160, 40, Color.white, new Color(192, 57, 43), new Color(160, 40, 30));
         btnCancelar.addActionListener(e -> {
             int respuesta = JOptionPane.showConfirmDialog(
@@ -187,7 +205,7 @@ public class GeneracionBoletoPanel extends JPanel {
             }
         });
         GenericButton btnMisBoletos = new GenericButton("Ver mis boletos", false, 20, 160, 40, new Color(79, 140, 255), new Color(0, 0, 0, 0), new Color(79, 140, 255));
-       GenericButton btnInicio = new GenericButton("Volver al inicio", false, 20, 160, 40, Color.white, new Color(44, 44, 62), new Color(60, 60, 80));
+        GenericButton btnInicio = new GenericButton("Volver al inicio", false, 20, 160, 40, Color.white, new Color(44, 44, 62), new Color(60, 60, 80));
         btnInicio.setFocusPainted(false);
         btnInicio.addActionListener(e -> panelNavegacion.changePanel("cartelera"));
         pie.add(btnSubir);

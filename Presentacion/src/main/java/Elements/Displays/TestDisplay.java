@@ -1,9 +1,12 @@
 package Elements.Displays;
 
 import javax.swing.*;
+
+import DTO.ValidacionDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.*;
 import Elements.Panels.Payment.PaymentSummary;
+import Elements.Panels.ValidacionBoleto.BoletoValidadoPanel;
 
 
 public class TestDisplay extends JFrame {
@@ -30,6 +33,7 @@ public class TestDisplay extends JFrame {
         GeneracionBoletoPanel boleto = new GeneracionBoletoPanel();
         PaymentSummary pago = new PaymentSummary();
         MisBoletosPanel misBoletos = new MisBoletosPanel();
+        BoletoValidadoPanel infoValidacion = new BoletoValidadoPanel(new ValidacionDTO());
 
         // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
         panelNavegacion.addPanel(cartelera, "cartelera");
@@ -38,6 +42,7 @@ public class TestDisplay extends JFrame {
         panelNavegacion.addPanel(boleto, "generacionBoleto");
         panelNavegacion.addPanel(pago,"confirmacionPago");
         panelNavegacion.addPanel(misBoletos, "misBoletos");
+        panelNavegacion.addPanel(infoValidacion, "validacionBoleto");
 
         // Agregar el panel de navegación al Frame principal
         add(panelNavegacion);
@@ -49,5 +54,9 @@ public class TestDisplay extends JFrame {
 
     public void changePanel(String identificador){
         panelNavegacion.changePanel(identificador);
+    }
+
+    public void changePanel(String identificador, Object object){
+        panelNavegacion.changePanel(identificador, object);
     }
 }

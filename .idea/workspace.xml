@@ -28,6 +28,7 @@
       <list>
         <option value="package-info" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -80,6 +81,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "axel-branch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/joeljolos/IdeaProjects/CinePotros/Servicios",
@@ -87,7 +90,8 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -135,17 +139,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="VerificacionPago" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="VerificacionPago" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main.Main" />
@@ -170,6 +163,8 @@
       <updated>1774890714356</updated>
       <workItem from="1778127474255" duration="337000" />
       <workItem from="1778640727929" duration="6184000" />
+      <workItem from="1778889474430" duration="643000" />
+      <workItem from="1778964935753" duration="7432000" />
     </task>
     <task id="LOCAL-00001" summary="Cambio a JDK 21">
       <option name="closed" value="true" />

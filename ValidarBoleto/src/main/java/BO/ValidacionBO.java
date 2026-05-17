@@ -25,7 +25,7 @@ public class ValidacionBO {
         this.funcionDAO = new FuncionDAO();
     }
 
-    public ValidacionDTO marcarComoUsado(){
+    public ValidacionDTO escanearBoleto(){
         BoletoMongoEntidad boleto = boletoDAO.obtenerPorId(dto.getIdBoleto());
         if(boleto.getEstado() == EstadoBoleto.PENDIENTE && laFechaEsCorrecta(boleto)){
             boleto.setEstado(EstadoBoleto.ESCANEADO);

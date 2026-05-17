@@ -4,6 +4,7 @@ import Conexion.ConexionMongoDB;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import itson.dominio.Boleto;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
@@ -12,13 +13,12 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 import entidadesMongo.BoletoMongoEntidad;
 
-public class BoletoDAO {
+public class BoletoDAO implements IDAOGenerico<Boleto> {
 
     private final MongoCollection<BoletoMongoEntidad> coleccion;
 
     public BoletoDAO() {
         this.coleccion = ConexionMongoDB.getInstance().getDatabase().getCollection("boleto",BoletoMongoEntidad.class);
-       
     }
 
     // ── CREATE ────────────────────────────────────────────────────────────────
