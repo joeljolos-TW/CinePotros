@@ -50,9 +50,7 @@ public class MisBoletosPanel extends JPanel {
         scroll.setBorder(null);
         add(scroll, BorderLayout.CENTER);
     }
-    private void boletoPrueba(){
-        
-    }
+    
     private JPanel construirEncabezado() {
         JPanel encabezado = new JPanel(new BorderLayout());
         encabezado.setBackground(UtilGeneral.FONDO_ENCABEZADO);
