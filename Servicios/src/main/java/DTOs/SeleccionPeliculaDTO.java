@@ -19,8 +19,6 @@ public class SeleccionPeliculaDTO {
        
     }
 
-    
-
     public String getId() {
         return id;
     }

@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.List;
 
 
+import Elements.Panels.ValidacionBoleto.BoletoValidadoPanel;
 import Mediator.PanelMediator;
 
 /**
@@ -78,5 +79,4 @@ public class SwitchPanel extends JPanel implements PanelMediator {
     public List<String> showInfo(){
         return identifiers;
     }
-
 }

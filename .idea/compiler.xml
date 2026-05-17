@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="VerificacionPago" />
         <module name="Servicios" />
         <module name="Persistencia" />
         <module name="GeneradorQR" />
         <module name="Presentacion" />
+        <module name="VerificacionPago" />
         <module name="Dominio" />
+        <module name="ValidarBoleto" />
       </profile>
     </annotationProcessing>
   </component>

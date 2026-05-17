@@ -1,16 +1,12 @@
 package Elements.Displays;
 
 import javax.swing.*;
+
+import DTO.ValidacionDTO;
 import Elements.Buttons.GenericButton;
-import Elements.Panels.BillboardPanel;
-import Elements.Panels.GeneracionBoletoPanel;
+import Elements.Panels.*;
 import Elements.Panels.Payment.PaymentSummary;
-import Elements.Panels.SeleccionFuncionPanel;
-import Elements.Panels.SeleccionAsientosPanel;
-import Elements.Panels.MisBoletosPanel;
-import Elements.Panels.SwitchPanel;
-
-
+import Elements.Panels.ValidacionBoleto.BoletoValidadoPanel;
 
 
 public class TestDisplay extends JFrame {
@@ -29,22 +25,15 @@ public class TestDisplay extends JFrame {
         // Inicializar el controlador de navegación
         panelNavegacion = SwitchPanel.getInstance();
         BillboardPanel cartelera = new BillboardPanel();
-        panelNavegacion.addPanel(cartelera, "cartelera");
-        add(panelNavegacion);
-        setSize(1280,720);
-        setVisible(true);
-
-
 
         // Instanciar todas las pantallas
-
 
         SeleccionAsientosPanel asientos = new SeleccionAsientosPanel();
         SeleccionFuncionPanel funciones = new SeleccionFuncionPanel();
         GeneracionBoletoPanel boleto = new GeneracionBoletoPanel();
         PaymentSummary pago = new PaymentSummary();
         MisBoletosPanel misBoletos = new MisBoletosPanel();
-       
+        BoletoValidadoPanel infoValidacion = new BoletoValidadoPanel(new ValidacionDTO());
 
         // Agregar las pantallas al SwitchPanel con sus respectivos nombres clave
         panelNavegacion.addPanel(cartelera, "cartelera");
@@ -53,8 +42,7 @@ public class TestDisplay extends JFrame {
         panelNavegacion.addPanel(boleto, "generacionBoleto");
         panelNavegacion.addPanel(pago,"confirmacionPago");
         panelNavegacion.addPanel(misBoletos, "misBoletos");
-      
-        
+        panelNavegacion.addPanel(infoValidacion, "validacionBoleto");
 
         // Agregar el panel de navegación al Frame principal
         add(panelNavegacion);
@@ -62,5 +50,13 @@ public class TestDisplay extends JFrame {
         setSize(1280, 720);
         setVisible(true);
 
+    }
+
+    public void changePanel(String identificador){
+        panelNavegacion.changePanel(identificador);
+    }
+
+    public void changePanel(String identificador, Object object){
+        panelNavegacion.changePanel(identificador, object);
     }
 }
