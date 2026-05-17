@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 DAO\EmpleadoDAO.class
 entidadesMongo\EmpleadoMongoEntidad.class
 DAO\PagoDAO.class
@@ -18,4 +19,7 @@ entidadesMongo\PagoMongoEntidad.class
 DAO\SalaDAO.class
 entidadesMongo\UsuarioMongoEntidad.class
 entidadesMongo\PeliculaMongoEntidad.class
+=======
+Conexion\ConexionMongoDB.class
+>>>>>>> Stashed changes
 Test\MainTestDAOs.class
