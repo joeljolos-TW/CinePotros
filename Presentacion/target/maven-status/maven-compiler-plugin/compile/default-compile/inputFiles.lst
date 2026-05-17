@@ -1,8 +1,10 @@
+C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\control\ControlCancelacion.java
+C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\control\CoordinadorPantalla.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Buttons\GenericButton.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Displays\TestDisplay.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\BillboardPanel.java
+C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\ConfirmacionCancelacionPanel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\GeneracionBoletoPanel.java
-C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\InfoBoletoPanel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\MisBoletosPanel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\MovieCarousel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\MovieCover.java
@@ -12,5 +14,6 @@ C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Ele
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\SeleccionAsientosPanel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\SeleccionFuncionPanel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\SwitchPanel.java
+C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Panels\ValidacionBoleto\BoletoValidadoPanel.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Elements\Utileria\UtilGeneral.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Presentacion\src\main\java\Main\Main.java

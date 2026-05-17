@@ -4,13 +4,14 @@
  */
 package adaptadores;
 
-import entidadesMongo.BoletoMongoEntidad;
-import exception.PersistenciaException;
 import itson.dominio.Boleto;
 import itson.dominio.Funcion;
+import org.bson.types.ObjectId;
+import entidadesMongo.BoletoMongoEntidad;
+import exception.PersistenciaException;
 import java.util.ArrayList;
 import java.util.List;
-import org.bson.types.ObjectId;
+
 
 /**
  * Adapter que convierte entre la entidad de dominio Boleto
@@ -36,7 +37,7 @@ public class BoletoPersistenciaAdapter {
         entidad.setId(convertirStringAObjectId(boleto.getId()));
         entidad.setFuncion
         (convertirStringAObjectIdObligatorio
-        (boleto.getFuncion().getId(), "El id de la función es obligatorio para guardar el boleto"));
+        (boleto.getFuncion(), "El id de la función es obligatorio para guardar el boleto"));
         entidad.setNumAsiento(boleto.getNumAsiento());
         entidad.setTotal(boleto.getTotal());
         entidad.setEstado(boleto.getEstado());
@@ -54,7 +55,7 @@ public class BoletoPersistenciaAdapter {
         }
         Boleto boleto = new Boleto();
         boleto.setId(convertirObjectIdAString(entidad.getId()));
-        boleto.setFuncion(funcion);
+        boleto.setFuncion(funcion.getId());
         boleto.setNumAsiento(entidad.getNumAsiento());
         boleto.setTotal(entidad.getTotal());
         boleto.setEstado(entidad.getEstado());
@@ -74,7 +75,7 @@ public class BoletoPersistenciaAdapter {
         }
         for (int i = 0; i < entidades.size(); i++) {
             Funcion funcion;
-            if(funciones != null & i<funciones.size()){
+            if(funciones != null && i<funciones.size()){
                 funcion = funciones.get(i);
             }else{
                 funcion = null;

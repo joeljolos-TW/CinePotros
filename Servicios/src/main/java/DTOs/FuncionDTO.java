@@ -16,17 +16,19 @@ public class FuncionDTO {
     private LocalDate fecha;
     private LocalTime hora;
     private SalaDTO salaFuncion;
+    private Double precio;
 
     public FuncionDTO() {
     }
-    
-    public FuncionDTO(String id,LocalDate fecha, LocalTime hora, SalaDTO salaFuncion) {
+
+    public FuncionDTO(String id, LocalDate fecha, LocalTime hora, SalaDTO salaFuncion, Double precio) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.salaFuncion = salaFuncion;
+        this.precio = precio;
     }
-
+    
     public String getId() {
         return id;
     }
@@ -58,4 +60,13 @@ public class FuncionDTO {
     public SalaDTO getSalaFuncion() {
         return salaFuncion;
     }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+    
 }

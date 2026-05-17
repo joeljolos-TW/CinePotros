@@ -1,12 +1,11 @@
 package Pago;
 
-import itson.dominio.Boleto;
-import itson.dominio.EstadoPago;
-import itson.dominio.Pago;
-import itson.dominio.TipoSala;
+
 import PaymentDTO.PaymentSummaryDTO;
-import DAO.BoletoDAO;
 import DAO.PagoDAO;
+import static itson.dominio.TipoSala.KIDS;
+import static itson.dominio.TipoSala.TRADICIONAL;
+import static itson.dominio.TipoSala.VIP;
 import org.bson.types.ObjectId;
 
 public class PaymentBO {

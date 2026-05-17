@@ -4,10 +4,10 @@
  */
 package Elements.Panels;
 
-import Control.ControlCancelacion;
 import DTOs.BoletoDTO;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
+import control.ControlCancelacion;
 import itson.dominio.EstadoBoleto;
 import java.awt.BorderLayout;
 import java.awt.Color;

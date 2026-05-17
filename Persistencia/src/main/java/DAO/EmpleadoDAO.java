@@ -3,16 +3,8 @@ package DAO;
 import Conexion.ConexionMongoDB;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.result.DeleteResult;
-import com.mongodb.client.result.UpdateResult;
-import itson.dominio.Empleado;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.mongodb.client.model.Filters.eq;
 
 public class EmpleadoDAO {
     private final MongoCollection<Document> coleccion;

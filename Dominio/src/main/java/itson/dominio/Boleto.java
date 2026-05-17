@@ -12,35 +12,21 @@ import java.util.List;
  */
 public class Boleto {
     private String id;
-    private Funcion funcion;
+    private String funcion;
     private List<String> numAsiento;
     private Double total;
-
     private EstadoBoleto estado;
-
-    private boolean usado;
-
-
     public Boleto() {
     }
     
     
-    public Boleto(String id, Funcion funcion, List<String> numAsiento, Double total, boolean usado) {
+    public Boleto(String id, String funcion, List<String> numAsiento, Double total, boolean usado) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
         this.total = total;
-        this.usado = usado;
     }
-    
-    public boolean isUsado() {
-        return usado;
-    }
-
-    public void setUsado(boolean usado) {
-        this.usado = usado;
-    }
-
+   
     public String getId() {
         return id;
     }
@@ -49,11 +35,11 @@ public class Boleto {
         this.id = id;
     }
 
-    public Funcion getFuncion() {
+    public String getFuncion() {
         return funcion;
     }
 
-    public void setFuncion(Funcion funcion) {
+    public void setFuncion(String funcion) {
         this.funcion = funcion;
     }
 

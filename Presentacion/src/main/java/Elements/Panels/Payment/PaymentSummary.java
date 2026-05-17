@@ -3,7 +3,6 @@ package Elements.Panels.Payment;
 import javax.swing.*;
 
 import Elements.Buttons.GenericButton;
-import Elements.Panels.SwitchPanel;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
 import PaymentDTO.PaymentSummaryDTO;

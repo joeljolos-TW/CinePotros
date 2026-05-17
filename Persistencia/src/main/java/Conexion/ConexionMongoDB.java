@@ -36,10 +36,6 @@ public class ConexionMongoDB {
             this.database = mongoClient.getDatabase("CinePotro_DB");
         }
         
-        
-//        String connectionString = "mongodb://localhost:27017";
-//        this.mongoClient = MongoClients.create(connectionString);
-//        this.database = mongoClient.getDatabase("CinePotro_DB");
     }
 
     public static synchronized ConexionMongoDB getInstance() {

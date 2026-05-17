@@ -5,6 +5,7 @@
 package BO;
 
 import DAO.BoletoDAO;
+import DAO.EstadoBoletoDAO;
 import adaptadores.BoletoPersistenciaAdapter;
 import entidadesMongo.BoletoMongoEntidad;
 import excepcion.NegocioException;
@@ -15,31 +16,34 @@ import itson.dominio.EstadoBoleto;
  *
  * @author Jazmin
  */
-public class CancelacionBO implements ICancelacionBO{
+public class CancelacionBO implements ICancelacionBO {
+
     private final BoletoDAO boletoDAO;
+    private final EstadoBoletoDAO estadoBoletoDAO;
     private final BoletoPersistenciaAdapter adapter;
 
     public CancelacionBO() {
-       this.boletoDAO = new BoletoDAO();
-       this.adapter = new BoletoPersistenciaAdapter();
+        this.boletoDAO = new BoletoDAO();
+        this.estadoBoletoDAO = new EstadoBoletoDAO();
+        this.adapter = new BoletoPersistenciaAdapter();
     }
-    
+
     @Override
     public void cancelarBoleto(String id) throws NegocioException {
         try {
-            BoletoMongoEntidad entidad = boletoDAO.obtenerPorId(adapter.convertirStringAObjectId(id));
-            if(entidad == null){
-                throw new NegocioException("No se encontró ningun boleto");
+            BoletoMongoEntidad entidad = boletoDAO.obtenerPorId(
+                    adapter.convertirStringAObjectId(id)
+            );
+            if (entidad == null) {
+                throw new NegocioException("No se encontró ningún boleto.");
             }
-            if(entidad.getEstado() != EstadoBoleto.PENDIENTE){
+            if (entidad.getEstado() != EstadoBoleto.PENDIENTE) {
                 throw new NegocioException("Solo se pueden cancelar boletos con estado PENDIENTE.");
             }
-            entidad.setEstado(EstadoBoleto.CANCELADO);
-            boletoDAO.actualizar(entidad);
+            estadoBoletoDAO.actualizarEstado(id, EstadoBoleto.CANCELADO);
+
         } catch (PersistenciaException e) {
-            throw new NegocioException("Error al cancelar" + e.getMessage());
-            
+            throw new NegocioException("Error al cancelar: " + e.getMessage());
         }
     }
-    
 }

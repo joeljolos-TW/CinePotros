@@ -1,5 +1,6 @@
 DAO\EmpleadoDAO.class
 entidadesMongo\EmpleadoMongoEntidad.class
+DAO\IDAOGenerico.class
 DAO\PagoDAO.class
 DAO\PeliculaDAO.class
 DAO\UsuarioDAO.class
