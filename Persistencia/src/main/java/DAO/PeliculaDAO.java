@@ -12,7 +12,7 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 import entidadesMongo.PeliculaMongoEntidad;
 
-public class PeliculaDAO {
+public class PeliculaDAO implements IDAOGenerico<PeliculaMongoEntidad, ObjectId>{
 
     private final MongoCollection<PeliculaMongoEntidad> coleccion;
 
@@ -22,22 +22,21 @@ public class PeliculaDAO {
     }
 
     // ── CREATE ────────────────────────────────────────────────────────────────
-
+    @Override
     public PeliculaMongoEntidad insertar(PeliculaMongoEntidad entidad) {
         coleccion.insertOne(entidad);
         return entidad;
     }
 
     // ── READ ──────────────────────────────────────────────────────────────────
-
-    public List<PeliculaMongoEntidad> obtenerTodas() {
+    @Override
+    public List<PeliculaMongoEntidad> obtenerTodos() {
         return coleccion.find().into(new ArrayList<>());
     }
 
+    @Override
     public PeliculaMongoEntidad obtenerPorId(ObjectId id) {
         return coleccion.find(eq("_id", id)).first();
-        
- 
     }
 
 //    public List<Pelicula> obtenerPorGenero(String genero) {
@@ -49,14 +48,14 @@ public class PeliculaDAO {
 //    }
 
     // ── UPDATE ────────────────────────────────────────────────────────────────
-
+    @Override
     public boolean actualizar(PeliculaMongoEntidad entidad) {
         UpdateResult resultado = coleccion.replaceOne(eq("_id", entidad.getId()), entidad);
         return resultado.getModifiedCount() > 0;
     }
 
     // ── DELETE ────────────────────────────────────────────────────────────────
-
+    @Override
     public boolean eliminar(ObjectId id) {
         DeleteResult resultado = coleccion.deleteOne(eq("_id", id));
         return resultado.getDeletedCount() > 0;

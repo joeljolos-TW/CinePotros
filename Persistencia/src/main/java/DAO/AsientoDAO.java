@@ -19,7 +19,7 @@ import static com.mongodb.client.model.Filters.eq;
  * Los asientos se almacenan como subdocumentos dentro de cada Funcion.
  * Esta DAO opera sobre la colección "funciones" filtrando por idFuncion.
  */
-public class AsientoDAO {
+public class AsientoDAO{
 
     private final MongoCollection<Document> coleccion;
 

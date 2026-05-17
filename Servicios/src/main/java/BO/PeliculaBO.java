@@ -26,7 +26,7 @@ public class PeliculaBO implements IPeliculaBO {
     @Override
     public List<SeleccionPeliculaDTO> obtenerTodos() throws NegocioException {
         try {
-            List<PeliculaMongoEntidad> entidades = peliculaDAO.obtenerTodas();
+            List<PeliculaMongoEntidad> entidades = peliculaDAO.obtenerTodos();
             List<SeleccionPeliculaDTO> dtos = new ArrayList<>();
 
             for (PeliculaMongoEntidad entidad : entidades) {

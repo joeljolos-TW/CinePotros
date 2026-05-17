@@ -4,6 +4,8 @@
  */
 package DTOs;
 
+import itson.dominio.Sala;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -13,20 +15,31 @@ import java.time.LocalTime;
  */
 public class FuncionDTO {
     private String id;
-    private LocalDate fecha;
-    private LocalTime hora;
-    private SalaDTO salaFuncion;
+    private String fecha;
+    private String hora;
+    private String idSala;
+    private String idPelicula;
     private Double precio;
+    private String idioma;
 
     public FuncionDTO() {
     }
-
-    public FuncionDTO(String id, LocalDate fecha, LocalTime hora, SalaDTO salaFuncion, Double precio) {
+    
+    public FuncionDTO(String id,String fecha, String hora, String sala) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
-        this.salaFuncion = salaFuncion;
+        this.idSala = sala;
+    }
+
+    public FuncionDTO(String id, Double precio, String idSala, String idPelicula, String hora, String fecha, String idioma) {
+        this.id = id;
         this.precio = precio;
+        this.idSala = idSala;
+        this.idPelicula = idPelicula;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.idioma = idioma;
     }
     
     public String getId() {
@@ -37,36 +50,48 @@ public class FuncionDTO {
         this.id = id;
     }
     
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-    public void setSalaFuncion(SalaDTO salaFuncion) {
-        this.salaFuncion = salaFuncion;
+    public void setSalaFuncion(String sala) {
+        this.idSala = sala;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public SalaDTO getSalaFuncion() {
-        return salaFuncion;
+    public String getSalaFuncion() {
+        return idSala;
     }
+
+    public void setIdPelicula(String idPelicula) {this.idPelicula = idPelicula;}
+
+    public void setPrecio(Double precio) {this.precio = precio;}
 
     public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public String getIdPelicula() {
+        return idPelicula;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public String getIdioma() {
+        return idioma;
     }
     
 }

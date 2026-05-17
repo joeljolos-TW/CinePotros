@@ -12,7 +12,7 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 import entidadesMongo.FuncionMongoEntidad;
 
-public class FuncionDAO {
+public class FuncionDAO implements IDAOGenerico<FuncionMongoEntidad, ObjectId>{
 
     private final MongoCollection<FuncionMongoEntidad> coleccion;
 
@@ -22,18 +22,19 @@ public class FuncionDAO {
     }
 
     // ── CREATE ────────────────────────────────────────────────────────────────
-
+    @Override
     public FuncionMongoEntidad insertar(FuncionMongoEntidad entidad) {
         coleccion.insertOne(entidad);
         return entidad;
     }
 
     // ── READ ──────────────────────────────────────────────────────────────────
-
-    public List<FuncionMongoEntidad> obtenerTodas() {
+    @Override
+    public List<FuncionMongoEntidad> obtenerTodos() {
         return coleccion.find().into(new ArrayList<>());
     }
 
+    @Override
     public FuncionMongoEntidad obtenerPorId(ObjectId id) {
         return coleccion.find(eq("_id", id)).first();
     }
@@ -52,14 +53,14 @@ public class FuncionDAO {
 //    }
 
     // ── UPDATE ────────────────────────────────────────────────────────────────
-
+    @Override
     public boolean actualizar(FuncionMongoEntidad entidad) {
         UpdateResult resultado = coleccion.replaceOne(eq("_id", entidad.getId()), entidad);
         return resultado.getModifiedCount() > 0;
     }
 
     // ── DELETE ────────────────────────────────────────────────────────────────
-
+    @Override
     public boolean eliminar(ObjectId id) {
         DeleteResult resultado = coleccion.deleteOne(eq("_id", id));
         return resultado.getDeletedCount() > 0;
