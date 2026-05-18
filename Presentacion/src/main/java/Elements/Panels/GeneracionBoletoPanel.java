@@ -15,6 +15,7 @@ import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
 import Generador.ConvertidorBoletoQR;
 import excepcion.NegocioException;
+import itson.dominio.EstadoBoleto;
 
 import java.awt.*;
 import java.io.File;
@@ -34,6 +35,7 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable{
     private IControlEntidades<PeliculaDTO> controlerPelicula;
     private IControlEntidades<FuncionDTO> controlerFuncion;
     private IControlEntidades<SalaDTO> controlerSala;
+    private IControlEntidades<BoletoDTO> controlerBoleto;
     private JPanel contenedorCentral;
     private ConvertidorBoletoQR generadorQR;
 
@@ -42,6 +44,7 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable{
         this.controlerPelicula = ControlFactory.getPeliculaControl();
         this.controlerFuncion = ControlFactory.getFuncionControl();
         this.controlerSala = ControlFactory.getSalaControl();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
         this.generadorQR = new ConvertidorBoletoQR();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
@@ -56,6 +59,7 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable{
         this.controlerPelicula = ControlFactory.getPeliculaControl();
         this.controlerFuncion = ControlFactory.getFuncionControl();
         this.controlerSala = ControlFactory.getSalaControl();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
         this.panelNavegacion = SwitchPanel.getInstance();
         this.generadorQR = new ConvertidorBoletoQR();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
@@ -270,6 +274,12 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable{
                         "Cancelar Boleto",
                         JOptionPane.INFORMATION_MESSAGE
                 );
+                boletoDTO.setEstado(EstadoBoleto.CANCELADO);
+                try {
+                    controlerBoleto.actualizar(boletoDTO);
+                }catch (NegocioException ex){
+                    ex.printStackTrace();
+                }
                 panelNavegacion.changePanel("cartelera");
             }
         });
