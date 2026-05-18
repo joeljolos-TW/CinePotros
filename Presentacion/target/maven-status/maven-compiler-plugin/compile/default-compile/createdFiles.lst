@@ -2,7 +2,6 @@ Elements\Utileria\UtilGeneral.class
 Elements\Buttons\GenericButton.class
 Elements\Panels\BillboardPanel.class
 Elements\Panels\MovieCarousel$2.class
-<<<<<<< Updated upstream
 Elements\Panels\MisBoletosPanel$2.class
 Elements\Panels\MovieCover.class
 Elements\Panels\ValidacionBoleto\BoletoValidadoPanel.class
@@ -23,16 +22,5 @@ Elements\Panels\SwitchPanel.class
 Elements\Panels\MisBoletosPanel.class
 Elements\Panels\Payment\PaymentSummary.class
 Elements\Panels\Payment\PaymentSummary$2.class
-=======
-Elements\Panels\MovieCover.class
-Elements\Displays\TestDisplay.class
-Elements\Panels\MovieCarousel$1.class
-Elements\Panels\MovieCarousel.class
-Elements\Panels\GeneracionBoletoPanel.class
-Elements\Panels\SeleccionFuncionPanel.class
-Elements\Panels\SeleccionAsientosPanel.class
-Elements\Panels\MovieCover$1.class
-Elements\Panels\SwitchPanel.class
->>>>>>> Stashed changes
 Main\Main.class
 Elements\Panels\Refreshable.class

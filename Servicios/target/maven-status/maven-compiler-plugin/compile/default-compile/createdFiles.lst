@@ -1,10 +1,12 @@
 BO\BoletoBO.class
 DTOs\CancelarBoletoDTO.class
+Control\ControlEntidades.class
 Mediator\PanelMediator.class
 BO\IPeliculaBO.class
 DTOs\SeleccionPeliculaDTO.class
 BO\PeliculaBO.class
 itson\servicios\SubsistemaPago.class
+Control\ControlFactory.class
 adaptadores\BoletoNegocioAdapter.class
 DTOs\FuncionDTO.class
 BO\IBoletoBO.class
@@ -12,7 +14,7 @@ BO\CancelacionBO.class
 BO\FuncionBO.class
 DTOs\BoletoDTO.class
 BO\IFuncionBO.class
-Control\ControlCancelacion.class
+DTOs\PeliculaDTO.class
 Control\IControlEntidades.class
 DTOs\SalaDTO.class
 BO\ICancelacionBO.class

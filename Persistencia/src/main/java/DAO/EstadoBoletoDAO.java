@@ -23,7 +23,7 @@ public class EstadoBoletoDAO {
     public EstadoBoletoDAO() {
         this.coleccion = ConexionMongoDB.getInstance()
                 .getDatabase()
-                .getCollection("boletos", BoletoMongoEntidad.class);
+                .getCollection("boleto", BoletoMongoEntidad.class);
     }
 
     public boolean actualizarEstado(String id, EstadoBoleto nuevoEstado) throws PersistenciaException {
