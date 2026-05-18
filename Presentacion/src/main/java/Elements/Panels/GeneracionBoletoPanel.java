@@ -4,10 +4,17 @@
  */
 package Elements.Panels;
 
+import Control.ControlFactory;
+import Control.IControlEntidades;
 import DTO.ValidacionDTO;
 import DTOs.BoletoDTO;
+import DTOs.FuncionDTO;
+import DTOs.PeliculaDTO;
+import DTOs.SalaDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
+import excepcion.NegocioException;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -15,6 +22,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -34,9 +42,15 @@ public class GeneracionBoletoPanel extends JPanel {
 
     private SwitchPanel panelNavegacion;
     private BoletoDTO boletoDTO;
+    private IControlEntidades<PeliculaDTO> controlerPelicula;
+    private IControlEntidades<FuncionDTO> controlerFuncion;
+    private  IControlEntidades<SalaDTO> controlerSala;
 
     public GeneracionBoletoPanel() {
         this.panelNavegacion = SwitchPanel.getInstance();
+        this.controlerPelicula = ControlFactory.getPeliculaControl();
+        this.controlerFuncion = ControlFactory.getFuncionControl();
+        this.controlerSala = ControlFactory.getSalaControl();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
@@ -48,6 +62,9 @@ public class GeneracionBoletoPanel extends JPanel {
 
     public GeneracionBoletoPanel(BoletoDTO boletoDTO){
         this.boletoDTO = boletoDTO;
+        this.controlerPelicula = ControlFactory.getPeliculaControl();
+        this.controlerFuncion = ControlFactory.getFuncionControl();
+        this.controlerSala = ControlFactory.getSalaControl();
         this.panelNavegacion = SwitchPanel.getInstance();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
@@ -72,23 +89,26 @@ public class GeneracionBoletoPanel extends JPanel {
 
     private JPanel construirContenido() {
         JPanel contenedor = new JPanel(new GridBagLayout());
-        contenedor.setBackground(UtilGeneral.FONDO_PRINCIPAL);
-        contenedor.setBorder(new EmptyBorder(40, 80, 40, 80));
+        try {
+            contenedor.setBackground(UtilGeneral.FONDO_PRINCIPAL);
+            contenedor.setBorder(new EmptyBorder(40, 80, 40, 80));
 
-        JPanel tarjeta = new JPanel(new BorderLayout(40, 0));
-        tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
-        tarjeta.setBorder(BorderFactory.createCompoundBorder(
-                new LineBorder(UtilGeneral.BORDE, 1),
-                new EmptyBorder(30, 30, 30, 30)
-        ));
-        tarjeta.add(construirDatosBoleto(), BorderLayout.CENTER);
-        tarjeta.add(construirPanelQR(), BorderLayout.EAST);
-        contenedor.add(tarjeta);
+            JPanel tarjeta = new JPanel(new BorderLayout(40, 0));
+            tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
+            tarjeta.setBorder(BorderFactory.createCompoundBorder(
+                    new LineBorder(UtilGeneral.BORDE, 1),
+                    new EmptyBorder(30, 30, 30, 30)
+            ));
+            tarjeta.add(construirDatosBoleto(), BorderLayout.CENTER);
+            tarjeta.add(construirPanelQR(), BorderLayout.EAST);
+            contenedor.add(tarjeta);
+        }catch (NegocioException e){
+            System.err.println("No jalo en construir contenido");
+        }
         return contenedor;
-
     }
 
-    private JPanel construirDatosBoleto() {
+    private JPanel construirDatosBoleto() throws NegocioException {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setOpaque(false);
@@ -99,16 +119,42 @@ public class GeneracionBoletoPanel extends JPanel {
         subtitulo.setBorder(new EmptyBorder(0, 0, 20, 0));
         panel.add(subtitulo);
 
-        panel.add(crearFilaDato("Película", "Avatar 3"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Cine", "Cinépolis Bella Vista"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Función", "03 de febrero · 6:30 PM"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Sala", "Sala 4"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Asientos", "F5, F6"));
-        panel.add(Box.createVerticalStrut(24));
+        if(boletoDTO.getIdFuncion() != null){
+            FuncionDTO funcion = controlerFuncion.obtenerPorIdPorId(boletoDTO.getIdFuncion());
+            PeliculaDTO pelicula = controlerPelicula.obtenerPorIdPorId(funcion.getIdPelicula());
+            SalaDTO sala = controlerSala.obtenerPorIdPorId(funcion.getSalaFuncion());
+            panel.add(crearFilaDato("Pelicula", pelicula.getTitulo()));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Cine", "Cinépolis Bella Vista"));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Función", funcion.getFecha() + funcion.getHora()));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Sala", sala.getNombre()));
+            panel.add(Box.createVerticalStrut(14));
+            List<String> asientos = boletoDTO.getNumAsiento();
+            String asientosComprados = "";
+            int contador = 0;
+            for(String a : asientos){
+                asientosComprados += a;
+                contador++;
+                if(contador != asientos.size()){
+                    asientosComprados += ", ";
+                }
+            }
+            panel.add(crearFilaDato("Asientos", asientosComprados));
+            panel.add(Box.createVerticalStrut(24));
+        }else{
+            panel.add(crearFilaDato("Película", "Avatar 3"));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Cine", "Cinépolis Bella Vista"));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Función", "03 de febrero · 6:30 PM"));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Sala", "Sala 4"));
+            panel.add(Box.createVerticalStrut(14));
+            panel.add(crearFilaDato("Asientos", "F5, F6"));
+            panel.add(Box.createVerticalStrut(24));
+        }
 
         JSeparator sep = new JSeparator();
         sep.setForeground(UtilGeneral.BORDE);
@@ -123,7 +169,8 @@ public class GeneracionBoletoPanel extends JPanel {
         lblMontoTotal.setFont(UtilGeneral.FUENTE_SUBTITULO);
         lblMontoTotal.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
 
-        JLabel lblMonto = new JLabel("$144.00");
+        //JLabel lblMonto = new JLabel(boletoDTO.getTotal().toString());
+        JLabel lblMonto = new JLabel("$100.00");
         lblMonto.setFont(new Font("SansSerif", Font.BOLD, 22));
         lblMonto.setForeground(UtilGeneral.BOTON_AZUL);
 

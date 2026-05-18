@@ -101,6 +101,17 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
  
         panelPeli.add(poster);
         panelPeli.add(titulo);
+
+        if (funciones.isEmpty()) {
+            JLabel lblNoFunciones = new JLabel("No hay funciones disponibles para esta película.", SwingConstants.CENTER);
+            lblNoFunciones.setForeground(Color.YELLOW);
+            lblNoFunciones.setFont(new Font("Arial", Font.ITALIC, 16));
+            lblNoFunciones.setAlignmentX(Component.CENTER_ALIGNMENT);
+            contenedor.add(panelPeli);
+            contenedor.add(Box.createVerticalStrut(30));
+            contenedor.add(lblNoFunciones);
+            return contenedor;
+        }
  
         // ── FECHAS ÚNICAS ─────────────────────────────────────────────────────
         JPanel panelDias = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 20));
@@ -111,16 +122,24 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         for (FuncionDTO f : funciones) {
             fechasUnicas.add(f.getFecha());
         }
- 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
+
+        DateTimeFormatter filtroInput = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatoVisual = DateTimeFormatter.ofPattern("dd MMM");
         for (String fecha : fechasUnicas) {
+            String textoBoton = fecha;
+            try {
+                LocalDate fechaParsed = LocalDate.parse(fecha, filtroInput);
+                textoBoton = fechaParsed.format(formatoVisual);
+            } catch (Exception e) {
+                //Logica de excepcion
+            }
             JButton btnDia = new JButton(fecha);
             btnDia.setFont(new Font("Arial", Font.BOLD, 13));
             btnDia.setFocusPainted(false);
             btnDia.setPreferredSize(new Dimension(110, 35));
             btnDia.setCursor(new Cursor(Cursor.HAND_CURSOR));
- 
-            if (fecha.equals(fechaSeleccionada)) {
+
+            if (fechaSeleccionada != null && fechaSeleccionada.equals(fecha)) {
                 btnDia.setBackground(AZUL_CLARO);
                 btnDia.setForeground(TEXTO_BLANCO);
                 btnDia.setBorder(null);
@@ -147,7 +166,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         // Agrupar funciones por sala para la fecha seleccionada
         Set<String> salasVistas = new LinkedHashSet<>();
         for (FuncionDTO f : funciones) {
-            if (f.getFecha().equals(fechaSeleccionada)) {
+            if (fechaSeleccionada != null && fechaSeleccionada.equals(f.getFecha())) {
                 SalaDTO sala = controler.obtenerPorIdPorId(f.getSalaFuncion());
                 salasVistas.add(sala.getNombre());
             }
@@ -157,7 +176,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
             List<FuncionDTO> funcionesDeSala = new ArrayList<>();
             for (FuncionDTO f : funciones) {
                 SalaDTO sala = controler.obtenerPorIdPorId(f.getSalaFuncion());
-                if (f.getFecha().equals(fechaSeleccionada)
+                if (fechaSeleccionada != null && fechaSeleccionada.equals(f.getFecha())
                         && sala.getNombre().equals(nombreSala)) {
                     funcionesDeSala.add(f);
                 }
@@ -227,13 +246,18 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
  
         try {
             funciones = funcionBO.obtenerPorPelicula(selectedMovie.getId());
+            if (funciones != null) {
+                funciones.sort((f1, f2) -> f1.getFecha().compareTo(f2.getFecha()));
+            }
         } catch (NegocioException e) {
             funciones = new ArrayList<>();
         }
  
         // Seleccionar la primera fecha disponible por defecto
-        if (!funciones.isEmpty()) {
+        if (funciones != null && !funciones.isEmpty()) {
             fechaSeleccionada = funciones.get(0).getFecha();
+        } else {
+            fechaSeleccionada = "";
         }
  
         recargarContenido();

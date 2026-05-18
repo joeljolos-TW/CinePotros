@@ -2,12 +2,15 @@ package Control;
 
 import DAO.BoletoDAO;
 import DAO.FuncionDAO;
+import DAO.PeliculaDAO;
 import DAO.SalaDAO;
 import DTOs.BoletoDTO;
 import DTOs.FuncionDTO;
+import DTOs.PeliculaDTO;
 import DTOs.SalaDTO;
 import entidadesMongo.BoletoMongoEntidad;
 import entidadesMongo.FuncionMongoEntidad;
+import entidadesMongo.PeliculaMongoEntidad;
 import entidadesMongo.SalaMongoEntidad;
 import itson.dominio.Sala;
 import itson.dominio.TipoSala;
@@ -38,6 +41,15 @@ public class ControlFactory {
                 new SalaDAO(),
                 dto -> convertirSalaDTOAEntidad(dto),
                 ent -> convertirSalaEntidadADTO(ent),
+                idStr -> new ObjectId(idStr)
+        );
+    }
+
+    public static IControlEntidades<PeliculaDTO> getPeliculaControl(){
+        return new ControlEntidades<>(
+                new PeliculaDAO(),
+                dto -> convertirPeliculaDTOAEntidad(dto),
+                ent -> convertirPeliculaEntidadADTO(ent),
                 idStr -> new ObjectId(idStr)
         );
     }
@@ -81,8 +93,6 @@ public class ControlFactory {
             FuncionMongoEntidad funcion = funcionDAO.obtenerPorId(entidad.getFuncion());
 
             if (funcion != null) {
-                dto.setSala(funcion.getSala() != null ? funcion.getSala().toString() : "");
-                dto.setPelicula(funcion.getPelicula() != null ? funcion.getPelicula().toString() : "");
                 dto.setFecha(funcion.getFecha());
                 dto.setHora(funcion.getHora());
             }
@@ -181,6 +191,44 @@ public class ControlFactory {
         dto.setTipoSala(entidad.getTipo().toString());
         dto.setNombre(entidad.getNombre());
         dto.setCapacidad(entidad.getCapacidad());
+
+        return dto;
+    }
+
+    private static PeliculaMongoEntidad convertirPeliculaDTOAEntidad(PeliculaDTO dto){
+        if(dto == null) return null;
+
+        PeliculaMongoEntidad entidad = new PeliculaMongoEntidad();
+
+        if(dto.getId() != null && !dto.getId().trim().isBlank()){
+            entidad.setId(new ObjectId(dto.getId()));
+        }
+
+        entidad.setTitulo(dto.getTitulo());
+        entidad.setClasificacion(dto.getClasificacion());
+        entidad.setGenero(dto.getGenero());
+        entidad.setDuracion(dto.getDuracion());
+        entidad.setCategoria(dto.getCategoria());
+        entidad.setImagen(dto.getImagen());
+
+        return entidad;
+    }
+
+    private static PeliculaDTO convertirPeliculaEntidadADTO(PeliculaMongoEntidad entidad){
+        if(entidad == null) return null;
+
+        PeliculaDTO dto = new PeliculaDTO();
+
+        if(entidad.getId() != null){
+            dto.setId(entidad.getId().toString());
+        }
+
+        dto.setTitulo(entidad.getTitulo());
+        dto.setClasificacion(entidad.getClasificacion());
+        dto.setGenero(entidad.getGenero());
+        dto.setDuracion(entidad.getDuracion());
+        dto.setCategoria(entidad.getCategoria());
+        dto.setImagen(entidad.getImagen());
 
         return dto;
     }

@@ -16,22 +16,19 @@ import java.util.List;
  */
 public class BoletoDTO {
     private String id;
-    private String pelicula;
-    private String idSala;
     private String idFuncion;
     private List<String> numAsiento;
     private String fecha;
     private String hora;
     private Double total;
     private EstadoBoleto estado;
+    private byte[] qr;
 
     public BoletoDTO() {
     }
 
-    public BoletoDTO(String id, String pelicula, String sala, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado) {
+    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado, byte[] qr) {
         this.id = id;
-        this.pelicula = pelicula;
-        this.idSala = sala;
         this.idFuncion = funcion;
         this.numAsiento = numAsiento;
         this.fecha = fecha;
@@ -47,6 +44,15 @@ public class BoletoDTO {
             default:
                 this.estado = EstadoBoleto.PENDIENTE;
         }
+        this.qr = qr;
+    }
+
+    public void setQr(byte[] qr) {
+        this.qr = qr;
+    }
+
+    public byte[] getQr() {
+        return qr;
     }
 
     public String getId() {
@@ -55,22 +61,6 @@ public class BoletoDTO {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPelicula() {
-        return pelicula;
-    }
-
-    public void setPelicula(String pelicula) {
-        this.pelicula = pelicula;
-    }
-
-    public String getSala() {
-        return idSala;
-    }
-
-    public void setSala(String sala) {
-        this.idSala = sala;
     }
 
     public List<String> getNumAsiento() {
@@ -125,8 +115,6 @@ public class BoletoDTO {
     public String toString() {
         return "BoletoDTO{"
                 + "id='" + id + '\''
-                + ", pelicula='" + pelicula + '\''
-                + ", sala='" + idSala + '\''
                 + ", numAsiento=" + numAsiento
                 + ", fecha=" + fecha
                 + ", hora=" + hora

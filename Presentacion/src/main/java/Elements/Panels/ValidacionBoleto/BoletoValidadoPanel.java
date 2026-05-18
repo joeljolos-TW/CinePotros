@@ -4,13 +4,14 @@ import DTO.ValidacionDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.SwitchPanel;
 import Elements.Utileria.UtilGeneral;
+import Mediator.PanelMediator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
 public class BoletoValidadoPanel extends JPanel {
-    private SwitchPanel panelNavegacion;
+    private PanelMediator panelNavegacion;
     private ValidacionDTO validacionDTO;
 
     public BoletoValidadoPanel(ValidacionDTO validacionDTO) {

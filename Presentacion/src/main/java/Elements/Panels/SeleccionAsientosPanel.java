@@ -34,7 +34,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     // -----------------------------------------------------------------------
     // Constantes de negocio
     // -----------------------------------------------------------------------
-    private static final double PRECIO_POR_ASIENTO = 120.0;
+    private static final double PRECIO_POR_ASIENTO = 72.0;
 
     // -----------------------------------------------------------------------
     // Navegacion y mediador
@@ -69,9 +69,10 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     private JLabel lblTotal;
     private JTextField txtCodigoPromo;
 
-    public SeleccionAsientosPanel() {
+    public SeleccionAsientosPanel(FuncionDTO funcionDTO) {
         this.panelMediator = SwitchPanel.getInstance();
         this.promoDAO = new PromocionDAO();
+        this.funcionActual = funcionDTO;
         this.promocionAplicada = null;
         this.totalConDescuento = 0.0;
         this.controler = ControlFactory.getSalaControl();
@@ -109,18 +110,17 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
 
-        // Info de la función si ya se recibió
-        if (funcionActual != null) {
-            String fecha = funcionActual.getFecha();
-            String hora  = funcionActual.getHora();
-            SalaDTO salaUsada = controler.obtenerPorIdPorId(funcionActual.getSalaFuncion());
-            String sala  = salaUsada.getNombre();
-            JLabel lblFuncion = new JLabel(sala + "  ·  " + fecha + " - " + hora, SwingConstants.CENTER);
-            lblFuncion.setFont(new Font("Arial", Font.PLAIN, 13));
-            lblFuncion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
-            lblFuncion.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-            contenedorCentral.add(lblFuncion, BorderLayout.NORTH);
-        }
+        // Aqui habia un if
+
+        String fecha = funcionActual.getFecha();
+        String hora = funcionActual.getHora();
+        SalaDTO salaUsada = controler.obtenerPorIdPorId(funcionActual.getSalaFuncion());
+        String sala = salaUsada.getNombre();
+        JLabel lblFuncion = new JLabel(sala + "  ·  " + fecha + " - " + hora, SwingConstants.CENTER);
+        lblFuncion.setFont(new Font("Arial", Font.PLAIN, 13));
+        lblFuncion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
+        lblFuncion.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        contenedorCentral.add(lblFuncion, BorderLayout.NORTH);
 
         JLabel pantalla = new JLabel("P A N T A L L A", SwingConstants.CENTER);
         pantalla.setOpaque(true);
@@ -342,8 +342,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         double subtotal = asientosSeleccionados.size() * PRECIO_POR_ASIENTO;
         double total    = calcularTotal(subtotal);
         double descuento = subtotal - total;
+        byte [] qr = {}; //Arreglo vacio
 
-        BoletoDTO boleto = new BoletoDTO(null, funcionActual.getIdPelicula(), funcionActual.getSalaFuncion(), funcionActual.getId(), new ArrayList<>(asientosSeleccionados), funcionActual.getFecha(), funcionActual.getHora(), total, "PENDIENTE");
+        BoletoDTO boleto = new BoletoDTO(null, funcionActual.getId(), new ArrayList<>(asientosSeleccionados), funcionActual.getFecha(), funcionActual.getHora(), total, "PENDIENTE", qr);
         // Guardamos descuento en el DTO si BoletoDTO lo soporta (extensible)
         panelMediator.changePanel("generacionBoleto", boleto);
     }
