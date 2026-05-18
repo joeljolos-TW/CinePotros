@@ -1,27 +1,39 @@
 package Elements.Panels.ValidacionBoleto;
 
+import Control.ControlFactory;
+import Control.IControlEntidades;
 import DTO.ValidacionDTO;
+import DTOs.BoletoDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.SwitchPanel;
+import Elements.Panels.Refreshable;
 import Elements.Utileria.UtilGeneral;
+import Mediator.PanelMediator;
+import excepcion.NegocioException;
+import itson.dominio.EstadoBoleto;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
-public class BoletoValidadoPanel extends JPanel {
-    private SwitchPanel panelNavegacion;
+public class BoletoValidadoPanel extends JPanel implements Refreshable {
+    private PanelMediator panelNavegacion;
     private ValidacionDTO validacionDTO;
+    private JPanel contenedorCentral;
+    private IControlEntidades<BoletoDTO> controlerBoleto;
 
-    public BoletoValidadoPanel(ValidacionDTO validacionDTO) {
-        this.validacionDTO = validacionDTO;
+    public BoletoValidadoPanel() {
         this.panelNavegacion = SwitchPanel.getInstance();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
         add(construirEncabezado(), BorderLayout.NORTH);
-        add(construirContenido(), BorderLayout.CENTER);
         add(construirPieDePagina(), BorderLayout.SOUTH);
+
+        contenedorCentral = new JPanel(new GridBagLayout());
+        contenedorCentral.setBackground(UtilGeneral.FONDO_ENCABEZADO);
+        add(contenedorCentral, BorderLayout.CENTER);
     }
 
     private JPanel construirEncabezado() {
@@ -29,7 +41,7 @@ public class BoletoValidadoPanel extends JPanel {
         encabezado.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         encabezado.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
 
-        JLabel titulo = new JLabel("Validacion del boleto");
+        JLabel titulo = new JLabel("Validación del boleto");
         titulo.setFont(UtilGeneral.FUENTE_TITULO);
         titulo.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
         encabezado.add(titulo, BorderLayout.WEST);
@@ -37,24 +49,28 @@ public class BoletoValidadoPanel extends JPanel {
         return encabezado;
     }
 
-    private JPanel construirContenido(){
-        JPanel contenido = new JPanel(new GridBagLayout());
-        contenido.setBackground(UtilGeneral.FONDO_ENCABEZADO);
+    private void actualizarContenidoDinamico() throws NegocioException {
+        contenedorCentral.removeAll();
+
+        if (validacionDTO == null) {
+            contenedorCentral.add(new JLabel("No hay datos de validación disponibles."));
+            return;
+        }
 
         String titulo;
         String descripcion;
-        ImageIcon img;
-//        if(validacionDTO.isVerificado()){
-        if(true){
-            titulo = "Boleto valido";
-            descripcion = "Se ha usado el boleto";
+        ImageIcon img = null;
+
+        if (validacionDTO.isVerificado()) {
+            titulo = "Boleto válido";
+            descripcion = "Se ha usado el boleto con éxito";
             URL url = getClass().getResource("/images/check.png");
-            img = new ImageIcon(url);
+            if (url != null) img = new ImageIcon(url);
         } else {
-            titulo = "Boleto invalido";
-            descripcion = validacionDTO.getRazon();
+            titulo = "Boleto inválido";
+            descripcion = validacionDTO.getRazon() != null ? validacionDTO.getRazon() : "Razón desconocida";
             URL url = getClass().getResource("/images/cross.png");
-            img = new ImageIcon(url);
+            if (url != null) img = new ImageIcon(url);
         }
 
         JLabel lblTitulo = new JLabel(titulo, SwingConstants.CENTER);
@@ -66,7 +82,12 @@ public class BoletoValidadoPanel extends JPanel {
         lblDescripcion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
 
         JLabel imagen = new JLabel();
-        imagen.setIcon(img);
+        if (img != null) {
+            imagen.setIcon(img);
+        } else {
+            imagen.setText("[Imagen no encontrada]");
+            imagen.setForeground(Color.GRAY);
+        }
         imagen.setHorizontalAlignment(SwingConstants.CENTER);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -75,25 +96,41 @@ public class BoletoValidadoPanel extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        contenido.add(lblTitulo, gbc);
+        contenedorCentral.add(lblTitulo, gbc);
 
         gbc.gridy = 1;
-        contenido.add(imagen, gbc);
+        contenedorCentral.add(imagen, gbc);
 
         gbc.gridy = 2;
-        contenido.add(lblDescripcion, gbc);
+        contenedorCentral.add(lblDescripcion, gbc);
 
-        return contenido;
+        BoletoDTO boleto = controlerBoleto.obtenerPorId(validacionDTO.getIdBoleto().toString());
+        boleto.setEstado(EstadoBoleto.ESCANEADO);
+        controlerBoleto.actualizar(boleto);
     }
 
-    private JPanel construirPieDePagina(){
+    private JPanel construirPieDePagina() {
         JPanel pieDePagina = new JPanel();
         pieDePagina.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         GenericButton btnContinuar = new GenericButton("Continuar", false, 20, 200, 50, Color.WHITE, new Color(85, 60, 230), Color.RED);
-        btnContinuar.addActionListener(e -> panelNavegacion.changePanel("generacionBoleto"));
+        btnContinuar.addActionListener(e -> panelNavegacion.changePanel("cartelera")); // Volver a cartelera al terminar el flujo
 
         pieDePagina.add(btnContinuar);
-
         return pieDePagina;
+    }
+
+    @Override
+    public void onShow(Object object) {
+        if (object instanceof ValidacionDTO vDTO) {
+            this.validacionDTO = vDTO;
+        }
+        try {
+            actualizarContenidoDinamico();
+        }catch (NegocioException e){
+            e.printStackTrace();
+        }
+
+        revalidate();
+        repaint();
     }
 }

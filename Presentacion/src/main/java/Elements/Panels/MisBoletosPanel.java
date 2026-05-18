@@ -5,10 +5,15 @@
 package Elements.Panels;
 
 import BO.BoletoBO;
+import Control.ControlFactory;
+import Control.IControlEntidades;
 import DTOs.BoletoDTO;
+import DTOs.FuncionDTO;
+import DTOs.PeliculaDTO;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
 import control.ControlCancelacion;
+import excepcion.NegocioException;
 import itson.dominio.EstadoBoleto;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -35,11 +40,15 @@ public class MisBoletosPanel extends JPanel implements Refreshable{
     private final ControlCancelacion control;
     private final PanelMediator mediador;
     private final BoletoBO boletoBO;
+    private IControlEntidades<FuncionDTO> controlerFuncion;
+    private IControlEntidades<PeliculaDTO> controlerPelicula;
 
     public MisBoletosPanel() {
         this.control = new ControlCancelacion();
         this.mediador = SwitchPanel.getInstance();
         this.boletoBO = new BoletoBO();
+        this.controlerPelicula = ControlFactory.getPeliculaControl();
+        this.controlerFuncion = ControlFactory.getFuncionControl();
 
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
@@ -102,6 +111,8 @@ public class MisBoletosPanel extends JPanel implements Refreshable{
         }
     }
     private JPanel tarjetaBoleto(BoletoDTO boleto) {
+
+    private JPanel tarjetaBoleto(BoletoDTO boleto) throws NegocioException {
         JPanel tarjeta = new JPanel(new BorderLayout());
         tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
         tarjeta.setBorder(BorderFactory.createCompoundBorder(
@@ -112,7 +123,9 @@ public class MisBoletosPanel extends JPanel implements Refreshable{
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
         info.setOpaque(false);
 
-        JLabel lblPelicula = new JLabel(boleto.getPelicula());
+        FuncionDTO funcion = controlerFuncion.obtenerPorId(boleto.getIdFuncion());
+        PeliculaDTO pelicula = controlerPelicula.obtenerPorId(funcion.getIdPelicula());
+        JLabel lblPelicula = new JLabel(pelicula.getTitulo());
         lblPelicula.setFont(UtilGeneral.FUENTE_SUBTITULO);
         lblPelicula.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
         JLabel lblInfo = new JLabel(boleto.getNumAsiento() + " . " + boleto.getFecha() + " . " + boleto.getHora());

@@ -3,6 +3,8 @@ package Elements.Displays;
 import javax.swing.*;
 
 import DTO.ValidacionDTO;
+import DTOs.BoletoDTO;
+import DTOs.FuncionDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.*;
 import Elements.Panels.Payment.PaymentSummary;
@@ -25,13 +27,13 @@ public class TestDisplay extends JFrame {
         BillboardPanel cartelera = new BillboardPanel();
 
         // Instanciar todas las pantallas
-        SeleccionAsientosPanel asientos = new SeleccionAsientosPanel();
+        SeleccionAsientosPanel asientos = new SeleccionAsientosPanel(new FuncionDTO());
         SeleccionFuncionPanel funciones = new SeleccionFuncionPanel();
-        GeneracionBoletoPanel boleto = new GeneracionBoletoPanel();
+        GeneracionBoletoPanel boleto = new GeneracionBoletoPanel(new BoletoDTO());
         PaymentSummary pago = new PaymentSummary();
         MisBoletosPanel misBoletos = new MisBoletosPanel();
         ConfirmacionCancelacionPanel confirmacion = new ConfirmacionCancelacionPanel();
-        BoletoValidadoPanel infoValidacion = new BoletoValidadoPanel(new ValidacionDTO());
+        BoletoValidadoPanel infoValidacion = new BoletoValidadoPanel();
 
         // Agregar las pantallas al SwitchPanel
         panelNavegacion.addPanel(cartelera, "cartelera");

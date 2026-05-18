@@ -39,7 +39,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     // -----------------------------------------------------------------------
     // Constantes de negocio
     // -----------------------------------------------------------------------
-    private static final double PRECIO_POR_ASIENTO = 120.0;
+    private static final double PRECIO_POR_ASIENTO = 72.0;
 
     // -----------------------------------------------------------------------
     // Navegacion y mediador
@@ -63,9 +63,10 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     private double totalConDescuento;
 
     // -----------------------------------------------------------------------
-    // Controller
+    // Controllers
     // -----------------------------------------------------------------------
-    private IControlEntidades<SalaDTO> controler;
+    private IControlEntidades<SalaDTO> controlerSala;
+    private IControlEntidades<BoletoDTO> controlerBoleto;
 
     // -----------------------------------------------------------------------
     // Componentes de UI dinamicos
@@ -76,12 +77,14 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     private JLabel lblTotal;
     private JTextField txtCodigoPromo;
 
-    public SeleccionAsientosPanel() {
+    public SeleccionAsientosPanel(FuncionDTO funcionDTO) {
         this.panelMediator = SwitchPanel.getInstance();
         this.promoDAO = new PromocionDAO();
+        this.funcionActual = funcionDTO;
         this.promocionAplicada = null;
         this.totalConDescuento = 0.0;
-        this.controler = ControlFactory.getSalaControl();
+        this.controlerSala = ControlFactory.getSalaControl();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
 
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
@@ -93,6 +96,8 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         } catch (NegocioException e) {
             //Logica de excepcion jaja
         }
+        add(construirEncabezado(), BorderLayout.NORTH);
+        add(construirPiePagina(), BorderLayout.SOUTH);
     }
 
     private JPanel construirEncabezado() {
@@ -128,6 +133,15 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
             lblFuncion.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
             contenedorCentral.add(lblFuncion, BorderLayout.NORTH);
         }
+        String fecha = funcionActual.getFecha();
+        String hora = funcionActual.getHora();
+        SalaDTO salaUsada = controlerSala.obtenerPorId(funcionActual.getSalaFuncion());
+        String sala = salaUsada.getNombre();
+        JLabel lblFuncion = new JLabel(sala + "  ·  " + fecha + " - " + hora, SwingConstants.CENTER);
+        lblFuncion.setFont(new Font("Arial", Font.PLAIN, 13));
+        lblFuncion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
+        lblFuncion.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        contenedorCentral.add(lblFuncion, BorderLayout.NORTH);
 
         JLabel pantalla = new JLabel("P A N T A L L A", SwingConstants.CENTER);
         pantalla.setOpaque(true);
@@ -155,6 +169,12 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
             JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
             matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
             matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+        String[] filas = {"A", "B", "C", "D", "E"};
+        List<BoletoDTO> boletos = boletosNoCancelados();
+        List<String> asientos = new ArrayList<>();
+        if(!boletos.isEmpty()){
+            boletos.stream().map(BoletoDTO::getNumAsiento).forEach(asientos::addAll);
+        }
 
             for (AsientoDTO asiento : asientosReales) {
                 String idAsiento = asiento.getCodigo();
@@ -185,6 +205,13 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
                         actualizarPrecios();
                     });
                 }
+            boolean estaOcupado = false;
+            for (String o : asientos) {
+                if (o.equals(idAsiento)) {
+                    estaOcupado = true;
+                    break;
+                }
+            }
 
                 botonesAsiento.add(btnAsiento);
                 matriz.add(btnAsiento);
@@ -296,7 +323,13 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         GenericButton confirmBtn = new GenericButton(
                 "Confirmar Compra", true, 10, 160, 110,
                 UtilGeneral.TEXTO_PRINCIPAL, UtilGeneral.BOTON_AZUL, UtilGeneral.FONDO_SECUNDARIO);
-        confirmBtn.addActionListener(e -> confirmarCompra());
+        confirmBtn.addActionListener(e -> {
+                try {
+                    confirmarCompra();
+                }catch (NegocioException ex){
+                    ex.printStackTrace();
+                }
+        });
 
         panelBotones.add(backBtn);
         panelBotones.add(confirmBtn);
@@ -385,7 +418,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
      * Confirma la compra generando un BoletoDTO y navegando al panel de
      * generación.
      */
-    public void confirmarCompra() {
+    public void confirmarCompra() throws NegocioException{
         if (asientosSeleccionados.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "Por favor selecciona al menos un asiento.",
@@ -425,6 +458,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
                     "Error al guardar el boleto: " + ex.getMessage(),
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
+        BoletoDTO boleto = new BoletoDTO(null, funcionActual.getId(), new ArrayList<>(asientosSeleccionados), funcionActual.getFecha(), funcionActual.getHora(), total, "PENDIENTE");
+        boleto = controlerBoleto.agregar(boleto);
+        panelMediator.changePanel("generacionBoleto", boleto);
     }
 
     // -----------------------------------------------------------------------
@@ -456,6 +492,12 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         }
     }
 
+    private List<BoletoDTO> boletosNoCancelados() throws NegocioException{
+        List<BoletoDTO> boletos = controlerBoleto.obtenerTodos();
+        boletos.removeIf(boleto -> boleto.getEstado() == EstadoBoleto.CANCELADO);
+        return boletos;
+    }
+
     @Override
     public void onShow(Object object) {
         try {
@@ -478,11 +520,15 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
                 remove(panelCentral);
             }
             panelCentral = construirMatrizAsientos();
-            add(panelCentral, BorderLayout.CENTER);
+
+            if (funcionActual != null) {
+                panelCentral = construirMatrizAsientos();
+                add(panelCentral, BorderLayout.CENTER);
+            }
             revalidate();
             repaint();
-        } catch (NegocioException e) {
-            // Logica de excepcion
+        }catch (NegocioException e){
+            e.printStackTrace();
         }
     }
 }

@@ -4,25 +4,23 @@
  */
 package Elements.Panels;
 
+import Control.ControlFactory;
+import Control.IControlEntidades;
 import DTO.ValidacionDTO;
 import DTOs.BoletoDTO;
+import DTOs.FuncionDTO;
+import DTOs.PeliculaDTO;
+import DTOs.SalaDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridBagLayout;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
+import Generador.ConvertidorBoletoQR;
+import excepcion.NegocioException;
+import itson.dominio.EstadoBoleto;
+
+import java.awt.*;
+import java.io.File;
+import java.util.List;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import com.google.zxing.BarcodeFormat;
@@ -36,31 +34,49 @@ import javax.swing.ImageIcon;
  *
  * @author
  */
-public class GeneracionBoletoPanel extends JPanel implements Refreshable {
+public class GeneracionBoletoPanel extends JPanel implements Refreshable{
 
     private SwitchPanel panelNavegacion;
     private BoletoDTO boletoDTO;
+    private IControlEntidades<PeliculaDTO> controlerPelicula;
+    private IControlEntidades<FuncionDTO> controlerFuncion;
+    private IControlEntidades<SalaDTO> controlerSala;
+    private IControlEntidades<BoletoDTO> controlerBoleto;
+    private JPanel contenedorCentral;
+    private ConvertidorBoletoQR generadorQR;
 
     public GeneracionBoletoPanel() {
         this.panelNavegacion = SwitchPanel.getInstance();
+        this.controlerPelicula = ControlFactory.getPeliculaControl();
+        this.controlerFuncion = ControlFactory.getFuncionControl();
+        this.controlerSala = ControlFactory.getSalaControl();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
+        this.generadorQR = new ConvertidorBoletoQR();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
         add(construirEncabezado(), BorderLayout.NORTH);
-        add(construirContenido(), BorderLayout.CENTER);
         add(construirPiePagina(), BorderLayout.SOUTH);
 
     }
 
     public GeneracionBoletoPanel(BoletoDTO boletoDTO) {
         this.boletoDTO = boletoDTO;
+        this.controlerPelicula = ControlFactory.getPeliculaControl();
+        this.controlerFuncion = ControlFactory.getFuncionControl();
+        this.controlerSala = ControlFactory.getSalaControl();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
         this.panelNavegacion = SwitchPanel.getInstance();
+        this.generadorQR = new ConvertidorBoletoQR();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
         add(construirEncabezado(), BorderLayout.NORTH);
-        add(construirContenido(), BorderLayout.CENTER);
         add(construirPiePagina(), BorderLayout.SOUTH);
+
+        contenedorCentral = new JPanel(new GridBagLayout());
+        contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
+        add(contenedorCentral, BorderLayout.CENTER);
     }
 
     private JPanel construirEncabezado() {
@@ -76,25 +92,34 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable {
         return encabezado;
     }
 
-    private JPanel construirContenido() {
+    private JPanel construirContenido() throws NegocioException{
         JPanel contenedor = new JPanel(new GridBagLayout());
         contenedor.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         contenedor.setBorder(new EmptyBorder(40, 80, 40, 80));
-
-        JPanel tarjeta = new JPanel(new BorderLayout(40, 0));
+        JPanel tarjeta = new JPanel(new GridBagLayout());
         tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
         tarjeta.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(UtilGeneral.BORDE, 1),
                 new EmptyBorder(30, 30, 30, 30)
         ));
-        tarjeta.add(construirDatosBoleto(), BorderLayout.CENTER);
-        tarjeta.add(construirPanelQR(), BorderLayout.EAST);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 40);
+        tarjeta.add(construirDatosBoleto(), gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.fill = java.awt.GridBagConstraints.NONE;
+        gbc.insets = new java.awt.Insets(0, 0, 0, 0);
+        tarjeta.add(construirPanelQR(), gbc);
         contenedor.add(tarjeta);
         return contenedor;
-
     }
 
-    private JPanel construirDatosBoleto() {
+    private JPanel construirDatosBoleto() throws NegocioException {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setOpaque(false);
@@ -150,10 +175,38 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable {
         fila.add(lblValor);
         return fila;
     }
+    private void actualizarContenidoDinamico() {
+        contenedorCentral.removeAll();
+        contenedorCentral.setBorder(new EmptyBorder(40, 80, 40, 80));
+
+        if (boletoDTO == null) {
+            contenedorCentral.add(new JLabel("No hay información de boleto cargada."));
+            return;
+        }
+
+        try {
+            JPanel tarjeta = new JPanel(new BorderLayout(40, 0));
+            tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
+            tarjeta.setBorder(BorderFactory.createCompoundBorder(
+                    new LineBorder(UtilGeneral.BORDE, 1),
+                    new EmptyBorder(30, 30, 30, 30)
+            ));
+
+            tarjeta.add(construirDatosBoleto(), BorderLayout.CENTER);
+            tarjeta.add(construirPanelQR(), BorderLayout.EAST);
+            contenedorCentral.add(tarjeta);
+
+        } catch (NegocioException e) {
+            System.err.println("Error al obtener datos de los controladores: " + e.getMessage());
+            contenedorCentral.add(new JLabel("Error al cargar los datos del boleto."));
+        }
+    }
 
     private JPanel construirPanelQR() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setPreferredSize(new Dimension(180, 180));
+        panel.setMaximumSize(new Dimension(180, 180));
+        panel.setMinimumSize(new Dimension(180, 180));
         panel.setOpaque(false);
 
         JLabel qrLabel;
@@ -176,6 +229,27 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable {
         qrLabel.setMaximumSize(new Dimension(180, 180));
         qrLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(qrLabel);
+        JLabel qr = new JLabel("", SwingConstants.CENTER);
+        qr.setOpaque(true);
+        qr.setBackground(new Color(16, 27, 45));
+        qr.setPreferredSize(new Dimension(176, 176));
+        qr.setMaximumSize(new Dimension(176, 176));
+        qr.setMinimumSize(new Dimension(176, 176));
+        qr.setBorder(new LineBorder(UtilGeneral.BORDE, 2));
+
+        String rutaQR = generadorQR.generarQRAsRutaTemporal(boletoDTO);
+
+        if (rutaQR != null && new File(rutaQR).exists()) {
+            ImageIcon iconQR = new ImageIcon(rutaQR);
+            Image imgEscalada = iconQR.getImage().getScaledInstance(160, 160, Image.SCALE_SMOOTH);
+            qr.setIcon(new ImageIcon(imgEscalada));
+        } else {
+            qr.setText("Error QR");
+            qr.setFont(new Font("SansSerif", Font.BOLD, 14));
+            qr.setForeground(Color.RED);
+        }
+
+        panel.add(qr);
         return panel;
 
     }
@@ -220,4 +294,13 @@ public class GeneracionBoletoPanel extends JPanel implements Refreshable {
         }
     }
 
+        if (object instanceof BoletoDTO bDTO) {
+            this.boletoDTO = bDTO; //
+        }
+
+        actualizarContenidoDinamico();
+
+        revalidate();
+        repaint();
+    }
 }

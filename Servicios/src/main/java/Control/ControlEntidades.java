@@ -22,7 +22,7 @@ public class ControlEntidades<DTO, Entidad, ID> implements IControlEntidades<DTO
     }
 
     @Override
-    public DTO obtenerPorIdPorId(String id) throws NegocioException {
+    public DTO obtenerPorId(String id) throws NegocioException {
         try {
             ID idConvertido = convertidorId.apply(id);
             Entidad entidad = dao.obtenerPorId(idConvertido);
@@ -49,13 +49,14 @@ public class ControlEntidades<DTO, Entidad, ID> implements IControlEntidades<DTO
     }
 
     @Override
-    public void agregar(DTO dto) throws NegocioException {
+    public DTO agregar(DTO dto) throws NegocioException {
         try{
             Entidad entidad = toEntidad.apply(dto);
             Entidad insertado = dao.insertar(entidad);
             if(insertado == null){
                 throw new NegocioException("No se pudo guardar la entidad");
             }
+            return toDTO.apply(insertado);
         }catch (Exception e){
             throw new NegocioException("Error al insertar la entidad: " + e.getMessage());
         }
