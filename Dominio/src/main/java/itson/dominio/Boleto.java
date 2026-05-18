@@ -16,6 +16,7 @@ public class Boleto {
     private List<String> numAsiento;
     private Double total;
     private EstadoBoleto estado;
+    
     public Boleto() {
     }
     

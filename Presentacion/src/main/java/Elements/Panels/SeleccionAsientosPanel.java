@@ -125,7 +125,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
         String[] filas = {"A", "B", "C", "D", "E"};
-        int[] ocupados = {12, 13, 25};
+        int[] ocupados = {};
 
         for (int i = 0; i < 40; i++) {
             String fila = filas[i / 8];
@@ -329,9 +329,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         double total    = calcularTotal(subtotal);
         double descuento = subtotal - total;
 
-        BoletoDTO boleto = new BoletoDTO(false, null, funcionActual, new ArrayList<>(asientosSeleccionados));
-        // Guardamos descuento en el DTO si BoletoDTO lo soporta (extensible)
-        panelMediator.changePanel("generacionBoleto", boleto);
+//        BoletoDTO boleto = new BoletoDTO(false, null, funcionActual, new ArrayList<>(asientosSeleccionados));
+//        // Guardamos descuento en el DTO si BoletoDTO lo soporta (extensible)
+//        panelMediator.changePanel("generacionBoleto", boleto);
     }
 
     // -----------------------------------------------------------------------

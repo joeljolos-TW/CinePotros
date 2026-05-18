@@ -41,6 +41,7 @@ public class BoletoPersistenciaAdapter {
         entidad.setNumAsiento(boleto.getNumAsiento());
         entidad.setTotal(boleto.getTotal());
         entidad.setEstado(boleto.getEstado());
+        
         return entidad;
     }
     /**
