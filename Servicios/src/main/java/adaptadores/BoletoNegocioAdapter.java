@@ -43,6 +43,10 @@ public class BoletoNegocioAdapter {
         dto.setTotal(boleto.getTotal());
         dto.setEstado(boleto.getEstado());
 
+        if (pelicula != null) {
+            dto.setTituloPelicula(pelicula.getTitulo());
+        }
+
         return dto;
     }
 

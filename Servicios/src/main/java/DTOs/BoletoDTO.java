@@ -12,9 +12,11 @@ import java.util.List;
 
 /**
  * DTO para mostrar la información de un boleto en pantalla.
+ *
  * @author Jazmin
  */
 public class BoletoDTO {
+
     private String id;
     private String idFuncion;
     private List<String> numAsiento;
@@ -22,6 +24,7 @@ public class BoletoDTO {
     private String hora;
     private Double total;
     private EstadoBoleto estado;
+    private String tituloPelicula;
 
     public BoletoDTO() {
     }
@@ -33,12 +36,12 @@ public class BoletoDTO {
         this.fecha = fecha;
         this.hora = hora;
         this.total = total;
-        switch (estado){
-            case "PENDIENTE" :
+        switch (estado) {
+            case "PENDIENTE":
                 this.estado = EstadoBoleto.PENDIENTE;
-            case "ESCANEADO" :
+            case "ESCANEADO":
                 this.estado = EstadoBoleto.ESCANEADO;
-            case "CANCELADO" :
+            case "CANCELADO":
                 this.estado = EstadoBoleto.CANCELADO;
             default:
                 this.estado = EstadoBoleto.PENDIENTE;
@@ -99,6 +102,14 @@ public class BoletoDTO {
 
     public String getIdFuncion() {
         return idFuncion;
+    }
+
+    public String getTituloPelicula() {
+        return tituloPelicula;
+    }
+
+    public void setTituloPelicula(String tituloPelicula) {
+        this.tituloPelicula = tituloPelicula;
     }
 
     @Override
