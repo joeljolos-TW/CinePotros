@@ -1,7 +1,10 @@
 package Elements.Panels;
 
 import BO.FuncionBO;
+import Control.ControlFactory;
+import Control.IControlEntidades;
 import DTOs.FuncionDTO;
+import DTOs.SalaDTO;
 import DTOs.SeleccionPeliculaDTO;
 import Mediator.PanelMediator;
 import excepcion.NegocioException;
@@ -33,13 +36,15 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
     private final Color TEXTO_BLANCO = Color.WHITE;
     private SeleccionPeliculaDTO selectedMovie;
     private List<FuncionDTO> funciones;
-    private LocalDate fechaSeleccionada;
+    private String fechaSeleccionada;
     private final FuncionBO funcionBO;
+    private IControlEntidades<SalaDTO> controler;
  
     public SeleccionFuncionPanel() {
         this.panelMediator = SwitchPanel.getInstance();
         this.funcionBO = new FuncionBO();
         this.funciones = new ArrayList<>();
+        this.controler = ControlFactory.getSalaControl();
         setBackground(AZUL_OSCURO);
         setLayout(new BorderLayout());
         add(construirPanelSuperior(), BorderLayout.NORTH);
@@ -63,7 +68,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         return panelAtras;
     }
  
-    private JPanel construirContenidoCentrado() {
+    private JPanel construirContenidoCentrado() throws NegocioException{
         JPanel contenedor = new JPanel();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.Y_AXIS));
         contenedor.setBackground(AZUL_OSCURO);
@@ -102,14 +107,14 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         panelDias.setOpaque(false);
         panelDias.setMaximumSize(new Dimension(800, 100));
  
-        Set<LocalDate> fechasUnicas = new LinkedHashSet<>();
+        Set<String> fechasUnicas = new LinkedHashSet<>();
         for (FuncionDTO f : funciones) {
             fechasUnicas.add(f.getFecha());
         }
  
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
-        for (LocalDate fecha : fechasUnicas) {
-            JButton btnDia = new JButton(fecha.format(formatter));
+        for (String fecha : fechasUnicas) {
+            JButton btnDia = new JButton(fecha);
             btnDia.setFont(new Font("Arial", Font.BOLD, 13));
             btnDia.setFocusPainted(false);
             btnDia.setPreferredSize(new Dimension(110, 35));
@@ -143,15 +148,17 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         Set<String> salasVistas = new LinkedHashSet<>();
         for (FuncionDTO f : funciones) {
             if (f.getFecha().equals(fechaSeleccionada)) {
-                salasVistas.add(f.getSalaFuncion().getNombre());
+                SalaDTO sala = controler.obtenerPorIdPorId(f.getSalaFuncion());
+                salasVistas.add(sala.getNombre());
             }
         }
  
         for (String nombreSala : salasVistas) {
             List<FuncionDTO> funcionesDeSala = new ArrayList<>();
             for (FuncionDTO f : funciones) {
+                SalaDTO sala = controler.obtenerPorIdPorId(f.getSalaFuncion());
                 if (f.getFecha().equals(fechaSeleccionada)
-                        && f.getSalaFuncion().getNombre().equals(nombreSala)) {
+                        && sala.getNombre().equals(nombreSala)) {
                     funcionesDeSala.add(f);
                 }
             }
@@ -185,7 +192,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
  
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         for (FuncionDTO funcion : funcionesSala) {
-            JButton btnH = new JButton(funcion.getHora().format(timeFormatter));
+            JButton btnH = new JButton(funcion.getHora());
             btnH.setBackground(AZUL_CLARO);
             btnH.setForeground(TEXTO_BLANCO);
             btnH.setFont(new Font("Arial", Font.BOLD, 14));
@@ -201,11 +208,15 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
     }
  
     private void recargarContenido() {
-        removeAll();
-        add(construirPanelSuperior(), BorderLayout.NORTH);
-        add(new JScrollPane(construirContenidoCentrado()), BorderLayout.CENTER);
-        revalidate();
-        repaint();
+        try {
+            removeAll();
+            add(construirPanelSuperior(), BorderLayout.NORTH);
+            add(new JScrollPane(construirContenidoCentrado()), BorderLayout.CENTER);
+            revalidate();
+            repaint();
+        }catch (NegocioException e){
+            //Logica de excepcion
+        }
     }
  
     @Override

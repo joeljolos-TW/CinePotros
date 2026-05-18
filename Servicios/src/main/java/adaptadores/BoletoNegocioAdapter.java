@@ -40,8 +40,8 @@ public class BoletoNegocioAdapter {
         dto.setPelicula(pelicula.getTitulo());
         dto.setSala(funcion.getSala().toHexString());
         dto.setNumAsiento(boleto.getNumAsiento());
-        dto.setFecha(LocalDate.parse(funcion.getFecha()));
-        dto.setHora(LocalTime.parse(funcion.getHora()));
+        dto.setFecha(funcion.getFecha());
+        dto.setHora(funcion.getHora());
         dto.setTotal(boleto.getTotal());
         dto.setEstado(boleto.getEstado());
 

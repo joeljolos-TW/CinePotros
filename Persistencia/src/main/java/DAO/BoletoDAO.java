@@ -12,7 +12,7 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 import entidadesMongo.BoletoMongoEntidad;
 
-public class BoletoDAO {
+public class BoletoDAO implements IDAOGenerico<BoletoMongoEntidad, ObjectId> {
 
     private final MongoCollection<BoletoMongoEntidad> coleccion;
 
@@ -20,15 +20,20 @@ public class BoletoDAO {
         this.coleccion = ConexionMongoDB.getInstance().getDatabase().getCollection("boleto",BoletoMongoEntidad.class);
     }
 
+    // ── CREATE ────────────────────────────────────────────────────────────────
+    @Override
     public BoletoMongoEntidad insertar(BoletoMongoEntidad entidad) {
         coleccion.insertOne(entidad);
         return entidad;
     }
 
+    // ── READ ──────────────────────────────────────────────────────────────────
+    @Override
     public List<BoletoMongoEntidad> obtenerTodos() {
        return coleccion.find().into(new ArrayList<>());
     }
 
+    @Override
     public BoletoMongoEntidad obtenerPorId(ObjectId id) {
         return coleccion.find(eq("_id",id)).first();
     }
@@ -41,6 +46,10 @@ public class BoletoDAO {
         UpdateResult resultado = coleccion.replaceOne(eq("_id", entidad.getId()), entidad);
         return resultado.getModifiedCount() > 0;
     }
+
+    // ── DELETE ────────────────────────────────────────────────────────────────
+
+    @Override
     public boolean eliminar(ObjectId id) {
         DeleteResult resultado = coleccion.deleteOne(eq("_id", id));
         return resultado.getDeletedCount() > 0;

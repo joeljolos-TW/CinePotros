@@ -12,7 +12,7 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 import entidadesMongo.UsuarioMongoEntidad;
 
-public class UsuarioDAO {
+public class UsuarioDAO implements IDAOGenerico<UsuarioMongoEntidad, ObjectId>{
 
     private final MongoCollection<UsuarioMongoEntidad> coleccion;
 
@@ -23,18 +23,19 @@ public class UsuarioDAO {
     }
 
     // ── CREATE ────────────────────────────────────────────────────────────────
-
+    @Override
     public UsuarioMongoEntidad insertar(UsuarioMongoEntidad entidad) {
         coleccion.insertOne(entidad);
         return entidad;
     }
 
     // ── READ ──────────────────────────────────────────────────────────────────
-
+    @Override
     public List<UsuarioMongoEntidad> obtenerTodos() {
         return coleccion.find().into(new ArrayList<>());
     }
 
+    @Override
     public UsuarioMongoEntidad obtenerPorId(ObjectId id) {
         return coleccion.find(eq("_id", id)).first();
     }
@@ -57,19 +58,14 @@ public class UsuarioDAO {
 //    }
 
     // ── UPDATE ────────────────────────────────────────────────────────────────
-
-    /**
-     * 
-     * @param entidad
-     * @return 
-     */
+    @Override
     public boolean actualizar(UsuarioMongoEntidad entidad) {
         UpdateResult resultado = coleccion.replaceOne(eq("_id", entidad.getId()), entidad);
         return resultado.getModifiedCount() > 0;
     }
 
     // ── DELETE ────────────────────────────────────────────────────────────────
-
+    @Override
     public boolean eliminar(ObjectId id) {
         DeleteResult resultado = coleccion.deleteOne(eq("_id", id));
         return resultado.getDeletedCount() > 0;

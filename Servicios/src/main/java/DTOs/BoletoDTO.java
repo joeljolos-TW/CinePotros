@@ -4,6 +4,7 @@
  */
 package DTOs;
 
+import BO.IFuncionBO;
 import itson.dominio.EstadoBoleto;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,24 +18,35 @@ public class BoletoDTO {
     private String id;
     private String pelicula;
     private String idSala;
+    private String idFuncion;
     private List<String> numAsiento;
-    private LocalDate fecha;
-    private LocalTime hora;
+    private String fecha;
+    private String hora;
     private Double total;
     private EstadoBoleto estado;
 
     public BoletoDTO() {
     }
 
-    public BoletoDTO(String id, String pelicula, String sala, List<String> numAsiento, LocalDate fecha, LocalTime hora, Double total, EstadoBoleto estado) {
+    public BoletoDTO(String id, String pelicula, String sala, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado) {
         this.id = id;
         this.pelicula = pelicula;
         this.idSala = sala;
+        this.idFuncion = funcion;
         this.numAsiento = numAsiento;
         this.fecha = fecha;
         this.hora = hora;
         this.total = total;
-        this.estado = estado;
+        switch (estado){
+            case "PENDIENTE" :
+                this.estado = EstadoBoleto.PENDIENTE;
+            case "ESCANEADO" :
+                this.estado = EstadoBoleto.ESCANEADO;
+            case "CANCELADO" :
+                this.estado = EstadoBoleto.CANCELADO;
+            default:
+                this.estado = EstadoBoleto.PENDIENTE;
+        }
     }
 
     public String getId() {
@@ -69,19 +81,19 @@ public class BoletoDTO {
         this.numAsiento = numAsiento;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -100,8 +112,16 @@ public class BoletoDTO {
     public void setEstado(EstadoBoleto estado) {
         this.estado = estado;
     }
-    
-     @Override
+
+    public void setIdFuncion(String idFuncion) {
+        this.idFuncion = idFuncion;
+    }
+
+    public String getIdFuncion() {
+        return idFuncion;
+    }
+
+    @Override
     public String toString() {
         return "BoletoDTO{"
                 + "id='" + id + '\''
