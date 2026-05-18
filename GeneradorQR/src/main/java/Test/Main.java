@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-<<<<<<< Updated upstream
+            /*
 //        ConvertidorBoletoQR convertidorBoletoQR = new ConvertidorBoletoQR();
 //        Pelicula pelicula = new Pelicula(
 //                new ObjectId("69f7e4cc6915e34dc99ac87c"),
@@ -79,6 +79,6 @@ public class Main {
                 funcion.getPrecio()
         );
         convertidorBoletoQR.generarQRDeBoleto(boleto, "src/main/resources/boleto_qr-1.png");
->>>>>>> Stashed changes
+             */
     }
 }

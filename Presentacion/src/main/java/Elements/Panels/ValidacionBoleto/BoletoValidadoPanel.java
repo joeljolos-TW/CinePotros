@@ -4,7 +4,6 @@ import DTO.ValidacionDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Panels.SwitchPanel;
 import Elements.Utileria.UtilGeneral;
-import jdk.jshell.execution.Util;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +44,7 @@ public class BoletoValidadoPanel extends JPanel {
         String titulo;
         String descripcion;
         ImageIcon img;
-
+//        if(validacionDTO.isVerificado()){
         if(true){
             titulo = "Boleto valido";
             descripcion = "Se ha usado el boleto";
@@ -86,41 +85,7 @@ public class BoletoValidadoPanel extends JPanel {
 
         return contenido;
     }
-/*
-    private JPanel construirContenido(){
-        JPanel contenido = new JPanel(new BorderLayout());
-        contenido.setBackground(UtilGeneral.FONDO_ENCABEZADO);
-        String titulo;
-        String descripcion;
-        ImageIcon img;
-//        if(validacionDTO.isVerificado()){
-        if(true){
-            titulo = "Boleto valido";
-            descripcion = "Se ha usado el boleto";
-            URL url = getClass().getResource("/images/check.png");
-            img = new ImageIcon(url);
-        }else{
-            titulo = "Boleto invalido";
-            descripcion = validacionDTO.getRazon();
-            URL url = getClass().getResource("/images/cross.png");
-            img = new ImageIcon(url);
-        }
-        JLabel lblTitulo = new JLabel(titulo);
-        lblTitulo.setFont(UtilGeneral.FUENTE_SUBTITULO);
-        lblTitulo.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
-        JLabel lblDescripcion = new JLabel(descripcion);
-        lblDescripcion.setFont(UtilGeneral.FUENTE_CUERPO);
-        lblDescripcion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
-        JLabel imagen = new JLabel();
-        imagen.setIcon(img);
 
-        contenido.add(lblTitulo, BorderLayout.NORTH);
-        contenido.add(imagen, BorderLayout.CENTER);
-        contenido.add(lblDescripcion, BorderLayout.SOUTH);
-
-        return contenido;
-    }
-*/
     private JPanel construirPieDePagina(){
         JPanel pieDePagina = new JPanel();
         pieDePagina.setBackground(UtilGeneral.FONDO_ENCABEZADO);

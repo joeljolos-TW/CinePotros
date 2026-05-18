@@ -5,7 +5,7 @@ package Test;
 public class MainTestDAOs {
 
     public static void main(String[] args) {
-<<<<<<< Updated upstream
+/*
 //        try {
 //            probarPeliculaDAO();
 //            probarFuncionDAO();
@@ -224,7 +224,6 @@ public class MainTestDAOs {
 //        // Limpieza — eliminar la función de prueba
 //        funcionDAO.eliminar(idFuncion);
 //        System.out.println("CLEAN   → función de prueba eliminada");
-=======
         try {
             probarPeliculaDAO();
             probarFuncionDAO();
@@ -443,6 +442,7 @@ public class MainTestDAOs {
         // Limpieza — eliminar la función de prueba
         //funcionDAO.eliminar(idFuncion);
         //System.out.println("CLEAN   → función de prueba eliminada");
->>>>>>> Stashed changes
+
+ */
     }
 }

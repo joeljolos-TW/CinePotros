@@ -1,16 +1,19 @@
 package Elements.Panels;
 
+import Control.ControlFactory;
+import Control.IControlEntidades;
 import DAO.PromocionDAO;
 import DTOs.BoletoDTO;
 import DTOs.FuncionDTO;
+import DTOs.SalaDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
+import excepcion.NegocioException;
 import itson.dominio.Promocion;
 import itson.dominio.TipoPromocion;
 
 import java.awt.*;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -53,6 +56,11 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     private double totalConDescuento;
 
     // -----------------------------------------------------------------------
+    // Controller
+    // -----------------------------------------------------------------------
+    private IControlEntidades<SalaDTO> controler;
+
+    // -----------------------------------------------------------------------
     // Componentes de UI dinamicos
     // -----------------------------------------------------------------------
     private JPanel panelCentral;
@@ -66,13 +74,18 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         this.promoDAO = new PromocionDAO();
         this.promocionAplicada = null;
         this.totalConDescuento = 0.0;
+        this.controler = ControlFactory.getSalaControl();
 
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
-        add(construirEncabezado(), BorderLayout.NORTH);
-        panelCentral = construirMatrizAsientos();
-        add(panelCentral, BorderLayout.CENTER);
-        add(construirPiePagina(), BorderLayout.SOUTH);
+        try{
+            add(construirEncabezado(), BorderLayout.NORTH);
+            panelCentral = construirMatrizAsientos();
+            add(panelCentral, BorderLayout.CENTER);
+            add(construirPiePagina(), BorderLayout.SOUTH);
+        }catch (NegocioException e){
+            //Logica de excepcion jaja
+        }
     }
 
     private JPanel construirEncabezado() {
@@ -88,7 +101,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         return encabezado;
     }
 
-    private JPanel construirMatrizAsientos() {
+    private JPanel construirMatrizAsientos() throws NegocioException{
         asientosSeleccionados.clear();
         botonesAsiento.clear();
 
@@ -98,9 +111,10 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
         // Info de la función si ya se recibió
         if (funcionActual != null) {
-            String fecha = funcionActual.getFecha().format(DateTimeFormatter.ofPattern("dd 'de' MMMM"));
-            String hora  = funcionActual.getHora().format(DateTimeFormatter.ofPattern("HH:mm"));
-            String sala  = funcionActual.getSalaFuncion().getNombre();
+            String fecha = funcionActual.getFecha();
+            String hora  = funcionActual.getHora();
+            SalaDTO salaUsada = controler.obtenerPorIdPorId(funcionActual.getSalaFuncion());
+            String sala  = salaUsada.getNombre();
             JLabel lblFuncion = new JLabel(sala + "  ·  " + fecha + " - " + hora, SwingConstants.CENTER);
             lblFuncion.setFont(new Font("Arial", Font.PLAIN, 13));
             lblFuncion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
@@ -329,7 +343,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         double total    = calcularTotal(subtotal);
         double descuento = subtotal - total;
 
-        BoletoDTO boleto = new BoletoDTO(false, null, funcionActual, new ArrayList<>(asientosSeleccionados));
+        BoletoDTO boleto = new BoletoDTO(null, funcionActual.getIdPelicula(), funcionActual.getSalaFuncion(), funcionActual.getId(), new ArrayList<>(asientosSeleccionados), funcionActual.getFecha(), funcionActual.getHora(), total, "PENDIENTE");
         // Guardamos descuento en el DTO si BoletoDTO lo soporta (extensible)
         panelMediator.changePanel("generacionBoleto", boleto);
     }
@@ -364,16 +378,20 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
     @Override
     public void onShow(Object object) {
-        if (object instanceof FuncionDTO funcion) {
-            funcionActual = funcion;
+        try {
+            if (object instanceof FuncionDTO funcion) {
+                funcionActual = funcion;
+            }
+
+            limpiarEstado();
+
+            if (panelCentral != null) remove(panelCentral);
+            panelCentral = construirMatrizAsientos();
+            add(panelCentral, BorderLayout.CENTER);
+            revalidate();
+            repaint();
+        }catch (NegocioException e){
+            //Logica de excepcion jaja
         }
-
-        limpiarEstado();
-
-        if (panelCentral != null) remove(panelCentral);
-        panelCentral = construirMatrizAsientos();
-        add(panelCentral, BorderLayout.CENTER);
-        revalidate();
-        repaint();
     }
 }

@@ -2,10 +2,15 @@ package Control;
 
 import DAO.BoletoDAO;
 import DAO.FuncionDAO;
+import DAO.SalaDAO;
 import DTOs.BoletoDTO;
 import DTOs.FuncionDTO;
+import DTOs.SalaDTO;
 import entidadesMongo.BoletoMongoEntidad;
 import entidadesMongo.FuncionMongoEntidad;
+import entidadesMongo.SalaMongoEntidad;
+import itson.dominio.Sala;
+import itson.dominio.TipoSala;
 import org.bson.types.ObjectId;
 
 public class ControlFactory {
@@ -24,6 +29,15 @@ public class ControlFactory {
                 new FuncionDAO(),
                 dto -> convertirFuncionDTOAEntidad(dto),
                 ent -> convertirFuncionEntidadADTO(ent),
+                idStr -> new ObjectId(idStr)
+        );
+    }
+
+    public static IControlEntidades<SalaDTO> getSalaControl(){
+        return new ControlEntidades<>(
+                new SalaDAO(),
+                dto -> convertirSalaDTOAEntidad(dto),
+                ent -> convertirSalaEntidadADTO(ent),
                 idStr -> new ObjectId(idStr)
         );
     }
@@ -126,6 +140,47 @@ public class ControlFactory {
 
         dto.setPrecio(entidad.getPrecio());
         dto.setIdioma(entidad.getIdioma());
+
+        return dto;
+    }
+
+    private static SalaMongoEntidad convertirSalaDTOAEntidad(SalaDTO dto){
+        if(dto == null) return null;
+
+        SalaMongoEntidad entidad = new SalaMongoEntidad();
+
+        if(dto.getId() != null && !dto.getId().trim().isBlank()){
+            entidad.setId(new ObjectId(dto.getId()));
+        }
+
+        switch (dto.getTipoSala()){
+            case "TRADICIONAL" :
+                entidad.setTipo(TipoSala.TRADICIONAL);
+            case "VIP" :
+                entidad.setTipo(TipoSala.VIP);
+            case "KIDS" :
+                entidad.setTipo(TipoSala.KIDS);
+            default:
+                entidad.setTipo(TipoSala.TRADICIONAL);
+        }
+
+        entidad.setCapacidad(dto.getCapacidad());
+
+        return entidad;
+    }
+
+    private static SalaDTO convertirSalaEntidadADTO(SalaMongoEntidad entidad){
+        if(entidad == null) return null;
+
+        SalaDTO dto = new SalaDTO();
+
+        if(entidad.getId() != null){
+            dto.setId(entidad.getId().toString());
+        }
+
+        dto.setTipoSala(entidad.getTipo().toString());
+        dto.setNombre(entidad.getNombre());
+        dto.setCapacidad(entidad.getCapacidad());
 
         return dto;
     }

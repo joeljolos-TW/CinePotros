@@ -9,12 +9,35 @@ package DTOs;
  * @author axelm
  */
 public class SalaDTO {
+    private String id;
     private String tipoSala;
     private String nombre;
+    private int capacidad;
 
-    public SalaDTO(String tipoSala, String nombre) {
+    public SalaDTO() {
+    }
+
+    public SalaDTO(String id, String tipoSala, String nombre, int capacidad) {
+        this.id = id;
         this.tipoSala = tipoSala;
         this.nombre = nombre;
+        this.capacidad = capacidad;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
     }
 
     public String getTipoSala() {
@@ -32,5 +55,5 @@ public class SalaDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

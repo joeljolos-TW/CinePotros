@@ -28,7 +28,7 @@ public class BoletoDTO {
     public BoletoDTO() {
     }
 
-    public BoletoDTO(String id, String pelicula, String sala, String funcion, List<String> numAsiento, String fecha, String hora, Double total, EstadoBoleto estado) {
+    public BoletoDTO(String id, String pelicula, String sala, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado) {
         this.id = id;
         this.pelicula = pelicula;
         this.idSala = sala;
@@ -37,7 +37,16 @@ public class BoletoDTO {
         this.fecha = fecha;
         this.hora = hora;
         this.total = total;
-        this.estado = estado;
+        switch (estado){
+            case "PENDIENTE" :
+                this.estado = EstadoBoleto.PENDIENTE;
+            case "ESCANEADO" :
+                this.estado = EstadoBoleto.ESCANEADO;
+            case "CANCELADO" :
+                this.estado = EstadoBoleto.CANCELADO;
+            default:
+                this.estado = EstadoBoleto.PENDIENTE;
+        }
     }
 
     public String getId() {

@@ -25,11 +25,12 @@ public class FuncionDTO {
     public FuncionDTO() {
     }
     
-    public FuncionDTO(String id,String fecha, String hora, String sala) {
+    public FuncionDTO(String id, String fecha, String hora, String sala, Double precio) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.idSala = sala;
+        this.precio = precio;
     }
 
     public FuncionDTO(String id, Double precio, String idSala, String idPelicula, String hora, String fecha, String idioma) {

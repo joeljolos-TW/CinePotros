@@ -49,16 +49,11 @@ public class FuncionBO implements IFuncionBO {
                     continue;
                 }
 
-                SalaDTO salaDTO = new SalaDTO(
-                        sala.getTipo().toString(),
-                        sala.getNombre()
-                );
-
                 FuncionDTO dto = new FuncionDTO(
                         funcion.getId().toHexString(),
-                        LocalDate.parse(funcion.getFecha()), 
-                        LocalTime.parse(funcion.getHora()), 
-                        salaDTO,
+                        funcion.getFecha(),
+                        funcion.getHora(),
+                        sala.getId().toString(),
                         funcion.getPrecio());
                 
                 dtos.add(dto);
