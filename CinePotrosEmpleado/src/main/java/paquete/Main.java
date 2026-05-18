@@ -1,6 +1,6 @@
-package Main;
+package paquete;
 
-import Pantallas.VentanaPrincipal;
+import paquete.VentanaPrincipal;
 import javax.swing.SwingUtilities;
 
 public class Main {

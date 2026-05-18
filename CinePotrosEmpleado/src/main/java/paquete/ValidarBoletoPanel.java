@@ -1,4 +1,4 @@
-package Pantallas;
+package paquete;
 
 import Control.ControlFactory;
 import Control.IControlEntidades;
@@ -16,8 +16,8 @@ import java.util.List;
 /**
  * Panel principal del empleado.
  *
- * Muestra una tabla con todos los boletos (fecha, hora, asientos, total,
- * estado). El empleado identifica el boleto del cliente visualmente,
+ * Muestra una tabla con todos los boletos (película, fecha, hora, asientos,
+ * total, estado). El empleado identifica el boleto del cliente visualmente,
  * lo selecciona y presiona "Marcar como PAGADO".
  */
 public class ValidarBoletoPanel extends JPanel {
@@ -36,7 +36,8 @@ public class ValidarBoletoPanel extends JPanel {
     private static final Font FUENTE_CUERPO    = new Font("SansSerif", Font.PLAIN, 13);
 
     // ── Columnas de la tabla ──────────────────────────────────────────────────
-    private static final String[] COLUMNAS = {"Fecha", "Hora", "Asientos", "Total", "Estado"};
+    private static final String[] COLUMNAS = {"Película", "Fecha", "Hora", "Asientos", "Total", "Estado"};
+    private static final int COL_ESTADO = 5;
 
     // ── Componentes ───────────────────────────────────────────────────────────
     private JTable tabla;
@@ -123,7 +124,7 @@ public class ValidarBoletoPanel extends JPanel {
         }
 
         // Columna Estado con color según valor
-        tabla.getColumnModel().getColumn(4).setCellRenderer(new DefaultTableCellRenderer() {
+        tabla.getColumnModel().getColumn(COL_ESTADO).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable t, Object value,
                     boolean isSelected, boolean hasFocus, int row, int col) {
@@ -190,14 +191,14 @@ public class ValidarBoletoPanel extends JPanel {
             }
 
             for (BoletoDTO b : boletos) {
-                String asientos = b.getNumAsiento() != null
-                        ? String.join(", ", b.getNumAsiento()) : "—";
-                String total  = b.getTotal()  != null ? "$" + String.format("%.2f", b.getTotal()) : "—";
-                String fecha  = b.getFecha()  != null ? b.getFecha()  : "—";
-                String hora   = b.getHora()   != null ? b.getHora()   : "—";
-                String estado = b.getEstado() != null ? b.getEstado().name() : "—";
+                String pelicula = b.getTituloPelicula() != null ? b.getTituloPelicula() : "—";
+                String asientos = b.getNumAsiento()     != null ? String.join(", ", b.getNumAsiento()) : "—";
+                String total    = b.getTotal()          != null ? "$" + String.format("%.2f", b.getTotal()) : "—";
+                String fecha    = b.getFecha()          != null ? b.getFecha()  : "—";
+                String hora     = b.getHora()           != null ? b.getHora()   : "—";
+                String estado   = b.getEstado()         != null ? b.getEstado().name() : "—";
 
-                modeloTabla.addRow(new Object[]{fecha, hora, asientos, total, estado});
+                modeloTabla.addRow(new Object[]{pelicula, fecha, hora, asientos, total, estado});
             }
 
             lblMensaje.setText("Selecciona un boleto PENDIENTE para marcarlo como pagado.");
@@ -235,15 +236,16 @@ public class ValidarBoletoPanel extends JPanel {
         if (fila < 0 || boletos == null || fila >= boletos.size()) return;
 
         BoletoDTO seleccionado = boletos.get(fila);
-        String asientos = seleccionado.getNumAsiento() != null
-                ? String.join(", ", seleccionado.getNumAsiento()) : "—";
+        String asientos = seleccionado.getNumAsiento()     != null ? String.join(", ", seleccionado.getNumAsiento()) : "—";
+        String pelicula = seleccionado.getTituloPelicula() != null ? seleccionado.getTituloPelicula() : "—";
 
         int respuesta = JOptionPane.showConfirmDialog(
                 this,
                 "¿Confirmas el pago del boleto?\n\n"
-                + "Fecha:    " + seleccionado.getFecha() + "  " + seleccionado.getHora() + "\n"
-                + "Asientos: " + asientos + "\n"
-                + "Total:    $" + String.format("%.2f", seleccionado.getTotal()),
+                + "Película:  " + pelicula + "\n"
+                + "Fecha:     " + seleccionado.getFecha() + "  " + seleccionado.getHora() + "\n"
+                + "Asientos:  " + asientos + "\n"
+                + "Total:     $" + String.format("%.2f", seleccionado.getTotal()),
                 "Confirmar pago",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE
@@ -254,7 +256,7 @@ public class ValidarBoletoPanel extends JPanel {
         try {
             seleccionado.setEstado(EstadoBoleto.PAGADO);
             controlBoleto.actualizar(seleccionado);
-            cargarBoletos(); // refrescar la tabla
+            cargarBoletos();
             JOptionPane.showMessageDialog(this,
                     "Boleto marcado como PAGADO exitosamente.",
                     "Éxito", JOptionPane.INFORMATION_MESSAGE);
