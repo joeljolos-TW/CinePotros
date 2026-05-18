@@ -10,7 +10,7 @@ import org.bson.types.ObjectId;
  *
  * @author Jazmin
  */
-public class    PeliculaMongoEntidad {
+public class PeliculaMongoEntidad {
      private ObjectId id;
     private String titulo;
     private String clasificacion;

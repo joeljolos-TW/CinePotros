@@ -38,16 +38,22 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
     private List<FuncionDTO> funciones;
     private String fechaSeleccionada;
     private final FuncionBO funcionBO;
-    private IControlEntidades<SalaDTO> controler;
+    private IControlEntidades<SalaDTO> controlerSala;
+    private IControlEntidades<FuncionDTO> controlerFuncion;
  
     public SeleccionFuncionPanel() {
-        this.panelMediator = SwitchPanel.getInstance();
         this.funcionBO = new FuncionBO();
-        this.funciones = new ArrayList<>();
-        this.controler = ControlFactory.getSalaControl();
-        setBackground(AZUL_OSCURO);
-        setLayout(new BorderLayout());
-        add(construirPanelSuperior(), BorderLayout.NORTH);
+        try {
+            this.panelMediator = SwitchPanel.getInstance();
+            this.controlerFuncion = ControlFactory.getFuncionControl();
+            this.funciones = controlerFuncion.obtenerTodos();
+            this.controlerSala = ControlFactory.getSalaControl();
+            setBackground(AZUL_OSCURO);
+            setLayout(new BorderLayout());
+            add(construirPanelSuperior(), BorderLayout.NORTH);
+        }catch (NegocioException e){
+            e.printStackTrace();
+        }
     }
  
     private JPanel construirPanelSuperior() {
@@ -167,7 +173,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         Set<String> salasVistas = new LinkedHashSet<>();
         for (FuncionDTO f : funciones) {
             if (fechaSeleccionada != null && fechaSeleccionada.equals(f.getFecha())) {
-                SalaDTO sala = controler.obtenerPorIdPorId(f.getSalaFuncion());
+                SalaDTO sala = controlerSala.obtenerPorId(f.getSalaFuncion());
                 salasVistas.add(sala.getNombre());
             }
         }
@@ -175,7 +181,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
         for (String nombreSala : salasVistas) {
             List<FuncionDTO> funcionesDeSala = new ArrayList<>();
             for (FuncionDTO f : funciones) {
-                SalaDTO sala = controler.obtenerPorIdPorId(f.getSalaFuncion());
+                SalaDTO sala = controlerSala.obtenerPorId(f.getSalaFuncion());
                 if (fechaSeleccionada != null && fechaSeleccionada.equals(f.getFecha())
                         && sala.getNombre().equals(nombreSala)) {
                     funcionesDeSala.add(f);
@@ -234,7 +240,7 @@ public class SeleccionFuncionPanel extends JPanel implements Refreshable {
             revalidate();
             repaint();
         }catch (NegocioException e){
-            //Logica de excepcion
+            e.printStackTrace();
         }
     }
  

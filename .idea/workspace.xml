@@ -165,7 +165,7 @@
       <workItem from="1778640727929" duration="6184000" />
       <workItem from="1778889474430" duration="643000" />
       <workItem from="1778964935753" duration="7432000" />
-      <workItem from="1779051202137" duration="24623000" />
+      <workItem from="1779051202137" duration="32441000" />
     </task>
     <task id="LOCAL-00001" summary="Cambio a JDK 21">
       <option name="closed" value="true" />
@@ -244,11 +244,6 @@
           <url>file://$PROJECT_DIR$/VerificacionPagp/src/main/java/com/CinePotro/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Presentacion/src/main/java/Elements/Panels/GeneracionBoletoPanel.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

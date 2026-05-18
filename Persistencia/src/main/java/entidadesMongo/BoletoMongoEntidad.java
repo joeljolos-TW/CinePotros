@@ -18,26 +18,16 @@ public class BoletoMongoEntidad {
     private List<String> numAsiento;
     private Double total;
     private EstadoBoleto estado;
-    private byte[] qr;
 
     public BoletoMongoEntidad() {
     }
 
-    public BoletoMongoEntidad(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total, EstadoBoleto estado, byte[] qr) {
+    public BoletoMongoEntidad(ObjectId id, ObjectId funcion, List<String> numAsiento, Double total, EstadoBoleto estado) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
         this.total = total;
         this.estado = estado;
-        this.qr = qr;
-    }
-
-    public void setQr(byte[] qr) {
-        this.qr = qr;
-    }
-
-    public byte[] getQr() {
-        return qr;
     }
 
     public ObjectId getId() {

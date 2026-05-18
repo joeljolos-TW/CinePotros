@@ -17,26 +17,15 @@ public class Boleto {
     private Double total;
     private EstadoBoleto estado;
 
-    private byte[] qr;
-
     public Boleto() {
     }
     
     
-    public Boleto(String id, String funcion, List<String> numAsiento, Double total, boolean usado, byte[] qr) {
+    public Boleto(String id, String funcion, List<String> numAsiento, Double total) {
         this.id = id;
         this.funcion = funcion;
         this.numAsiento = numAsiento;
         this.total = total;
-        this.qr = qr;
-    }
-
-    public void setQr(byte[] qr) {
-        this.qr = qr;
-    }
-
-    public byte[] getQr() {
-        return qr;
     }
 
     public String getId() {

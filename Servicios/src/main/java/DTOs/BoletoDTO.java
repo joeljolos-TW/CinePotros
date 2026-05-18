@@ -22,12 +22,11 @@ public class BoletoDTO {
     private String hora;
     private Double total;
     private EstadoBoleto estado;
-    private byte[] qr;
 
     public BoletoDTO() {
     }
 
-    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado, byte[] qr) {
+    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado) {
         this.id = id;
         this.idFuncion = funcion;
         this.numAsiento = numAsiento;
@@ -44,15 +43,6 @@ public class BoletoDTO {
             default:
                 this.estado = EstadoBoleto.PENDIENTE;
         }
-        this.qr = qr;
-    }
-
-    public void setQr(byte[] qr) {
-        this.qr = qr;
-    }
-
-    public byte[] getQr() {
-        return qr;
     }
 
     public String getId() {

@@ -91,8 +91,8 @@ public class ControlFactory {
 
         if (entidad.getFuncion() != null) {
             FuncionMongoEntidad funcion = funcionDAO.obtenerPorId(entidad.getFuncion());
-
             if (funcion != null) {
+                dto.setIdFuncion(entidad.getFuncion().toString());
                 dto.setFecha(funcion.getFecha());
                 dto.setHora(funcion.getHora());
             }

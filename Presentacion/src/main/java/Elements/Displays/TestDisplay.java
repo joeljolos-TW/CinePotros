@@ -33,7 +33,7 @@ public class TestDisplay extends JFrame {
         PaymentSummary pago = new PaymentSummary();
         MisBoletosPanel misBoletos = new MisBoletosPanel();
         ConfirmacionCancelacionPanel confirmacion = new ConfirmacionCancelacionPanel();
-        BoletoValidadoPanel infoValidacion = new BoletoValidadoPanel(new ValidacionDTO());
+        BoletoValidadoPanel infoValidacion = new BoletoValidadoPanel();
 
         // Agregar las pantallas al SwitchPanel
         panelNavegacion.addPanel(cartelera, "cartelera");

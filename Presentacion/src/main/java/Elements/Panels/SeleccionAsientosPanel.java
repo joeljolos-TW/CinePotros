@@ -56,9 +56,10 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     private double totalConDescuento;
 
     // -----------------------------------------------------------------------
-    // Controller
+    // Controllers
     // -----------------------------------------------------------------------
-    private IControlEntidades<SalaDTO> controler;
+    private IControlEntidades<SalaDTO> controlerSala;
+    private IControlEntidades<BoletoDTO> controlerBoleto;
 
     // -----------------------------------------------------------------------
     // Componentes de UI dinamicos
@@ -75,18 +76,13 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         this.funcionActual = funcionDTO;
         this.promocionAplicada = null;
         this.totalConDescuento = 0.0;
-        this.controler = ControlFactory.getSalaControl();
+        this.controlerSala = ControlFactory.getSalaControl();
+        this.controlerBoleto = ControlFactory.getBoletoControl();
 
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
-        try{
-            add(construirEncabezado(), BorderLayout.NORTH);
-            panelCentral = construirMatrizAsientos();
-            add(panelCentral, BorderLayout.CENTER);
-            add(construirPiePagina(), BorderLayout.SOUTH);
-        }catch (NegocioException e){
-            //Logica de excepcion jaja
-        }
+        add(construirEncabezado(), BorderLayout.NORTH);
+        add(construirPiePagina(), BorderLayout.SOUTH);
     }
 
     private JPanel construirEncabezado() {
@@ -110,11 +106,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         contenedorCentral.setBackground(UtilGeneral.FONDO_PRINCIPAL);
         contenedorCentral.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
 
-        // Aqui habia un if
-
         String fecha = funcionActual.getFecha();
         String hora = funcionActual.getHora();
-        SalaDTO salaUsada = controler.obtenerPorIdPorId(funcionActual.getSalaFuncion());
+        SalaDTO salaUsada = controlerSala.obtenerPorId(funcionActual.getSalaFuncion());
         String sala = salaUsada.getNombre();
         JLabel lblFuncion = new JLabel(sala + "  ·  " + fecha + " - " + hora, SwingConstants.CENTER);
         lblFuncion.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -243,7 +237,13 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         GenericButton confirmBtn = new GenericButton(
                 "Confirmar Compra", true, 10, 160, 110,
                 UtilGeneral.TEXTO_PRINCIPAL, UtilGeneral.BOTON_AZUL, UtilGeneral.FONDO_SECUNDARIO);
-        confirmBtn.addActionListener(e -> confirmarCompra());
+        confirmBtn.addActionListener(e -> {
+                try {
+                    confirmarCompra();
+                }catch (NegocioException ex){
+                    ex.printStackTrace();
+                }
+        });
 
         panelBotones.add(backBtn);
         panelBotones.add(confirmBtn);
@@ -330,7 +330,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     /**
      * Confirma la compra generando un BoletoDTO y navegando al panel de generación.
      */
-    public void confirmarCompra() {
+    public void confirmarCompra() throws NegocioException{
         if (asientosSeleccionados.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "Por favor selecciona al menos un asiento.",
@@ -342,10 +342,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         double subtotal = asientosSeleccionados.size() * PRECIO_POR_ASIENTO;
         double total    = calcularTotal(subtotal);
         double descuento = subtotal - total;
-        byte [] qr = {}; //Arreglo vacio
 
-        BoletoDTO boleto = new BoletoDTO(null, funcionActual.getId(), new ArrayList<>(asientosSeleccionados), funcionActual.getFecha(), funcionActual.getHora(), total, "PENDIENTE", qr);
-        // Guardamos descuento en el DTO si BoletoDTO lo soporta (extensible)
+        BoletoDTO boleto = new BoletoDTO(null, funcionActual.getId(), new ArrayList<>(asientosSeleccionados), funcionActual.getFecha(), funcionActual.getHora(), total, "PENDIENTE");
+        boleto = controlerBoleto.agregar(boleto);
         panelMediator.changePanel("generacionBoleto", boleto);
     }
 
@@ -388,11 +387,15 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
             if (panelCentral != null) remove(panelCentral);
             panelCentral = construirMatrizAsientos();
-            add(panelCentral, BorderLayout.CENTER);
+
+            if (funcionActual != null) {
+                panelCentral = construirMatrizAsientos();
+                add(panelCentral, BorderLayout.CENTER);
+            }
             revalidate();
             repaint();
         }catch (NegocioException e){
-            //Logica de excepcion jaja
+            e.printStackTrace();
         }
     }
 }

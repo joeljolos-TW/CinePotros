@@ -82,8 +82,8 @@ public class MisBoletosPanel extends JPanel {
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
         info.setOpaque(false);
 
-        FuncionDTO funcion = controlerFuncion.obtenerPorIdPorId(boleto.getIdFuncion());
-        PeliculaDTO pelicula = controlerPelicula.obtenerPorIdPorId(funcion.getIdPelicula());
+        FuncionDTO funcion = controlerFuncion.obtenerPorId(boleto.getIdFuncion());
+        PeliculaDTO pelicula = controlerPelicula.obtenerPorId(funcion.getIdPelicula());
         JLabel lblPelicula = new JLabel(pelicula.getTitulo());
         lblPelicula.setFont(UtilGeneral.FUENTE_SUBTITULO);
         lblPelicula.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
