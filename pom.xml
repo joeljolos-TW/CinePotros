@@ -19,6 +19,7 @@
         <module>GeneradorQR</module>
         <module>VerificacionPago</module>
         <module>ValidarBoleto</module>
+        <module>CinePotrosEmpleado</module>
     </modules>
 
     <properties>
