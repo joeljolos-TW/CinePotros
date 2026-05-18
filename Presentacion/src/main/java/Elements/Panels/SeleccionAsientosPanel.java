@@ -10,6 +10,7 @@ import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
 import excepcion.NegocioException;
+import itson.dominio.EstadoBoleto;
 import itson.dominio.Promocion;
 import itson.dominio.TipoPromocion;
 
@@ -133,7 +134,11 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
         String[] filas = {"A", "B", "C", "D", "E"};
-        int[] ocupados = {12, 13, 25};
+        List<BoletoDTO> boletos = boletosNoCancelados();
+        List<String> asientos = new ArrayList<>();
+        if(!boletos.isEmpty()){
+            boletos.stream().map(BoletoDTO::getNumAsiento).forEach(asientos::addAll);
+        }
 
         for (int i = 0; i < 40; i++) {
             String fila = filas[i / 8];
@@ -147,7 +152,12 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
             asiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
             boolean estaOcupado = false;
-            for (int o : ocupados) if (o == i) { estaOcupado = true; break; }
+            for (String o : asientos) {
+                if (o.equals(idAsiento)) {
+                    estaOcupado = true;
+                    break;
+                }
+            }
 
             if (estaOcupado) {
                 asiento.setBackground(UtilGeneral.ASIENTO_OCUPADO);
@@ -374,6 +384,12 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
             lblDescuento.setText("Descuento: $0.00");
             lblTotal.setText("Total: $0.00");
         }
+    }
+
+    private List<BoletoDTO> boletosNoCancelados() throws NegocioException{
+        List<BoletoDTO> boletos = controlerBoleto.obtenerTodos();
+        boletos.removeIf(boleto -> boleto.getEstado() == EstadoBoleto.CANCELADO);
+        return boletos;
     }
 
     @Override
