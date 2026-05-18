@@ -10,7 +10,6 @@ import Mediator.PanelMediator;
 import excepcion.NegocioException;
 import java.awt.*;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;

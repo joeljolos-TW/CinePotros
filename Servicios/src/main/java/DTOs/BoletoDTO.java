@@ -4,10 +4,7 @@
  */
 package DTOs;
 
-import BO.IFuncionBO;
 import itson.dominio.EstadoBoleto;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -40,10 +37,13 @@ public class BoletoDTO {
         switch (estado){
             case "PENDIENTE" :
                 this.estado = EstadoBoleto.PENDIENTE;
+                break;
             case "ESCANEADO" :
                 this.estado = EstadoBoleto.ESCANEADO;
+                break;
             case "CANCELADO" :
                 this.estado = EstadoBoleto.CANCELADO;
+                break;
             default:
                 this.estado = EstadoBoleto.PENDIENTE;
         }

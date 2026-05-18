@@ -25,12 +25,18 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author
  */
-public class GeneracionBoletoPanel extends JPanel {
+public class GeneracionBoletoPanel extends JPanel implements Refreshable {
 
     private SwitchPanel panelNavegacion;
     private BoletoDTO boletoDTO;
@@ -46,7 +52,7 @@ public class GeneracionBoletoPanel extends JPanel {
 
     }
 
-    public GeneracionBoletoPanel(BoletoDTO boletoDTO){
+    public GeneracionBoletoPanel(BoletoDTO boletoDTO) {
         this.boletoDTO = boletoDTO;
         this.panelNavegacion = SwitchPanel.getInstance();
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
@@ -99,17 +105,10 @@ public class GeneracionBoletoPanel extends JPanel {
         subtitulo.setBorder(new EmptyBorder(0, 0, 20, 0));
         panel.add(subtitulo);
 
-        panel.add(crearFilaDato("Película", "Avatar 3"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Cine", "Cinépolis Bella Vista"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Función", "03 de febrero · 6:30 PM"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Sala", "Sala 4"));
-        panel.add(Box.createVerticalStrut(14));
-        panel.add(crearFilaDato("Asientos", "F5, F6"));
-        panel.add(Box.createVerticalStrut(24));
-
+        panel.add(crearFilaDato("Sala", boletoDTO != null ? boletoDTO.getSala() : "—"));
+        panel.add(crearFilaDato("Función", boletoDTO != null ? boletoDTO.getFecha() + " · " + boletoDTO.getHora() : "—"));
+        panel.add(crearFilaDato("Asientos", boletoDTO != null ? String.join(", ", boletoDTO.getNumAsiento()) : "—"));
+        
         JSeparator sep = new JSeparator();
         sep.setForeground(UtilGeneral.BORDE);
         sep.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
@@ -123,7 +122,7 @@ public class GeneracionBoletoPanel extends JPanel {
         lblMontoTotal.setFont(UtilGeneral.FUENTE_SUBTITULO);
         lblMontoTotal.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
 
-        JLabel lblMonto = new JLabel("$144.00");
+        JLabel lblMonto = new JLabel(boletoDTO != null ? "$" + boletoDTO.getTotal() : "$0.00");
         lblMonto.setFont(new Font("SansSerif", Font.BOLD, 22));
         lblMonto.setForeground(UtilGeneral.BOTON_AZUL);
 
@@ -157,21 +156,28 @@ public class GeneracionBoletoPanel extends JPanel {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setOpaque(false);
 
-        JLabel qr = new JLabel("QR", SwingConstants.CENTER);
-        qr.setFont(new Font("SansSerif", Font.BOLD, 28));
-        qr.setForeground(new Color(162, 166, 175));
-        qr.setOpaque(true);
-        qr.setBackground(new Color(16, 27, 45));
-        qr.setPreferredSize(new Dimension(180, 180));
-        qr.setMaximumSize(new Dimension(180, 180));
-        qr.setMinimumSize(new Dimension(180, 180));
-        qr.setAlignmentX(Component.CENTER_ALIGNMENT);
-        qr.setBorder(BorderFactory.createCompoundBorder(
-                new LineBorder(UtilGeneral.BORDE, 2),
-                new EmptyBorder(10, 10, 10, 10)
-        ));
-        panel.add(qr);
+        JLabel qrLabel;
+        if (boletoDTO != null && boletoDTO.getId() != null) {
+            try {
+                QRCodeWriter qrWriter = new QRCodeWriter();
+                BitMatrix matrix = qrWriter.encode(
+                        boletoDTO.getId(), BarcodeFormat.QR_CODE, 180, 180
+                );
+                BufferedImage image = MatrixToImageWriter.toBufferedImage(matrix);
+                qrLabel = new JLabel(new ImageIcon(image));
+            } catch (Exception e) {
+                qrLabel = new JLabel("QR", SwingConstants.CENTER);
+            }
+        } else {
+            qrLabel = new JLabel("QR", SwingConstants.CENTER);
+        }
+
+        qrLabel.setPreferredSize(new Dimension(180, 180));
+        qrLabel.setMaximumSize(new Dimension(180, 180));
+        qrLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(qrLabel);
         return panel;
+
     }
 
     private JPanel construirPiePagina() {
@@ -184,25 +190,13 @@ public class GeneracionBoletoPanel extends JPanel {
         });
         GenericButton btnCancelar = new GenericButton("Cancelar boleto", false, 20, 160, 40, Color.white, new Color(192, 57, 43), new Color(160, 40, 30));
         btnCancelar.addActionListener(e -> {
-            int respuesta = JOptionPane.showConfirmDialog(
-                    this,
-                    "¿Deseas cancelar este boleto?\nUna vez cancelado, el acceso a la función será inválido.",
-                    "Cancelar Boleto",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE
-            );
-
-            if (respuesta == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Boleto cancelado exitosamente.",
-                        "Cancelar Boleto",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
-                panelNavegacion.changePanel("cartelera");
-            }
+                panelNavegacion.changePanel("confirmacionCancelacion", boletoDTO);
+            
         });
         GenericButton btnMisBoletos = new GenericButton("Ver mis boletos", false, 20, 160, 40, new Color(79, 140, 255), new Color(0, 0, 0, 0), new Color(79, 140, 255));
+        btnMisBoletos.addActionListener(e
+                -> panelNavegacion.changePanel("misBoletos", null)
+        );
         GenericButton btnInicio = new GenericButton("Volver al inicio", false, 20, 160, 40, Color.white, new Color(44, 44, 62), new Color(60, 60, 80));
         btnInicio.setFocusPainted(false);
         btnInicio.addActionListener(e -> panelNavegacion.changePanel("cartelera"));
@@ -211,6 +205,19 @@ public class GeneracionBoletoPanel extends JPanel {
         pie.add(btnMisBoletos);
         pie.add(btnInicio);
         return pie;
+    }
+
+    @Override
+    public void onShow(Object object) {
+        if (object instanceof BoletoDTO dto) {
+            this.boletoDTO = dto;
+            removeAll();
+            add(construirEncabezado(), BorderLayout.NORTH);
+            add(construirContenido(), BorderLayout.CENTER);
+            add(construirPiePagina(), BorderLayout.SOUTH);
+            revalidate();
+            repaint();
+        }
     }
 
 }

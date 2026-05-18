@@ -4,10 +4,6 @@
  */
 package DTOs;
 
-import itson.dominio.Sala;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
  *

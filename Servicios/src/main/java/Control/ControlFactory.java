@@ -9,7 +9,6 @@ import DTOs.SalaDTO;
 import entidadesMongo.BoletoMongoEntidad;
 import entidadesMongo.FuncionMongoEntidad;
 import entidadesMongo.SalaMongoEntidad;
-import itson.dominio.Sala;
 import itson.dominio.TipoSala;
 import org.bson.types.ObjectId;
 

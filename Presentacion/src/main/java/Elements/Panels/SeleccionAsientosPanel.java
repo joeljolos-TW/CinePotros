@@ -1,33 +1,38 @@
 package Elements.Panels;
 
+import BO.AsientoBO;
 import Control.ControlFactory;
 import Control.IControlEntidades;
+import DAO.BoletoDAO;
 import DAO.PromocionDAO;
+import DTOs.AsientoDTO;
 import DTOs.BoletoDTO;
 import DTOs.FuncionDTO;
 import DTOs.SalaDTO;
 import Elements.Buttons.GenericButton;
 import Elements.Utileria.UtilGeneral;
 import Mediator.PanelMediator;
+import entidadesMongo.BoletoMongoEntidad;
 import excepcion.NegocioException;
+import itson.dominio.EstadoAsiento;
+import itson.dominio.EstadoBoleto;
 import itson.dominio.Promocion;
 import itson.dominio.TipoPromocion;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
+import org.bson.types.ObjectId;
 
 /**
  * Panel de Seleccion de Asientos con funcionalidad de promociones integrada.
  *
- * Flujo principal (Diagrama de Secuencia):
- *   1. Usuario selecciona asientos  -> se calcula subtotal base
- *   2. Usuario ingresa codigo promo -> aplicarPromocion(codigo)
- *   3. PromocionDAO.buscarPorCodigo -> Promocion.esValida()
- *   4a. Valida: calcularTotal(monto) -> mostrarPrecioFinal()
- *   4b. Invalida/vencida: mostrar error, continuar sin promocion
- *   5. Usuario confirma             -> guardarBoleto(totalFinal)
+ * Flujo principal (Diagrama de Secuencia): 1. Usuario selecciona asientos -> se
+ * calcula subtotal base 2. Usuario ingresa codigo promo ->
+ * aplicarPromocion(codigo) 3. PromocionDAO.buscarPorCodigo ->
+ * Promocion.esValida() 4a. Valida: calcularTotal(monto) -> mostrarPrecioFinal()
+ * 4b. Invalida/vencida: mostrar error, continuar sin promocion 5. Usuario
+ * confirma -> guardarBoleto(totalFinal)
  */
 public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
@@ -47,6 +52,8 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     // -----------------------------------------------------------------------
     private final List<String> asientosSeleccionados = new ArrayList<>();
     private final List<JButton> botonesAsiento = new ArrayList<>();
+    private List<AsientoDTO> asientosReales = new ArrayList<>();
+    private final AsientoBO asientoBO = new AsientoBO();
 
     // -----------------------------------------------------------------------
     // Estado de promocion
@@ -78,12 +85,12 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
-        try{
+        try {
             add(construirEncabezado(), BorderLayout.NORTH);
             panelCentral = construirMatrizAsientos();
             add(panelCentral, BorderLayout.CENTER);
             add(construirPiePagina(), BorderLayout.SOUTH);
-        }catch (NegocioException e){
+        } catch (NegocioException e) {
             //Logica de excepcion jaja
         }
     }
@@ -101,7 +108,7 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         return encabezado;
     }
 
-    private JPanel construirMatrizAsientos() throws NegocioException{
+    private JPanel construirMatrizAsientos() throws NegocioException {
         asientosSeleccionados.clear();
         botonesAsiento.clear();
 
@@ -112,9 +119,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         // Info de la función si ya se recibió
         if (funcionActual != null) {
             String fecha = funcionActual.getFecha();
-            String hora  = funcionActual.getHora();
+            String hora = funcionActual.getHora();
             SalaDTO salaUsada = controler.obtenerPorIdPorId(funcionActual.getSalaFuncion());
-            String sala  = salaUsada.getNombre();
+            String sala = salaUsada.getNombre();
             JLabel lblFuncion = new JLabel(sala + "  ·  " + fecha + " - " + hora, SwingConstants.CENTER);
             lblFuncion.setFont(new Font("Arial", Font.PLAIN, 13));
             lblFuncion.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
@@ -134,32 +141,78 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         wrapPantalla.setOpaque(false);
         wrapPantalla.add(pantalla, BorderLayout.CENTER);
 
-        JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
-        matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
-        matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+        if (funcionActual != null && !asientosReales.isEmpty()) {
+            // Agrupar por fila para calcular columnas
+            List<String> filasUnicas = new ArrayList<>();
+            for (AsientoDTO a : asientosReales) {
+                if (!filasUnicas.contains(a.getFila())) {
+                    filasUnicas.add(a.getFila());
+                }
+            }
+            int columnas = asientosReales.size() / filasUnicas.size();
+            int filas = filasUnicas.size();
 
-        String[] filas = {"A", "B", "C", "D", "E"};
-        int[] ocupados = {};
+            JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
+            matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
+            matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
-        for (int i = 0; i < 40; i++) {
-            String fila = filas[i / 8];
-            int numAsiento = (i % 8) + 1;
-            String idAsiento = fila + numAsiento;
+            for (AsientoDTO asiento : asientosReales) {
+                String idAsiento = asiento.getCodigo();
 
-            JButton asiento = new JButton("💺 " + idAsiento);
-            asiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
-            asiento.setForeground(Color.WHITE);
-            asiento.setFocusPainted(false);
-            asiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                JButton btnAsiento = new JButton("💺 " + idAsiento);
+                btnAsiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
+                btnAsiento.setForeground(Color.WHITE);
+                btnAsiento.setFocusPainted(false);
+                btnAsiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-            boolean estaOcupado = false;
-            for (int o : ocupados) if (o == i) { estaOcupado = true; break; }
+                if (asiento.getEstado() == EstadoAsiento.OCUPADO) {
+                    btnAsiento.setBackground(UtilGeneral.ASIENTO_OCUPADO);
+                    btnAsiento.setEnabled(false);
+                    btnAsiento.setToolTipText("Asiento ocupado");
+                } else {
+                    btnAsiento.setBackground(UtilGeneral.ASIENTO_DISPONIBLE);
+                    btnAsiento.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    btnAsiento.addActionListener(e -> {
+                        if (asientosSeleccionados.contains(idAsiento)) {
+                            asientosSeleccionados.remove(idAsiento);
+                            btnAsiento.setBackground(UtilGeneral.ASIENTO_DISPONIBLE);
+                            btnAsiento.setForeground(Color.WHITE);
+                        } else {
+                            asientosSeleccionados.add(idAsiento);
+                            btnAsiento.setBackground(UtilGeneral.ASIENTO_SELECCIONADO);
+                            btnAsiento.setForeground(new Color(10, 25, 49));
+                        }
+                        actualizarPrecios();
+                    });
+                }
 
-            if (estaOcupado) {
-                asiento.setBackground(UtilGeneral.ASIENTO_OCUPADO);
-                asiento.setEnabled(false);
-                asiento.setToolTipText("Asiento ocupado");
-            } else {
+                botonesAsiento.add(btnAsiento);
+                matriz.add(btnAsiento);
+            }
+            JPanel centro = new JPanel(new BorderLayout());
+            centro.setOpaque(false);
+            centro.add(wrapPantalla, BorderLayout.NORTH);
+            centro.add(matriz, BorderLayout.CENTER);
+            contenedorCentral.add(centro, BorderLayout.CENTER);
+
+        } else {
+            // grid hardcodeado si no hay asientos en MongoDB
+            JPanel matriz = new JPanel(new GridLayout(5, 8, 15, 15));
+            matriz.setBackground(UtilGeneral.FONDO_PRINCIPAL);
+            matriz.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+
+            String[] filas = {"A", "B", "C", "D", "E"};
+
+            for (int i = 0; i < 40; i++) {
+                String fila = filas[i / 8];
+                int numAsiento = (i % 8) + 1;
+                String idAsiento = fila + numAsiento;
+
+                JButton asiento = new JButton("💺 " + idAsiento);
+                asiento.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
+                asiento.setForeground(Color.WHITE);
+                asiento.setFocusPainted(false);
+                asiento.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 asiento.setBackground(UtilGeneral.ASIENTO_DISPONIBLE);
                 asiento.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 asiento.addActionListener(e -> {
@@ -174,18 +227,18 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
                     }
                     actualizarPrecios();
                 });
+
+                botonesAsiento.add(asiento);
+                matriz.add(asiento);
             }
 
-            botonesAsiento.add(asiento);
-            matriz.add(asiento);
+            JPanel centro = new JPanel(new BorderLayout());
+            centro.setOpaque(false);
+            centro.add(wrapPantalla, BorderLayout.NORTH);
+            centro.add(matriz, BorderLayout.CENTER);
+            contenedorCentral.add(centro, BorderLayout.CENTER);
         }
 
-        JPanel centro = new JPanel(new BorderLayout());
-        centro.setOpaque(false);
-        centro.add(wrapPantalla, BorderLayout.NORTH);
-        centro.add(matriz, BorderLayout.CENTER);
-
-        contenedorCentral.add(centro, BorderLayout.CENTER);
         return contenedorCentral;
     }
 
@@ -218,9 +271,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         JPanel panelPrecios = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 4));
         panelPrecios.setOpaque(false);
 
-        lblSubtotal  = new JLabel("Subtotal: $0.00");
+        lblSubtotal = new JLabel("Subtotal: $0.00");
         lblDescuento = new JLabel("Descuento: $0.00");
-        lblTotal     = new JLabel("Total: $0.00");
+        lblTotal = new JLabel("Total: $0.00");
 
         lblSubtotal.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
         lblDescuento.setForeground(new Color(46, 204, 113));
@@ -258,11 +311,11 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     // -----------------------------------------------------------------------
     // Lógica de promociones
     // -----------------------------------------------------------------------
-
     /**
-     * Aplica una promoción al total actual según el flujo del diagrama de secuencia.
-     * Flujo principal: buscar -> validar -> calcular -> mostrar.
-     * Flujo alternativo: codigo no existe o vencido -> error -> continuar sin promo.
+     * Aplica una promoción al total actual según el flujo del diagrama de
+     * secuencia. Flujo principal: buscar -> validar -> calcular -> mostrar.
+     * Flujo alternativo: codigo no existe o vencido -> error -> continuar sin
+     * promo.
      */
     public void aplicarPromocion(String codigo) {
         if (codigo == null || codigo.isBlank()) {
@@ -311,14 +364,15 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     }
 
     /**
-     * Muestra el precio final con descuento en un diálogo y actualiza los labels.
+     * Muestra el precio final con descuento en un diálogo y actualiza los
+     * labels.
      */
     public void mostrarPrecioFinal() {
         double subtotal = asientosSeleccionados.size() * PRECIO_POR_ASIENTO;
         double descuento = subtotal - totalConDescuento;
 
-        String porciento = (promocionAplicada != null &&
-                            promocionAplicada.getTipo() == TipoPromocion.PORCENTAJE)
+        String porciento = (promocionAplicada != null
+                && promocionAplicada.getTipo() == TipoPromocion.PORCENTAJE)
                 ? String.format(" (%.0f%%)", promocionAplicada.getDescuento() * 100) : "";
 
         JOptionPane.showMessageDialog(this,
@@ -328,7 +382,8 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
     }
 
     /**
-     * Confirma la compra generando un BoletoDTO y navegando al panel de generación.
+     * Confirma la compra generando un BoletoDTO y navegando al panel de
+     * generación.
      */
     public void confirmarCompra() {
         if (asientosSeleccionados.isEmpty()) {
@@ -339,19 +394,42 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
             return;
         }
 
-        double subtotal = asientosSeleccionados.size() * PRECIO_POR_ASIENTO;
-        double total    = calcularTotal(subtotal);
-        double descuento = subtotal - total;
+        double subtotal = asientosSeleccionados.size() * funcionActual.getPrecio();
+        double total = calcularTotal(subtotal);
 
-//        BoletoDTO boleto = new BoletoDTO(false, null, funcionActual, new ArrayList<>(asientosSeleccionados));
-//        // Guardamos descuento en el DTO si BoletoDTO lo soporta (extensible)
-//        panelMediator.changePanel("generacionBoleto", boleto);
+        try {
+            // guardar en MongoDB
+            BoletoMongoEntidad entidad = new BoletoMongoEntidad();
+            entidad.setFuncion(new ObjectId(funcionActual.getId()));
+            entidad.setNumAsiento(new ArrayList<>(asientosSeleccionados));
+            entidad.setTotal(total);
+            entidad.setEstado(EstadoBoleto.PENDIENTE);
+
+            BoletoDAO boletoDAO = new BoletoDAO();
+            BoletoMongoEntidad guardado = boletoDAO.insertar(entidad);
+
+            // armar DTO con los datos disponibles
+            BoletoDTO boleto = new BoletoDTO();
+            boleto.setId(guardado.getId().toHexString());
+            boleto.setNumAsiento(new ArrayList<>(asientosSeleccionados));
+            boleto.setTotal(total);
+            boleto.setEstado(EstadoBoleto.PENDIENTE);
+            boleto.setSala(funcionActual.getSalaFuncion());
+            boleto.setFecha(funcionActual.getFecha());
+            boleto.setHora(funcionActual.getHora());
+
+            panelMediator.changePanel("generacionBoleto", boleto);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Error al guardar el boleto: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // -----------------------------------------------------------------------
     // Métodos auxiliares
     // -----------------------------------------------------------------------
-
     private void actualizarPrecios() {
         double subtotal = asientosSeleccionados.size() * PRECIO_POR_ASIENTO;
         totalConDescuento = calcularTotal(subtotal);
@@ -368,7 +446,9 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
         asientosSeleccionados.clear();
         promocionAplicada = null;
         totalConDescuento = 0.0;
-        if (txtCodigoPromo != null) txtCodigoPromo.setText("");
+        if (txtCodigoPromo != null) {
+            txtCodigoPromo.setText("");
+        }
         if (lblSubtotal != null) {
             lblSubtotal.setText("Subtotal: $0.00");
             lblDescuento.setText("Descuento: $0.00");
@@ -385,13 +465,24 @@ public class SeleccionAsientosPanel extends JPanel implements Refreshable {
 
             limpiarEstado();
 
-            if (panelCentral != null) remove(panelCentral);
+            // Traer asientos reales de MongoDB
+            if (funcionActual != null) {
+                try {
+                    asientosReales = asientoBO.obtenerPorFuncion(funcionActual.getId());
+                } catch (NegocioException e) {
+                    asientosReales = new ArrayList<>();
+                }
+            }
+
+            if (panelCentral != null) {
+                remove(panelCentral);
+            }
             panelCentral = construirMatrizAsientos();
             add(panelCentral, BorderLayout.CENTER);
             revalidate();
             repaint();
-        }catch (NegocioException e){
-            //Logica de excepcion jaja
+        } catch (NegocioException e) {
+            // Logica de excepcion
         }
     }
 }

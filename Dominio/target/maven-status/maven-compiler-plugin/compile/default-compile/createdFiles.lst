@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+itson\dominio\TipoPromocion.class
 itson\dominio\Pelicula.class
 itson\dominio\Boleto.class
 itson\dominio\Empleado.class
@@ -7,10 +7,9 @@ itson\dominio\Funcion.class
 itson\dominio\EstadoAsiento.class
 itson\dominio\EstadoBoleto.class
 itson\dominio\Sala.class
+itson\dominio\Promocion.class
 itson\dominio\EstadoPago.class
 itson\dominio\Usuario.class
 itson\dominio\QR.class
 itson\dominio\TipoSala.class
 itson\dominio\Pago.class
-=======
->>>>>>> Stashed changes
