@@ -3,8 +3,6 @@ DTOs\CancelarBoletoDTO.class
 Fachada\FachadaControl.class
 Mediator\PanelMediator.class
 BO\IPeliculaBO.class
-DTOs\SeleccionPeliculaDTO.class
-BO\PeliculaBO.class
 Control\ControlFactory.class
 BO\IBoletoBO.class
 BO\AsientoBO.class
@@ -17,7 +15,6 @@ BO\BoletoBO.class
 Control\ControlEntidades.class
 DTOs\SeleccionPeliculaDTO.class
 BO\PeliculaBO.class
-itson\servicios\SubsistemaPago.class
 adaptadores\BoletoNegocioAdapter.class
 DTOs\FuncionDTO.class
 BO\CancelacionBO.class

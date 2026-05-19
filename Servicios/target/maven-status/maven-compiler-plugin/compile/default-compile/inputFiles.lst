@@ -20,4 +20,6 @@ C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\DTOs\P
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\DTOs\SalaDTO.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\DTOs\SeleccionPeliculaDTO.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\excepcion\NegocioException.java
+C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\Fachada\FachadaControl.java
+C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\Fachada\IFachadaControl.java
 C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Servicios\src\main\java\Mediator\PanelMediator.java

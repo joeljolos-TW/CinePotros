@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAO.PromocionDAOTest" time="0.079" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAO.PromocionDAOTest" time="0.049" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\sonia\Documents\GitHub\CinePotros\Persistencia\target\test-classes;C:\Users\sonia\Documents\GitHub\CinePotros\Persistencia\target\classes;C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\target\Dominio-1.0.0-SNAPSHOT.jar;C:\Users\sonia\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\sonia\.m2\repository\org\mongodb\bson\5.6.5\bson-5.6.5.jar;C:\Users\sonia\.m2\repository\org\mongodb\mongodb-driver-sync\5.6.5\mongodb-driver-sync-5.6.5.jar;C:\Users\sonia\.m2\repository\org\mongodb\mongodb-driver-core\5.6.5\mongodb-driver-core-5.6.5.jar;C:\Users\sonia\.m2\repository\org\mongodb\bson-record-codec\5.6.5\bson-record-codec-5.6.5.jar;C:\Users\sonia\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\sonia\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\sonia\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\sonia\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\sonia\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\sonia\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\sonia\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Persistencia\target\test-classes;C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Persistencia\target\classes;C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\target\Dominio-1.0.0-SNAPSHOT.jar;C:\Users\Ixchel\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\bson\5.6.5\bson-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\mongodb-driver-sync\5.6.5\mongodb-driver-sync-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\mongodb-driver-core\5.6.5\mongodb-driver-core-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\bson-record-codec\5.6.5\bson-record-codec-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Ixchel\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Ixchel\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Ixchel\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Ixchel\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Ixchel\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Ixchel\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,43 +15,43 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\sonia\AppData\Local\Temp\surefire5701949507437780926\surefirebooter-20260518211850701_3.jar C:\Users\sonia\AppData\Local\Temp\surefire5701949507437780926 2026-05-18T21-18-49_224-jvmRun1 surefire-20260518211850701_1tmp surefire_0-20260518211850701_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Ixchel\AppData\Local\Temp\surefire6032768597737127815\surefirebooter-20260518233220841_3.jar C:\Users\Ixchel\AppData\Local\Temp\surefire6032768597737127815 2026-05-18T23-32-08_818-jvmRun1 surefire-20260518233220841_1tmp surefire_0-20260518233220841_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\sonia\Documents\GitHub\CinePotros\Persistencia\target\test-classes;C:\Users\sonia\Documents\GitHub\CinePotros\Persistencia\target\classes;C:\Users\sonia\Documents\GitHub\CinePotros\Dominio\target\Dominio-1.0.0-SNAPSHOT.jar;C:\Users\sonia\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\sonia\.m2\repository\org\mongodb\bson\5.6.5\bson-5.6.5.jar;C:\Users\sonia\.m2\repository\org\mongodb\mongodb-driver-sync\5.6.5\mongodb-driver-sync-5.6.5.jar;C:\Users\sonia\.m2\repository\org\mongodb\mongodb-driver-core\5.6.5\mongodb-driver-core-5.6.5.jar;C:\Users\sonia\.m2\repository\org\mongodb\bson-record-codec\5.6.5\bson-record-codec-5.6.5.jar;C:\Users\sonia\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\sonia\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\sonia\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\sonia\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\sonia\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\sonia\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\sonia\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Persistencia\target\test-classes;C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Persistencia\target\classes;C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Dominio\target\Dominio-1.0.0-SNAPSHOT.jar;C:\Users\Ixchel\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\bson\5.6.5\bson-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\mongodb-driver-sync\5.6.5\mongodb-driver-sync-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\mongodb-driver-core\5.6.5\mongodb-driver-core-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\mongodb\bson-record-codec\5.6.5\bson-record-codec-5.6.5.jar;C:\Users\Ixchel\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Ixchel\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Ixchel\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Ixchel\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Ixchel\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Ixchel\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Ixchel\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\sonia"/>
+    <property name="user.home" value="C:\Users\Ixchel"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2025-01-21"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-23"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\sonia\Documents\GitHub\CinePotros\Persistencia"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="basedir" value="C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Persistencia"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\sonia\AppData\Local\Temp\surefire5701949507437780926\surefirebooter-20260518211850701_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Ixchel\AppData\Local\Temp\surefire6032768597737127815\surefirebooter-20260518233220841_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.2+7-58"/>
-    <property name="user.name" value="sonia"/>
+    <property name="user.name" value="Ixchel"/>
     <property name="stdout.encoding" value="Cp1252"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-23\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
-    <property name="localRepository" value="C:\Users\sonia\.m2\repository"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-25\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="localRepository" value="C:\Users\Ixchel\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\sonia\AppData\Local\Temp\"/>
+    <property name="java.io.tmpdir" value="C:\Users\Ixchel\AppData\Local\Temp\"/>
     <property name="java.version" value="23.0.2"/>
-    <property name="user.dir" value="C:\Users\sonia\Documents\GitHub\CinePotros\Persistencia"/>
+    <property name="user.dir" value="C:\Users\Ixchel\Documents\ProyectoCine\CinePotros\Persistencia"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\sonia\AppData\Local\Microsoft\WindowsApps;C:\Users\sonia\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\sonia\AppData\Local\GitHubDesktop\bin;C:\Users\sonia\AppData\Local\Programs\Antigravity\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\apache-maven-3.9.9\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Ixchel\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\Ixchel\AppData\Local\Programs\Python\Python314\Scripts\;C:\Users\Ixchel\AppData\Local\Programs\Python\Python314\;C:\Users\Ixchel\AppData\Local\Programs\Python\Launcher\;C:\Users\Ixchel\AppData\Local\Microsoft\WindowsApps;C:\Users\Ixchel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Ixchel\AppData\Local\Programs\Python\Python314;C:\Users\Ixchel\AppData\Local\Programs\Python\Python314\Scripts;C:\Users\Ixchel\AppData\Local\GitHubDesktop\bin;C:\Users\Ixchel\Downloads\apache-maven-3.9.12-bin\apache-maven-3.9.12\bin;C:\Users\Ixchel\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\MongoDB\Server\8.2\bin;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
@@ -59,14 +59,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testBuscarPorCodigo_vacio" classname="DAO.PromocionDAOTest" time="0.026"/>
+  <testcase name="testBuscarPorCodigo_vacio" classname="DAO.PromocionDAOTest" time="0.004"/>
   <testcase name="testInsertar_aumentaLista" classname="DAO.PromocionDAOTest" time="0.003"/>
-  <testcase name="testBuscarPorCodigo_caseInsensitive" classname="DAO.PromocionDAOTest" time="0.003"/>
-  <testcase name="testObtenerTodas_tieneElementos" classname="DAO.PromocionDAOTest" time="0.002"/>
-  <testcase name="testInsertar_nulo_noLanzaExcepcion" classname="DAO.PromocionDAOTest" time="0.001"/>
+  <testcase name="testBuscarPorCodigo_caseInsensitive" classname="DAO.PromocionDAOTest" time="0.001"/>
+  <testcase name="testObtenerTodas_tieneElementos" classname="DAO.PromocionDAOTest" time="0.001"/>
+  <testcase name="testInsertar_nulo_noLanzaExcepcion" classname="DAO.PromocionDAOTest" time="0.004"/>
   <testcase name="testBuscarPorCodigo_inexistente" classname="DAO.PromocionDAOTest" time="0.001"/>
-  <testcase name="testBuscarPorCodigo_nulo" classname="DAO.PromocionDAOTest" time="0.001"/>
-  <testcase name="testBuscarPorCodigo_existente" classname="DAO.PromocionDAOTest" time="0.001"/>
-  <testcase name="testInsertar_seEncuentraDespues" classname="DAO.PromocionDAOTest" time="0.001"/>
+  <testcase name="testBuscarPorCodigo_nulo" classname="DAO.PromocionDAOTest" time="0.002"/>
+  <testcase name="testBuscarPorCodigo_existente" classname="DAO.PromocionDAOTest" time="0.005"/>
+  <testcase name="testInsertar_seEncuentraDespues" classname="DAO.PromocionDAOTest" time="0.002"/>
   <testcase name="testObtenerTodas_noEsNula" classname="DAO.PromocionDAOTest" time="0.002"/>
 </testsuite>
