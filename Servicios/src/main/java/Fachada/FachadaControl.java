@@ -95,7 +95,7 @@ public class FachadaControl implements IFachadaControl {
         // classpath puedes instanciarlo aquí. Si no, delégalo al módulo
         // GeneradorQR desde Presentacion usando su propia fachada.
         QR qr = new QR(contenido, ancho, alto);
-        // return new Generador.QRBoundary().obtenerQR(qr);
+        //return new Generador.QRBoundary().obtenerQR(qr);
         throw new UnsupportedOperationException(
                 "Conectar con GeneradorQR.FachadaQR para generar el código.");
     }

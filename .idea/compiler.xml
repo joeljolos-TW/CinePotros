@@ -15,5 +15,8 @@
         <module name="ValidarBoleto" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CinePotrosEmpleado" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

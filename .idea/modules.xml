@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Dominio/Dominio.iml" filepath="$PROJECT_DIR$/Dominio/Dominio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GeneradorQR/GeneradorQR.iml" filepath="$PROJECT_DIR$/GeneradorQR/GeneradorQR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Persistencia/Persistencia.iml" filepath="$PROJECT_DIR$/Persistencia/Persistencia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Presentacion/Presentacion.iml" filepath="$PROJECT_DIR$/Presentacion/Presentacion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servicios/Servicios.iml" filepath="$PROJECT_DIR$/Servicios/Servicios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ValidarBoleto.iml" filepath="$PROJECT_DIR$/ValidarBoleto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VerificacionPago/VerificacionPago.iml" filepath="$PROJECT_DIR$/VerificacionPago/VerificacionPago.iml" />
+    </modules>
+  </component>
+</project>
