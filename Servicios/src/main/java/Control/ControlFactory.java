@@ -12,12 +12,10 @@ import entidadesMongo.BoletoMongoEntidad;
 import entidadesMongo.FuncionMongoEntidad;
 import entidadesMongo.PeliculaMongoEntidad;
 import entidadesMongo.SalaMongoEntidad;
-import itson.dominio.Sala;
 import itson.dominio.TipoSala;
 import org.bson.types.ObjectId;
 
 public class ControlFactory {
-
     public static IControlEntidades<BoletoDTO> getBoletoControl() {
         FuncionDAO dao = new FuncionDAO();
         return new ControlEntidades<>(
@@ -28,7 +26,7 @@ public class ControlFactory {
         );
     }
 
-    public static IControlEntidades<FuncionDTO> getFuncionControl() {
+    public static IControlEntidades<FuncionDTO> getFuncionControl(){
         return new ControlEntidades<>(
                 new FuncionDAO(),
                 dto -> convertirFuncionDTOAEntidad(dto),
@@ -37,7 +35,7 @@ public class ControlFactory {
         );
     }
 
-    public static IControlEntidades<SalaDTO> getSalaControl() {
+    public static IControlEntidades<SalaDTO> getSalaControl(){
         return new ControlEntidades<>(
                 new SalaDAO(),
                 dto -> convertirSalaDTOAEntidad(dto),
@@ -46,7 +44,7 @@ public class ControlFactory {
         );
     }
 
-    public static IControlEntidades<PeliculaDTO> getPeliculaControl() {
+    public static IControlEntidades<PeliculaDTO> getPeliculaControl(){
         return new ControlEntidades<>(
                 new PeliculaDAO(),
                 dto -> convertirPeliculaDTOAEntidad(dto),
@@ -56,11 +54,10 @@ public class ControlFactory {
     }
 
     // -------------------- MAPEOS---------------------------
+
     //   BOLETO
     private static BoletoMongoEntidad convertirBoletoDtoAEntidad(BoletoDTO dto) {
-        if (dto == null) {
-            return null;
-        }
+        if (dto == null) return null;
 
         BoletoMongoEntidad entidad = new BoletoMongoEntidad();
 
@@ -79,9 +76,7 @@ public class ControlFactory {
     }
 
     private static BoletoDTO convertirBoletoEntidadADto(BoletoMongoEntidad entidad, FuncionDAO funcionDAO) {
-        if (entidad == null) {
-            return null;
-        }
+        if (entidad == null) return null;
 
         BoletoDTO dto = new BoletoDTO();
 
@@ -99,16 +94,6 @@ public class ControlFactory {
                 dto.setIdFuncion(entidad.getFuncion().toString());
                 dto.setFecha(funcion.getFecha());
                 dto.setHora(funcion.getHora());
-
-                // ── AGREGAR ESTAS LÍNEAS ──
-                if (funcion.getPelicula() != null) {
-                    PeliculaDAO peliculaDAO = new PeliculaDAO();
-                    PeliculaMongoEntidad pelicula = peliculaDAO.obtenerPorId(funcion.getPelicula());
-                    if (pelicula != null) {
-                        dto.setTituloPelicula(pelicula.getTitulo());
-                    }
-                }
-                // ─────────────────────────
             }
         }
 
@@ -116,10 +101,8 @@ public class ControlFactory {
     }
 
     //   FUNCION
-    private static FuncionMongoEntidad convertirFuncionDTOAEntidad(FuncionDTO dto) {
-        if (dto == null) {
-            return null;
-        }
+    private static FuncionMongoEntidad convertirFuncionDTOAEntidad(FuncionDTO dto){
+        if(dto == null) return null;
 
         FuncionMongoEntidad entidad = new FuncionMongoEntidad();
 
@@ -127,14 +110,14 @@ public class ControlFactory {
             entidad.setId(new ObjectId(dto.getId()));
         }
 
-        if (dto.getIdPelicula() != null && !dto.getIdPelicula().trim().isEmpty()) {
+        if(dto.getIdPelicula() != null && !dto.getIdPelicula().trim().isEmpty()){
             entidad.setPelicula(new ObjectId(dto.getIdPelicula()));
         }
 
         entidad.setFecha(dto.getFecha());
         entidad.setHora(dto.getHora());
 
-        if (dto.getSalaFuncion() != null && !dto.getSalaFuncion().trim().isEmpty()) {
+        if(dto.getSalaFuncion() != null && !dto.getSalaFuncion().trim().isEmpty()){
             entidad.setSala(new ObjectId(dto.getSalaFuncion()));
         }
 
@@ -144,25 +127,23 @@ public class ControlFactory {
         return entidad;
     }
 
-    private static FuncionDTO convertirFuncionEntidadADTO(FuncionMongoEntidad entidad) {
-        if (entidad == null) {
-            return null;
-        }
+    private static FuncionDTO convertirFuncionEntidadADTO(FuncionMongoEntidad entidad){
+        if(entidad == null) return null;
 
         FuncionDTO dto = new FuncionDTO();
 
-        if (entidad.getId() != null) {
+        if(entidad.getId() != null){
             dto.setId(entidad.getId().toString());
         }
 
         dto.setFecha(entidad.getFecha());
         dto.setHora(entidad.getHora());
 
-        if (entidad.getSala() != null) {
+        if(entidad.getSala() != null){
             dto.setSalaFuncion(entidad.getSala().toString());
         }
 
-        if (entidad.getPelicula() != null) {
+        if(entidad.getPelicula() != null){
             dto.setIdPelicula(entidad.getPelicula().toString());
         }
 
@@ -172,23 +153,21 @@ public class ControlFactory {
         return dto;
     }
 
-    private static SalaMongoEntidad convertirSalaDTOAEntidad(SalaDTO dto) {
-        if (dto == null) {
-            return null;
-        }
+    private static SalaMongoEntidad convertirSalaDTOAEntidad(SalaDTO dto){
+        if(dto == null) return null;
 
         SalaMongoEntidad entidad = new SalaMongoEntidad();
 
-        if (dto.getId() != null && !dto.getId().trim().isBlank()) {
+        if(dto.getId() != null && !dto.getId().trim().isBlank()){
             entidad.setId(new ObjectId(dto.getId()));
         }
 
-        switch (dto.getTipoSala()) {
-            case "TRADICIONAL":
+        switch (dto.getTipoSala()){
+            case "TRADICIONAL" :
                 entidad.setTipo(TipoSala.TRADICIONAL);
-            case "VIP":
+            case "VIP" :
                 entidad.setTipo(TipoSala.VIP);
-            case "KIDS":
+            case "KIDS" :
                 entidad.setTipo(TipoSala.KIDS);
             default:
                 entidad.setTipo(TipoSala.TRADICIONAL);
@@ -199,14 +178,12 @@ public class ControlFactory {
         return entidad;
     }
 
-    private static SalaDTO convertirSalaEntidadADTO(SalaMongoEntidad entidad) {
-        if (entidad == null) {
-            return null;
-        }
+    private static SalaDTO convertirSalaEntidadADTO(SalaMongoEntidad entidad){
+        if(entidad == null) return null;
 
         SalaDTO dto = new SalaDTO();
 
-        if (entidad.getId() != null) {
+        if(entidad.getId() != null){
             dto.setId(entidad.getId().toString());
         }
 
@@ -217,14 +194,12 @@ public class ControlFactory {
         return dto;
     }
 
-    private static PeliculaMongoEntidad convertirPeliculaDTOAEntidad(PeliculaDTO dto) {
-        if (dto == null) {
-            return null;
-        }
+    private static PeliculaMongoEntidad convertirPeliculaDTOAEntidad(PeliculaDTO dto){
+        if(dto == null) return null;
 
         PeliculaMongoEntidad entidad = new PeliculaMongoEntidad();
 
-        if (dto.getId() != null && !dto.getId().trim().isBlank()) {
+        if(dto.getId() != null && !dto.getId().trim().isBlank()){
             entidad.setId(new ObjectId(dto.getId()));
         }
 
@@ -238,14 +213,12 @@ public class ControlFactory {
         return entidad;
     }
 
-    private static PeliculaDTO convertirPeliculaEntidadADTO(PeliculaMongoEntidad entidad) {
-        if (entidad == null) {
-            return null;
-        }
+    private static PeliculaDTO convertirPeliculaEntidadADTO(PeliculaMongoEntidad entidad){
+        if(entidad == null) return null;
 
         PeliculaDTO dto = new PeliculaDTO();
 
-        if (entidad.getId() != null) {
+        if(entidad.getId() != null){
             dto.setId(entidad.getId().toString());
         }
 

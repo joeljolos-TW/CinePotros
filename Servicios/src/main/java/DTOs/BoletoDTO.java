@@ -4,19 +4,14 @@
  */
 package DTOs;
 
-import BO.IFuncionBO;
 import itson.dominio.EstadoBoleto;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 /**
  * DTO para mostrar la información de un boleto en pantalla.
- *
  * @author Jazmin
  */
 public class BoletoDTO {
-
     private String id;
     private String idFuncion;
     private List<String> numAsiento;
@@ -24,28 +19,19 @@ public class BoletoDTO {
     private String hora;
     private Double total;
     private EstadoBoleto estado;
-    private String tituloPelicula;
+    private String sala;
 
     public BoletoDTO() {
     }
 
-    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado) {
+    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, EstadoBoleto estado) {
         this.id = id;
         this.idFuncion = funcion;
         this.numAsiento = numAsiento;
         this.fecha = fecha;
         this.hora = hora;
         this.total = total;
-        switch (estado) {
-            case "PENDIENTE":
-                this.estado = EstadoBoleto.PENDIENTE;
-            case "ESCANEADO":
-                this.estado = EstadoBoleto.ESCANEADO;
-            case "CANCELADO":
-                this.estado = EstadoBoleto.CANCELADO;
-            default:
-                this.estado = EstadoBoleto.PENDIENTE;
-        }
+        this.estado = estado;
     }
 
     public String getId() {
@@ -104,14 +90,14 @@ public class BoletoDTO {
         return idFuncion;
     }
 
-    public String getTituloPelicula() {
-        return tituloPelicula;
+    public String getSala() {
+        return sala;
     }
 
-    public void setTituloPelicula(String tituloPelicula) {
-        this.tituloPelicula = tituloPelicula;
+    public void setSala(String sala) {
+        this.sala = sala;
     }
-
+    
     @Override
     public String toString() {
         return "BoletoDTO{"

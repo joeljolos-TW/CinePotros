@@ -17,6 +17,7 @@ public class Boleto {
     private Double total;
     private EstadoBoleto estado;
 
+
     public Boleto() {
     }
     

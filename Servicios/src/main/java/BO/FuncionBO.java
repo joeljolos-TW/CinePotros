@@ -7,14 +7,11 @@ package BO;
 import DAO.FuncionDAO;
 import DAO.SalaDAO;
 import DTOs.FuncionDTO;
-import DTOs.SalaDTO;
 import adaptadores.BoletoPersistenciaAdapter;
 import entidadesMongo.FuncionMongoEntidad;
 import entidadesMongo.SalaMongoEntidad;
 import excepcion.NegocioException;
 import exception.PersistenciaException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +50,7 @@ public class FuncionBO implements IFuncionBO {
                         funcion.getId().toHexString(),
                         funcion.getFecha(),
                         funcion.getHora(),
-                        sala.getId().toString(),
+                        sala.getNombre(),
                         funcion.getPrecio());
                 
                 dtos.add(dto);

@@ -11,6 +11,5 @@ package itson.dominio;
 public enum EstadoBoleto {
     PENDIENTE,
     ESCANEADO,
-    CANCELADO,
-    PAGADO
+    CANCELADO
 }

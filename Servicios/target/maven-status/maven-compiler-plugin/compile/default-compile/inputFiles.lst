@@ -1,7 +1,9 @@
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\adaptadores\BoletoNegocioAdapter.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\AsientoBO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\BoletoBO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\CancelacionBO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\FuncionBO.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\IAsientoBO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\IBoletoBO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\ICancelacionBO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\IFuncionBO.java
@@ -10,6 +12,7 @@ C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\BO\PeliculaBO
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\Control\ControlEntidades.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\Control\ControlFactory.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\Control\IControlEntidades.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\AsientoDTO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\BoletoDTO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\CancelarBoletoDTO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\FuncionDTO.java
@@ -17,5 +20,7 @@ C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\Pelicula
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\SalaDTO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\DTOs\SeleccionPeliculaDTO.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\excepcion\NegocioException.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\Fachada\FachadaControl.java
+C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\Fachada\IFachadaControl.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\itson\servicios\SubsistemaPago.java
 C:\Users\sonia\Documents\GitHub\CinePotros\Servicios\src\main\java\Mediator\PanelMediator.java

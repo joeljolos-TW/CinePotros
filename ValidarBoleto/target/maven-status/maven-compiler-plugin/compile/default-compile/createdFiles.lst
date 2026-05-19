@@ -1,3 +1,5 @@
 BO\ValidacionBO.class
 com\CinePotro\Main.class
+Fachada\IFachadaValidacion.class
 DTO\ValidacionDTO.class
+Fachada\FachadaValidacion.class

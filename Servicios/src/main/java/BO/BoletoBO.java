@@ -7,12 +7,14 @@ package BO;
 import DAO.BoletoDAO;
 import DAO.FuncionDAO;
 import DAO.PeliculaDAO;
+import DAO.SalaDAO;
 import DTOs.BoletoDTO;
 import adaptadores.BoletoNegocioAdapter;
 import adaptadores.BoletoPersistenciaAdapter;
 import entidadesMongo.BoletoMongoEntidad;
 import entidadesMongo.FuncionMongoEntidad;
 import entidadesMongo.PeliculaMongoEntidad;
+import entidadesMongo.SalaMongoEntidad;
 import excepcion.NegocioException;
 import exception.PersistenciaException;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class BoletoBO implements IBoletoBO {
     private final BoletoDAO boletoDAO;
     private final FuncionDAO funcionDAO;
     private final PeliculaDAO peliculaDAO;
+    private final SalaDAO salaDAO;
     private final BoletoPersistenciaAdapter persistenciaAdapter;
     private final BoletoNegocioAdapter negocioAdapter;
 
@@ -35,6 +38,7 @@ public class BoletoBO implements IBoletoBO {
         this.boletoDAO = new BoletoDAO();
         this.funcionDAO = new FuncionDAO();
         this.peliculaDAO = new PeliculaDAO();
+        this.salaDAO = new SalaDAO();
         this.persistenciaAdapter = new BoletoPersistenciaAdapter();
         this.negocioAdapter = new BoletoNegocioAdapter();
     }
@@ -50,18 +54,15 @@ public class BoletoBO implements IBoletoBO {
         List<BoletoMongoEntidad> boletos = boletoDAO.obtenerTodos();
         List<FuncionMongoEntidad> funciones = new ArrayList<>();
         List<PeliculaMongoEntidad> peliculas = new ArrayList<>();
+        List<SalaMongoEntidad> salas = new ArrayList<>();
 
         for (BoletoMongoEntidad boleto : boletos) {
             FuncionMongoEntidad funcion = funcionDAO.obtenerPorId(boleto.getFuncion());
-            funciones.add(funcion); // puede ser null, el adapter lo maneja
-
-            PeliculaMongoEntidad pelicula = null;
-            if (funcion != null) {
-                pelicula = peliculaDAO.obtenerPorId(funcion.getPelicula());
-            }
-            peliculas.add(pelicula);
+            funciones.add(funcion);
+            peliculas.add(peliculaDAO.obtenerPorId(funcion.getPelicula()));
+            salas.add(salaDAO.obtenerPorId(funcion.getSala()));
         }
-        return negocioAdapter.convertirListaADTO(boletos, funciones, peliculas);
+        return negocioAdapter.convertirListaADTO(boletos, funciones, peliculas, salas);
     }
 
     @Override
@@ -73,7 +74,8 @@ public class BoletoBO implements IBoletoBO {
             }
             FuncionMongoEntidad funcion = funcionDAO.obtenerPorId(boleto.getFuncion());
             PeliculaMongoEntidad pelicula = peliculaDAO.obtenerPorId(funcion.getPelicula());
-            return negocioAdapter.convertirADTO(boleto, funcion, pelicula);
+            SalaMongoEntidad sala = salaDAO.obtenerPorId(funcion.getSala());
+            return negocioAdapter.convertirADTO(boleto, funcion, pelicula,sala);
 
         } catch (PersistenciaException e) {
             throw new NegocioException("Erro al obtener el boleto");

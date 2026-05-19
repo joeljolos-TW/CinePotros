@@ -191,14 +191,13 @@ public class ValidarBoletoPanel extends JPanel {
             }
 
             for (BoletoDTO b : boletos) {
-                String pelicula = b.getTituloPelicula() != null ? b.getTituloPelicula() : "—";
                 String asientos = b.getNumAsiento()     != null ? String.join(", ", b.getNumAsiento()) : "—";
                 String total    = b.getTotal()          != null ? "$" + String.format("%.2f", b.getTotal()) : "—";
                 String fecha    = b.getFecha()          != null ? b.getFecha()  : "—";
                 String hora     = b.getHora()           != null ? b.getHora()   : "—";
                 String estado   = b.getEstado()         != null ? b.getEstado().name() : "—";
 
-                modeloTabla.addRow(new Object[]{pelicula, fecha, hora, asientos, total, estado});
+                modeloTabla.addRow(new Object[]{fecha, hora, asientos, total, estado});
             }
 
             lblMensaje.setText("Selecciona un boleto PENDIENTE para marcarlo como pagado.");
@@ -237,12 +236,11 @@ public class ValidarBoletoPanel extends JPanel {
 
         BoletoDTO seleccionado = boletos.get(fila);
         String asientos = seleccionado.getNumAsiento()     != null ? String.join(", ", seleccionado.getNumAsiento()) : "—";
-        String pelicula = seleccionado.getTituloPelicula() != null ? seleccionado.getTituloPelicula() : "—";
+        
 
         int respuesta = JOptionPane.showConfirmDialog(
                 this,
                 "¿Confirmas el pago del boleto?\n\n"
-                + "Película:  " + pelicula + "\n"
                 + "Fecha:     " + seleccionado.getFecha() + "  " + seleccionado.getHora() + "\n"
                 + "Asientos:  " + asientos + "\n"
                 + "Total:     $" + String.format("%.2f", seleccionado.getTotal()),
@@ -254,7 +252,7 @@ public class ValidarBoletoPanel extends JPanel {
         if (respuesta != JOptionPane.YES_OPTION) return;
 
         try {
-            seleccionado.setEstado(EstadoBoleto.PAGADO);
+            seleccionado.setEstado(EstadoBoleto.PENDIENTE);
             controlBoleto.actualizar(seleccionado);
             cargarBoletos();
             JOptionPane.showMessageDialog(this,

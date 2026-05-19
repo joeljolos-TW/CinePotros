@@ -4,8 +4,8 @@
  */
 package entidadesMongo;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import itson.dominio.Asiento;
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -21,6 +21,7 @@ public class FuncionMongoEntidad {
     private ObjectId sala;
     private String idioma;
     private Double precio;
+    private List<Asiento> asientos;
 
     public FuncionMongoEntidad() {
     }
@@ -90,5 +91,14 @@ public class FuncionMongoEntidad {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+    public List<Asiento> getAsientos() {
+        return asientos;
+    }
+
+    public void setAsientos(List<Asiento> asientos) {
+        this.asientos = asientos;
+    }
+    
 
 }
