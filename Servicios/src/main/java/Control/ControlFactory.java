@@ -14,7 +14,12 @@ import entidadesMongo.PeliculaMongoEntidad;
 import entidadesMongo.SalaMongoEntidad;
 import itson.dominio.TipoSala;
 import org.bson.types.ObjectId;
-
+/**
+ * Fábrica de controladores de entidades para la capa de presentación.
+ * Centraliza la creación de instancias de {@link IControlEntidades} para cada
+ * entidad del sistema, inyectando los DAOs y las funciones de mapeo
+ * entre DTOs y entidades de MongoDB correspondientes.
+ */
 public class ControlFactory {
     public static IControlEntidades<BoletoDTO> getBoletoControl() {
         FuncionDAO dao = new FuncionDAO();

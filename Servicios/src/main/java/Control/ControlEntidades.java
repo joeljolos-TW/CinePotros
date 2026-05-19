@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * Implementación genérica de {@link IControlEntidades} que centraliza las
+ * operaciones CRUD para cualquier entidad del sistema.
+ * Utiliza funciones de mapeo inyectadas para convertir entre DTOs y entidades,
+ * delegando la persistencia a un {@link IDAOGenerico}.
+ *
+ * @param <DTO>     Tipo del objeto de transferencia de datos.
+ * @param <Entidad> Tipo de la entidad de persistencia.
+ * @param <ID>      Tipo del identificador único de la entidad.
+ */
 public class ControlEntidades<DTO, Entidad, ID> implements IControlEntidades<DTO> {
 
     private final IDAOGenerico<Entidad, ID> dao;

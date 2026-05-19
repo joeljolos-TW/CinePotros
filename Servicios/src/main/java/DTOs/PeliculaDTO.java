@@ -1,5 +1,10 @@
 package DTOs;
 
+/**
+ * Objeto de transferencia de datos que representa una película.
+ * Contiene la información necesaria para identificar y mostrar
+ * una película en la interfaz de usuario.
+ */
 public class PeliculaDTO {
     private String id;
     private String titulo;

@@ -13,6 +13,9 @@ import excepcion.NegocioException;
 import java.util.List;
 
 /**
+ * Controlador que gestiona las operaciones de cancelación de boletos.
+ * Actúa como intermediario entre la capa de presentación y los objetos
+ * de negocio de boletos y cancelaciones.
  *
  * @author Jazmin
  */

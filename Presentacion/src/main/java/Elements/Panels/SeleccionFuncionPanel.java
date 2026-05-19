@@ -27,6 +27,13 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+/**
+ * Panel para la selección de función de una película.
+ * Muestra el póster y título de la película seleccionada, permite filtrar
+ * funciones por fecha y elegir un horario por sala. Al seleccionar una función,
+ * navega al panel de selección de asientos.
+ * Implementa {@link Refreshable} para recibir la película seleccionada al navegar.
+ */
 public class SeleccionFuncionPanel extends JPanel implements Refreshable {
 
     private PanelMediator panelMediator;

@@ -9,8 +9,9 @@ import excepcion.NegocioException;
 import java.util.List;
 
 /**
- *
- * @author 
+ * Interfaz que define las operaciones de negocio disponibles para la gestión de asientos.
+ * Las clases que la implementen deben proporcionar la lógica para consultar,
+ * ocupar y liberar asientos asociados a una función específica.
  */
 public interface IAsientoBO {
     public List<AsientoDTO> obtenerPorFuncion(String idFuncion) throws NegocioException;

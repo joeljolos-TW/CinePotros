@@ -7,6 +7,9 @@ package entidadesMongo;
 import org.bson.types.ObjectId;
 
 /**
+ * Entidad que representa un empleado almacenado en la colección correspondiente
+ * de MongoDB. Es utilizada por el codec POJO de MongoDB para mapear automáticamente
+ * los documentos BSON a objetos Java y viceversa.
  *
  * @author Jazmin
  */

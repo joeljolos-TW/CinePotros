@@ -1,2 +1,7 @@
+DAO\FuncionDAOTest.class
+DAO\PagoDAOTest.class
+DAO\PeliculaDAOTest.class
 DAO\AsientoDAOTest.class
 DAO\EstadoBoletoDAOTest.class
+DAO\SalaDAOTest.class
+DAO\BoletoDAOTest.class

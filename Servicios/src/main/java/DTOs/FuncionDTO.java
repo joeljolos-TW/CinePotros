@@ -6,8 +6,11 @@ package DTOs;
 
 
 /**
+* Implementación genérica de {@link IControlEntidades} que centraliza las
+ * operaciones CRUD para cualquier entidad del sistema.
+ * Utiliza funciones de mapeo inyectadas para convertir entre DTOs y entidades,
+ * delegando la persistencia a un {@link IDAOGenerico}.
  *
- * 
  */
 public class FuncionDTO {
     private String id;

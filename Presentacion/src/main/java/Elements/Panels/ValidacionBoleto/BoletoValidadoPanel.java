@@ -15,7 +15,15 @@ import itson.dominio.EstadoBoleto;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
-
+/**
+ * Panel que muestra el resultado de la validación de un boleto.
+ * Indica visualmente si el boleto es válido o inválido mediante
+ * un ícono y mensaje descriptivo. Al validar exitosamente, actualiza
+ * el estado del boleto a {@link EstadoBoleto#ESCANEADO} en el sistema.
+ * Implementa {@link Refreshable} para recibir los datos de validación al navegar.
+ *
+ * @author Axel
+ */
 public class BoletoValidadoPanel extends JPanel implements Refreshable {
     private PanelMediator panelNavegacion;
     private ValidacionDTO validacionDTO;

@@ -23,8 +23,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author
+ * Panel de generación y visualización de boletos de cine.
+ * Muestra la información del boleto, incluyendo película, función,
+ * sala, asientos, monto total y código QR generado automáticamente.
+ * @author Jazmin
  */
 public class GeneracionBoletoPanel extends JPanel implements Refreshable {
 

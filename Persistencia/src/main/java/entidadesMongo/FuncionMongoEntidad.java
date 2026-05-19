@@ -9,6 +9,9 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
+ * Entidad que representa una función de cine almacenada en la colección "funcion"
+ * de MongoDB. Es utilizada por el codec POJO de MongoDB para mapear automáticamente
+ * los documentos BSON a objetos Java y viceversa.
  *
  * @author Jazmin
  */

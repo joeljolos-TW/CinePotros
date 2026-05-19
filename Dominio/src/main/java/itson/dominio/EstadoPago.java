@@ -5,6 +5,8 @@
 package itson.dominio;
 
 /**
+ * Enumeración que representa los posibles estados de un pago
+ * realizado durante el proceso de compra de boletos.
  *
  * @author Jazmin
  */

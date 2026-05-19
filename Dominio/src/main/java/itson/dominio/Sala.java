@@ -6,6 +6,9 @@ package itson.dominio;
 
 
 /**
+ * Entidad que representa una sala de cine en el dominio del sistema.
+ * Contiene la información necesaria para identificar y describir
+ * una sala, incluyendo su tipo y capacidad de asientos.
  *
  * @author Jazmin
  */

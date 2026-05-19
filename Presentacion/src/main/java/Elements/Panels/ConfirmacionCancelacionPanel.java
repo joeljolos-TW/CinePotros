@@ -15,6 +15,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+/**
+ * Panel que solicita confirmación al usuario antes de cancelar un boleto.
+ * Muestra los detalles del boleto seleccionado y ofrece dos opciones:
+ * confirmar la cancelación o conservar el boleto.
+ */
 public class ConfirmacionCancelacionPanel extends JPanel implements Refreshable {
 
     private BoletoDTO boletoSeleccionado;

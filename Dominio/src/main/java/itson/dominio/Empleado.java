@@ -6,7 +6,7 @@ package itson.dominio;
 
 
 /**
- *
+ * * Entidad que representa un Empleado dentro de una sala de cine.
  * @author Jazmin
  */
 public class Empleado {

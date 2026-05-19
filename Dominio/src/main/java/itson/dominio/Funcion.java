@@ -9,6 +9,9 @@ import java.time.LocalTime;
 
 
 /**
+ * Entidad que representa una función de cine en el dominio del sistema.
+ * Contiene la información completa de una proyección, incluyendo la película,
+ * fecha, hora, sala, idioma y precio del boleto.
  *
  * @author Jazmin
  */

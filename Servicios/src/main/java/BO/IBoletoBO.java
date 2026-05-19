@@ -9,8 +9,9 @@ import excepcion.NegocioException;
 import java.util.List;
 
 /**
- *
- * @author Jazmin
+ * Interfaz que define las operaciones de negocio disponibles para la gestión de boletos.
+ * Las clases que la implementen deben proporcionar la lógica para consultar
+ * boletos individuales o en conjunto.
  */
 public interface IBoletoBO {
     

@@ -5,7 +5,7 @@
 package itson.dominio;
 
 /**
- *
+ *Enumeración que representa los posibles estados de un boleto de cine.
  * @author Jazmin
  */
 public enum EstadoBoleto {

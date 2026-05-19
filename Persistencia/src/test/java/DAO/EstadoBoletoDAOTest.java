@@ -93,7 +93,7 @@ public class EstadoBoletoDAOTest {
  
     /**
      * Verifica que al pasar un ID con formato inválido
-     * se lanza {@link PersistenciaException}.
+     * se lanza PersistenciaException.
      */
     @Test
     void testActualizarEstado_idInvalido() {

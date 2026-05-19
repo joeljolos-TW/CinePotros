@@ -5,6 +5,9 @@
 package DTOs;
 
 /**
+ * Objeto de transferencia de datos que representa una sala de cine.
+ * Contiene la información necesaria para identificar y describir
+ * una sala dentro del sistema.
  *
  * @author axelm
  */

@@ -7,7 +7,6 @@ Mediator\PanelMediator.class
 BO\IPeliculaBO.class
 DTOs\SeleccionPeliculaDTO.class
 BO\PeliculaBO.class
-itson\servicios\SubsistemaPago.class
 Control\ControlFactory.class
 adaptadores\BoletoNegocioAdapter.class
 DTOs\FuncionDTO.class

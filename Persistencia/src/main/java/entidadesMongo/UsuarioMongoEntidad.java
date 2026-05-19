@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 
 /**
  *
- * @author Jazmin
+ * 
  */
 public class UsuarioMongoEntidad {
      private ObjectId id;

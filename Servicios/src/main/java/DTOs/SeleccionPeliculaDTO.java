@@ -1,6 +1,11 @@
 package DTOs;
 
-
+/**
+ * Objeto de transferencia de datos que representa una película
+ * en el contexto de selección desde la cartelera.
+ * Contiene la información mínima necesaria para mostrar
+ * una película al usuario y navegar a sus funciones disponibles.
+ */
 public class SeleccionPeliculaDTO {
     private String id;
     private String name;

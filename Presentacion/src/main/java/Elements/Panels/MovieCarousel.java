@@ -5,7 +5,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-
+/**
+ * Carrusel visual de portadas de películas con navegación por páginas.
+ * Muestra un número fijo de portadas a la vez y permite avanzar o
+ * retroceder entre páginas mediante flechas interactivas.
+ */
 public class MovieCarousel extends JPanel {
 
     private static final int VISIBLE = 3;

@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Objeto de negocio que implementa la lógica de consulta de películas.
+ * Obtiene las entidades de película desde la capa de persistencia y las
+ * convierte a DTOs para su uso en la capa de presentación.
  * @author
  */
 public class PeliculaBO implements IPeliculaBO {

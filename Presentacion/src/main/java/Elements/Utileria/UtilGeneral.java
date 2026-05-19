@@ -8,8 +8,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 /**
- *
- * @author
+ * Clase de utilería que centraliza las constantes visuales de la aplicación.
+ * Define la paleta de colores, estilos de fuente y demás recursos gráficos
+ * compartidos entre todos los paneles y componentes de la interfaz.
+
  */
 public class UtilGeneral {
     //Fondo principal de todas las pantallas

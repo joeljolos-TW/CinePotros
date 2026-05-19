@@ -9,6 +9,11 @@ import Mediator.PanelMediator;
 import Elements.Utileria.UtilGeneral;
 import DTOs.SeleccionPeliculaDTO;
 
+/**
+ * Componente visual que representa la portada de una película en el carrusel.
+ * Muestra la imagen del póster y el nombre de la película. Al hacer clic,
+ * navega al panel de selección de función correspondiente.
+ */
 public class MovieCover extends JPanel {
     private JLabel posterLabel;
     private JLabel nameLabel;

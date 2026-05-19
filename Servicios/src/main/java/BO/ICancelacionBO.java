@@ -7,8 +7,9 @@ package BO;
 import excepcion.NegocioException;
 
 /**
- *
- * @author Jamzin
+ * Interfaz que define las operaciones de negocio disponibles para la cancelación de boletos.
+ * Las clases que la implementen deben proporcionar la lógica para cancelar
+ * un boleto registrado en el sistema.
  */
 public interface ICancelacionBO {
     public void cancelarBoleto(String id)throws NegocioException;

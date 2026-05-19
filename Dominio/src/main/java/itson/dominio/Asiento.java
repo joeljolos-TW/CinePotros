@@ -5,7 +5,7 @@
 package itson.dominio;
 
 /**
- *
+ ** Entidad que representa un asiento dentro de una sala de cine.
  * @author Jazmin
  */
 public class Asiento {

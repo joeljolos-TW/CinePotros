@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
+/**
+ * Panel principal de la cartelera de CinePotros.
+ * Muestra las películas disponibles organizadas en secciones por categoría,
+ * cada una con un carrusel interactivo de portadas.
+ */
+
 public class BillboardPanel extends JPanel {
 
     private final PeliculaBO peliculaBO;

@@ -1,5 +1,9 @@
 package itson.dominio;
 
+/**
+ * * Entidad que representa un código QR generado para un boleto de cine.
+ * 
+ */
 public class QR {
     private String Contenido;
     private int ancho;

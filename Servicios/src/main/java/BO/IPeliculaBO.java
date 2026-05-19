@@ -9,8 +9,9 @@ import excepcion.NegocioException;
 import java.util.List;
 
 /**
- *
- * @author
+ * Interfaz que define las operaciones de negocio disponibles para la gestión de películas.
+ * Las clases que la implementen deben proporcionar la lógica para consultar
+ * todas las películas disponibles en el sistema.
  */
 public interface IPeliculaBO {
     public List<SeleccionPeliculaDTO>obtenerTodos()throws NegocioException;

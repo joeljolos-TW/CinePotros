@@ -5,7 +5,7 @@
 package itson.dominio;
 
 /**
- *
+ * Clase que representa un usuario dentro del sistema.
  * @author Jazmin
  */
 public class Usuario {

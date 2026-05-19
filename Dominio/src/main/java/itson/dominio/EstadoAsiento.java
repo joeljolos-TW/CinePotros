@@ -5,7 +5,7 @@
 package itson.dominio;
 
 /**
- *
+ *Enumeración que representa los posibles estados de un asiento en una sala de cine.
  * @author Jazmin
  */
 public enum EstadoAsiento {

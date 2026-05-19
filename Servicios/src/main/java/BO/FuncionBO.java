@@ -16,8 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- *
+ * Objeto de negocio que implementa la lógica de consulta de funciones de cine.
+ * Obtiene las funciones asociadas a una película y las convierte a DTOs,
+ * enriqueciendo cada función con el nombre de su sala correspondiente.
  */
 public class FuncionBO implements IFuncionBO {
 

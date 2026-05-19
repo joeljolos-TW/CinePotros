@@ -7,7 +7,7 @@ package itson.dominio;
 import java.util.List;
 
 /**
- *
+ ** Entidad que representa un Boleto dentro de una sala de cine.
  * @author Jazmin
  */
 public class Boleto {

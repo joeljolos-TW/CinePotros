@@ -58,7 +58,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code obtenerPorFuncion} retorna todos los asientos
+     * Verifica que obtenerPorFuncion retorna todos los asientos
      * de una función existente.
      */
     @Test
@@ -68,7 +68,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code obtenerPorFuncion} retorna lista vacía
+     * Verifica que obtenerPorFuncion retorna lista vacía
      * si la función no existe.
      */
     @Test
@@ -78,7 +78,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code obtenerDisponibles} retorna solo los asientos
+     * Verifica que obtenerDisponibles retorna solo los asientos
      * con estado DISPONIBLE.
      */
     @Test
@@ -89,7 +89,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code agregarAsiento} agrega correctamente un asiento
+     * Verifica que agregarAsiento agrega correctamente un asiento
      * al arreglo de la función.
      */
     @Test
@@ -103,7 +103,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code inicializarAsientos} reemplaza todos los asientos
+     * Verifica que inicializarAsientos reemplaza todos los asientos
      * de una función con la nueva lista.
      */
     @Test
@@ -120,7 +120,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code actualizarEstado} cambia el estado de un asiento
+     * Verifica que actualizarEstado cambia el estado de un asiento
      * específico correctamente.
      */
     @Test
@@ -138,7 +138,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code actualizarEstado} retorna false si el asiento
+     * Verifica que actualizarEstado retorna false si el asiento
      * no existe en la función.
      */
     @Test
@@ -148,7 +148,7 @@ public class AsientoDAOTest {
     }
 
     /**
-     * Verifica que {@code eliminarAsiento} elimina correctamente un asiento
+     * Verifica que eliminarAsiento elimina correctamente un asiento
      * del arreglo de la función.
      */
     @Test

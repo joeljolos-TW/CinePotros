@@ -13,7 +13,7 @@ import exception.PersistenciaException;
 import itson.dominio.EstadoBoleto;
 
 /**
- *
+ *Objeto de negocio que implementa la lógica de cancelación de boletos.
  * @author Jazmin
  */
 public class CancelacionBO implements ICancelacionBO {

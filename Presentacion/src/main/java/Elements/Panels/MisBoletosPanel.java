@@ -32,6 +32,10 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * Panel que muestra la lista de boletos del usuario.
+ * Permite visualizar el estado de cada boleto (PENDIENTE, ESCANEADO, CANCELADO)
+ * y navegar a la confirmación de cancelación al hacer clic en boletos pendientes.
+ * Implementa Refreshable para recargarse automáticamente al navegar.
  *
  * @author Jazmin
  */

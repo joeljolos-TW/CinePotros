@@ -6,7 +6,7 @@ package itson.dominio;
 
 
 /**
- *
+ *Entidad que representa una película en el dominio del sistema.
  * @author Jazmin
  */
 public class Pelicula {

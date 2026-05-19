@@ -9,7 +9,9 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Entidad que representa un boleto almacenado en la colección "boleto" de MongoDB.
+ * Es utilizada por el codec POJO de MongoDB para mapear automáticamente
+ * los documentos BSON a objetos Java y viceversa.
  * @author Jazmin
  */
 public class BoletoMongoEntidad {

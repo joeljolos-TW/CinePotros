@@ -8,6 +8,9 @@ import itson.dominio.EstadoPago;
 import org.bson.types.ObjectId;
 
 /**
+ * Entidad que representa un pago almacenado en la colección "pagos" de MongoDB.
+ * Es utilizada por el codec POJO de MongoDB para mapear automáticamente
+ * los documentos BSON a objetos Java y viceversa.
  *
  * @author Jazmin
  */
