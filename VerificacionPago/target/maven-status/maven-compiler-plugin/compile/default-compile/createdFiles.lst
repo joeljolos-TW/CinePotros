@@ -1,7 +1,9 @@
 Test\Main.class
 Test\testFrame1$2.class
+Fachada\FachadaPago.class
 Test\testFrame1$1.class
 Pago\PaymentBO.class
 Test\testFrame1.class
 Pago\PaymentBO$1.class
+Fachada\IFachadaPago.class
 PaymentDTO\PaymentSummaryDTO.class
