@@ -19,30 +19,19 @@ public class BoletoDTO {
     private String hora;
     private Double total;
     private EstadoBoleto estado;
+    private String sala;
 
     public BoletoDTO() {
     }
 
-    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, String estado) {
+    public BoletoDTO(String id, String funcion, List<String> numAsiento, String fecha, String hora, Double total, EstadoBoleto estado) {
         this.id = id;
         this.idFuncion = funcion;
         this.numAsiento = numAsiento;
         this.fecha = fecha;
         this.hora = hora;
         this.total = total;
-        switch (estado){
-            case "PENDIENTE" :
-                this.estado = EstadoBoleto.PENDIENTE;
-                break;
-            case "ESCANEADO" :
-                this.estado = EstadoBoleto.ESCANEADO;
-                break;
-            case "CANCELADO" :
-                this.estado = EstadoBoleto.CANCELADO;
-                break;
-            default:
-                this.estado = EstadoBoleto.PENDIENTE;
-        }
+        this.estado = estado;
     }
 
     public String getId() {
@@ -101,6 +90,14 @@ public class BoletoDTO {
         return idFuncion;
     }
 
+    public String getSala() {
+        return sala;
+    }
+
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
+    
     @Override
     public String toString() {
         return "BoletoDTO{"

@@ -6,12 +6,10 @@ DAO\PeliculaDAO.class
 DAO\UsuarioDAO.class
 entidadesMongo\BoletoMongoEntidad.class
 DAO\AsientoDAO.class
-subsistema\SubsistemaAsientos.class
 entidadesMongo\SalaMongoEntidad.class
 exception\PersistenciaException.class
 adaptadores\BoletoPersistenciaAdapter.class
 DAO\FuncionDAO.class
-subsistema\ISubsistemaAsientos.class
 DAO\BoletoDAO.class
 entidadesMongo\FuncionMongoEntidad.class
 Conexion\ConexionMongoDB.class

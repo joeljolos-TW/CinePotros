@@ -39,8 +39,10 @@ public class AsientoBO implements IAsientoBO {
     @Override
     public List<AsientoDTO> obtenerPorFuncion(String idFuncion) throws NegocioException {
         try {
+             System.out.println("Buscando asientos para funcion: " + idFuncion);
             ObjectId objectId = adapter.convertirStringAObjectId(idFuncion);
             List<Asiento> asientos = asientoDAO.obtenerPorFuncion(objectId);
+             System.out.println("Asientos encontrados: " + asientos.size());
             List<AsientoDTO> dtos = new ArrayList<>();
             for (Asiento asiento : asientos) {
                 dtos.add(new AsientoDTO(

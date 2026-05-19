@@ -8,8 +8,7 @@ import DTOs.BoletoDTO;
 import entidadesMongo.BoletoMongoEntidad;
 import entidadesMongo.FuncionMongoEntidad;
 import entidadesMongo.PeliculaMongoEntidad;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import entidadesMongo.SalaMongoEntidad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +27,10 @@ public class BoletoNegocioAdapter {
      * @param boleto entidad del boleto en MongoDB.
      * @param funcion entidad de la función.
      * @param pelicula entidad de la película.
+     * @param sala
      * @return BoletoDTO con toda la información para la pantalla.
      */
-    public BoletoDTO convertirADTO(BoletoMongoEntidad boleto, FuncionMongoEntidad funcion, PeliculaMongoEntidad pelicula) {
+    public BoletoDTO convertirADTO(BoletoMongoEntidad boleto, FuncionMongoEntidad funcion, PeliculaMongoEntidad pelicula,SalaMongoEntidad sala) {
         if (boleto == null || funcion == null) {
             return null;
         }
@@ -42,37 +42,27 @@ public class BoletoNegocioAdapter {
         dto.setHora(funcion.getHora());
         dto.setTotal(boleto.getTotal());
         dto.setEstado(boleto.getEstado());
+        dto.setIdFuncion(funcion.getId().toHexString());
+        dto.setSala(sala != null ? sala.getNombre() : "—");
 
         return dto;
     }
-
     public List<BoletoDTO> convertirListaADTO(List<BoletoMongoEntidad> boletos,
-            List<FuncionMongoEntidad> funciones, List<PeliculaMongoEntidad> peliculas) {
+        List<FuncionMongoEntidad> funciones, List<PeliculaMongoEntidad> peliculas,
+        List<SalaMongoEntidad> salas) {
 
-        List<BoletoDTO> dtos = new ArrayList<>();
-        if (boletos == null) {
-            return dtos;
-        }
-        for (int i = 0; i < boletos.size(); i++) {
-            FuncionMongoEntidad funcion;
-            if (funciones != null && i < funciones.size()) {
-                funcion = funciones.get(i);
-            } else {
-                funcion = null;
-            }
-            PeliculaMongoEntidad pelicula;
-            if (peliculas != null && i < peliculas.size()) {
-                pelicula = peliculas.get(i);
-            } else {
-                pelicula = null;
-            }
-            BoletoDTO dto = convertirADTO(boletos.get(i), funcion, pelicula);
-            if (dto != null) {
-                dtos.add(dto);
-            }
+    List<BoletoDTO> dtos = new ArrayList<>();
+    if (boletos == null) return dtos;
 
-        }
-        return dtos;
+    for (int i = 0; i < boletos.size(); i++) {
+        FuncionMongoEntidad funcion = (funciones != null && i < funciones.size()) ? funciones.get(i) : null;
+        PeliculaMongoEntidad pelicula = (peliculas != null && i < peliculas.size()) ? peliculas.get(i) : null;
+        SalaMongoEntidad sala = (salas != null && i < salas.size()) ? salas.get(i) : null;
+
+        BoletoDTO dto = convertirADTO(boletos.get(i), funcion, pelicula, sala);
+        if (dto != null) dtos.add(dto);
     }
+    return dtos;
+}
 
 }

@@ -25,7 +25,7 @@ public class AsientoDAO{
 
     public AsientoDAO() {
         MongoDatabase base = ConexionMongoDB.getInstance().getDatabase();
-        this.coleccion = base.getCollection("funciones");
+        this.coleccion = base.getCollection("funcion");
     }
 
     // ── CREATE ────────────────────────────────────────────────────────────────

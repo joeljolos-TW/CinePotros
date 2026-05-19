@@ -35,7 +35,7 @@ import javax.swing.border.EmptyBorder;
  *
  * @author Jazmin
  */
-public class MisBoletosPanel extends JPanel implements Refreshable{
+public class MisBoletosPanel extends JPanel implements Refreshable {
 
     private final ControlCancelacion control;
     private final PanelMediator mediador;
@@ -53,88 +53,92 @@ public class MisBoletosPanel extends JPanel implements Refreshable{
         setBackground(UtilGeneral.FONDO_PRINCIPAL);
         setLayout(new BorderLayout());
 
-       
         add(construirEncabezado(), BorderLayout.NORTH);
         cargarBoletos();
-        
+
     }
-    
+
     private JPanel construirEncabezado() {
         JPanel encabezado = new JPanel(new BorderLayout());
         encabezado.setBackground(UtilGeneral.FONDO_ENCABEZADO);
         encabezado.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
-        
+
         JButton btnAtras = new JButton("⬅");
-        btnAtras.setFont(new Font("Arial",Font.BOLD,18));
+        btnAtras.setFont(new Font("Arial", Font.BOLD, 18));
         btnAtras.setBackground(UtilGeneral.BOTON_AZUL);
         btnAtras.setForeground(Color.WHITE);
         btnAtras.setFocusPainted(false);
-        btnAtras.addActionListener(e-> mediador.changePanel("cartelera"));
-        
+        btnAtras.addActionListener(e -> mediador.changePanel("cartelera"));
+
         JLabel titulo = new JLabel("Mis boletos");
         titulo.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
-        encabezado.add(btnAtras,BorderLayout.WEST);
+        encabezado.add(btnAtras, BorderLayout.WEST);
         encabezado.add(titulo, BorderLayout.CENTER);
         return encabezado;
     }
-    private void cargarBoletos(){
+
+    private void cargarBoletos() {
         List<BoletoDTO> boletos = boletoBO.obtenerTodos();
-        
+
         JPanel listaBoletos = new JPanel();
-        listaBoletos.setLayout(new BoxLayout(listaBoletos,BoxLayout.Y_AXIS));
+        listaBoletos.setLayout(new BoxLayout(listaBoletos, BoxLayout.Y_AXIS));
         listaBoletos.setBackground(UtilGeneral.FONDO_PRINCIPAL);
-        listaBoletos.setBorder(new EmptyBorder(20,20,20,20));
-        
-        if(boletos.isEmpty()){
+        listaBoletos.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+        if (boletos.isEmpty()) {
             JLabel lblVacio = new JLabel("No tiene boletos registrados");
             lblVacio.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
             lblVacio.setFont(UtilGeneral.FUENTE_CUERPO);
             lblVacio.setAlignmentX(Component.CENTER_ALIGNMENT);
             listaBoletos.add(lblVacio);
-            listaBoletos.add(Box.createVerticalStrut(12));
-        }else{
+        } else {
             for (BoletoDTO boleto : boletos) {
                 listaBoletos.add(tarjetaBoleto(boleto));
-               
             }
-            JScrollPane scroll = new JScrollPane(listaBoletos);
-            scroll.setBorder(null);
-            scroll.getVerticalScrollBar().setUnitIncrement(16);
-            scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-            
-            if(getComponentCount()>1){
-                remove(1);
-            }
-            add(scroll,BorderLayout.CENTER);
-            revalidate();
-            repaint();
         }
+
+        JScrollPane scroll = new JScrollPane(listaBoletos);
+        scroll.setBorder(null);
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        if (getComponentCount() > 1) {
+            remove(1);
+        }
+        add(scroll, BorderLayout.CENTER);
+        revalidate();
+        repaint();
     }
-    private JPanel tarjetaBoleto(BoletoDTO boleto) {
 
-    private JPanel tarjetaBoleto(BoletoDTO boleto) throws NegocioException {
-        JPanel tarjeta = new JPanel(new BorderLayout());
-        tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
-        tarjeta.setBorder(BorderFactory.createCompoundBorder(
-                new javax.swing.border.LineBorder(UtilGeneral.BORDE, 1), new EmptyBorder(16, 20, 16, 20)));
-        tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 90));
+    private JPanel tarjetaBoleto(BoletoDTO boleto){
+    JPanel tarjeta = new JPanel(new BorderLayout());
+    tarjeta.setBackground(UtilGeneral.FONDO_SECUNDARIO);
+    tarjeta.setBorder(BorderFactory.createCompoundBorder(
+            new javax.swing.border.LineBorder(UtilGeneral.BORDE, 1), new EmptyBorder(16, 20, 16, 20)));
+    tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 90));
 
-        JPanel info = new JPanel();
-        info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
-        info.setOpaque(false);
+    JPanel info = new JPanel();
+    info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
+    info.setOpaque(false);
 
+    try {
         FuncionDTO funcion = controlerFuncion.obtenerPorId(boleto.getIdFuncion());
         PeliculaDTO pelicula = controlerPelicula.obtenerPorId(funcion.getIdPelicula());
         JLabel lblPelicula = new JLabel(pelicula.getTitulo());
         lblPelicula.setFont(UtilGeneral.FUENTE_SUBTITULO);
         lblPelicula.setForeground(UtilGeneral.TEXTO_PRINCIPAL);
-        JLabel lblInfo = new JLabel(boleto.getNumAsiento() + " . " + boleto.getFecha() + " . " + boleto.getHora());
-        lblInfo.setFont(UtilGeneral.FUENTE_CUERPO);
-        lblInfo.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
-
         info.add(lblPelicula);
-        info.add(Box.createVerticalStrut(4));
-        info.add(lblInfo);
+    } catch (NegocioException e) {
+        JLabel lblError = new JLabel("Película no disponible");
+        lblError.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
+        info.add(lblError);
+    }
+
+    JLabel lblInfo = new JLabel(String.join(", ", boleto.getNumAsiento()) + " · " + boleto.getFecha() + " · " + boleto.getHora());
+    lblInfo.setFont(UtilGeneral.FUENTE_CUERPO);
+    lblInfo.setForeground(UtilGeneral.TEXTO_SECUNDARIO);
+    info.add(Box.createVerticalStrut(4));
+    info.add(lblInfo);
 
         JLabel lblEstado = new JLabel(boleto.getEstado().name());
         lblEstado.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -173,6 +177,6 @@ public class MisBoletosPanel extends JPanel implements Refreshable{
 
     @Override
     public void onShow(Object object) {
-      cargarBoletos();
+        cargarBoletos();
     }
 }
