@@ -31,7 +31,7 @@ public class CoordinadorPantalla {
     }
 
     public void cerrarConfirmacion(BoletoDTO boleto) {
-        panelMediator.changePanel("infoBoleto", boleto);
+        panelMediator.changePanel("misBoletos", boleto);
     }
 
     public void regresarAMisBoletos() {

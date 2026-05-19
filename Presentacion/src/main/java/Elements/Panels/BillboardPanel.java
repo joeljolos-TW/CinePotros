@@ -47,7 +47,7 @@ public class BillboardPanel extends JPanel {
         titulo.setFont(Elements.Utileria.UtilGeneral.FUENTE_TITULO);
         titulo.setForeground(Elements.Utileria.UtilGeneral.TEXTO_PRINCIPAL);
 
-        JLabel cine = new JLabel("Cinepolis Bella Vista");
+        JLabel cine = new JLabel("CinePotros");
         cine.setFont(Elements.Utileria.UtilGeneral.FUENTE_CUERPO);
         cine.setForeground(Elements.Utileria.UtilGeneral.TEXTO_SECUNDARIO);
 
@@ -125,29 +125,4 @@ public class BillboardPanel extends JPanel {
         }
         return new MovieCarousel(cover);
     }
-
-//    private JPanel construirMasPopulares() {
-//        List<MovieCover> peliculas = new ArrayList<>();
-//        peliculas.add(new MovieCover("/images/avatarPoster.jpg", "Avatar 3"));
-//        peliculas.add(new MovieCover("/images/jurassicPoster.jpg", "Jurassic World"));
-//        peliculas.add(new MovieCover("/images/starWarsPoster.jpg", "Star Wars"));
-//        peliculas.add(new MovieCover("/images/ScottPilgrim.jpeg", "Scott Pilgrim"));
-//        return new MovieCarousel(peliculas);
-//    }
-//
-//    private JPanel construirTodasFunciones() {
-//        List<MovieCover> peliculas = new ArrayList<>();
-//        peliculas.add(new MovieCover("/images/dramaPoster.jpg", "Drama"));
-//        peliculas.add(new MovieCover("/images/michaelPoster.jpg", "Michael"));
-//        peliculas.add(new MovieCover("/images/mummyPoster.jpg", "The Mummy"));
-//        return new MovieCarousel(peliculas);
-//    }
-//
-//    private JPanel construirSalaKids() {
-//        List<MovieCover> peliculas = new ArrayList<>();
-//        peliculas.add(new MovieCover("/images/hoppersPoster.jpg", "Hoppers"));
-//        peliculas.add(new MovieCover("/images/minionsPoster.jpg", "Minions"));
-//        peliculas.add(new MovieCover("/images/marioPoster.jpg", "Mario Bros"));
-//        return new MovieCarousel(peliculas);
-//    }
 }

@@ -166,7 +166,7 @@ public class MisBoletosPanel extends JPanel implements Refreshable {
             tarjeta.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent e) {
-                    mediador.changePanel("ConfirmacionCancelacionPanel", boleto);
+                    mediador.changePanel("confirmacionCancelacion", boleto);
                 }
             });
         }

@@ -28,7 +28,7 @@ public class AsientoDAO{
         this.coleccion = base.getCollection("funcion");
     }
 
-    // ── CREATE ────────────────────────────────────────────────────────────────
+  
 
     /**
      * Agrega un asiento al arreglo de asientos de una función.
@@ -55,8 +55,7 @@ public class AsientoDAO{
         );
     }
 
-    // ── READ ──────────────────────────────────────────────────────────────────
-
+ 
     /**
      * Devuelve todos los asientos de una función.
      */
@@ -88,7 +87,7 @@ public class AsientoDAO{
         return disponibles;
     }
 
-    // ── UPDATE ────────────────────────────────────────────────────────────────
+  
 
     /**
      * Cambia el estado de un asiento específico (identificado por fila + número).
@@ -103,7 +102,7 @@ public class AsientoDAO{
         return resultado.getModifiedCount() > 0;
     }
 
-    // ── DELETE ────────────────────────────────────────────────────────────────
+  
 
     /**
      * Elimina un asiento del arreglo de una función.
@@ -116,7 +115,7 @@ public class AsientoDAO{
         );
     }
 
-    // ── MAPEO ─────────────────────────────────────────────────────────────────
+  
 
     private Document asientoADocumento(Asiento a) {
         return new Document()
